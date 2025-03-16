@@ -463,7 +463,7 @@
 ## Sprint 2: Main Development (Day 1-2)
 
 ### PDF Processing
-- [ ] **Story 2.1: PDF Extraction Setup**
+- [x] **Story 2.1: PDF Extraction Setup**
   - Implement PDF text extraction
   - Create table parsing utilities
   - Set up pattern matching for procedure codes
@@ -591,7 +591,7 @@
   </IMPORTANT_NOTES>
 
 ### Additional Carriers
-- [ ] **Story 2.2: Cigna Implementation**
+- [x] **Story 2.2: Cigna Implementation**
   - Research Cigna's portal structure
   - Implement Cigna-specific spider
   - Create custom parsing rules
@@ -710,7 +710,7 @@
        * Documentation completeness
   </IMPORTANT_NOTES>
 
-- [ ] **Story 2.3: MetLife Implementation**
+- [x] **Story 2.3: MetLife Implementation**
   - Research MetLife's portal structure
   - Implement MetLife-specific spider
   - Create custom parsing rules
@@ -842,6 +842,16 @@
        * Memory usage monitoring
        * Concurrent processing
        * Error recovery
+
+  10. Python 3.13 Compatibility:
+      - Python 3.13 removed the `cgi` module which Scrapy depends on
+      - Install the legacy-cgi package as a drop-in replacement:
+        ```
+        pip install legacy-cgi
+        ```
+      - No code changes are needed after installing this package
+      - This package is maintained specifically to address this compatibility issue
+      - Used by hundreds of projects as the standard solution for Python 3.13+ compatibility
   </IMPORTANT_NOTES>
 
 - [ ] **Story 2.4: United Healthcare Implementation**

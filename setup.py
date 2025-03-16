@@ -1,10 +1,9 @@
 from setuptools import setup, find_packages
 
 setup(
-    name="dental_insurance_guidelines_web_scraper",
+    name="dental_scraper",
     version="0.1",
-    packages=find_packages(where="src"),
-    package_dir={"": "src"},
+    packages=find_packages(),
     install_requires=[
         "scrapy>=2.11.0",
         "beautifulsoup4>=4.12.3",

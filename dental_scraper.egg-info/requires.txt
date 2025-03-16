@@ -1,0 +1,10 @@
+scrapy
+loguru
+pydantic
+aiohttp
+pdfplumber
+beautifulsoup4
+
+[test]
+pytest
+pytest-asyncio

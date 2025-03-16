@@ -1,5 +1,5 @@
 """
-Your project description here.
+Dental Scraper - A web scraper for dental insurance guidelines.
 
 This file marks this directory as a Python package.
 """

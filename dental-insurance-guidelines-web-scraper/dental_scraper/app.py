@@ -1,5 +1,5 @@
 """
-Main entry point for the dental insurance guidelines web scraper.
+Main entry point for the dental scraper.
 """
 from loguru import logger
 from utils.logging_config import setup_logging
@@ -12,7 +12,7 @@ def main():
         # Set up logging
         setup_logging()
         
-        logger.info("Starting dental insurance guidelines web scraper")
+        logger.info("Starting dental insurance scraper")
         
         # TODO: Initialize and run scrapers
         pass

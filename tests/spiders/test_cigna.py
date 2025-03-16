@@ -2,7 +2,7 @@ import pytest
 from unittest.mock import Mock, patch, AsyncMock
 from scrapy.http import Response, Request, TextResponse, Headers
 from loguru import logger
-from dental_insurance_guidelines_web_scraper.spiders.cigna import CignaSpider
+from dental_scraper.spiders.cigna import CignaSpider
 
 @pytest.fixture
 def spider():
