@@ -28,6 +28,7 @@ ENV/
 # IDE
 .idea/
 .vscode/
+.cursor/
 *.swp
 *.swo
 
@@ -38,6 +39,11 @@ data/raw/
 data/processed/
 .env
 *.log
+
+# Project documentation
+Prompts/
+PRD.MD
+tasks.md
 
 # OS specific
 .DS_Store
