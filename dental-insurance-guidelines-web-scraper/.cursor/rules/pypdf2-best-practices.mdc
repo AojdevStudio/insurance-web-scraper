@@ -1,0 +1,9 @@
+---
+description: Best practices for working with PDFs using PyPDF2
+globs: **/*.py
+alwaysApply: false
+---
+- Use context managers when working with PDF files
+- Optimize memory usage by reading PDFs in chunks
+- Implement proper error handling for corrupted PDFs
+- Use PyPDF2's encryption features for secure PDFs

@@ -1,0 +1,10 @@
+---
+description: Python coding standards and best practices
+globs: **/*.py
+alwaysApply: false
+---
+- Follow PEP 8 style guide for consistent code formatting
+- Use type hints for better code readability and maintainability
+- Implement proper exception handling and logging
+- Utilize virtual environments for dependency management
+- Write unit tests using frameworks like pytest or unittest

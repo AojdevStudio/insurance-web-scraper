@@ -1,0 +1,9 @@
+---
+description: Best practices for testing with Pytest
+globs: **/tests/*.py
+alwaysApply: false
+---
+- Use fixtures for setup and teardown
+- Implement parameterized testing for multiple scenarios
+- Utilize Pytest's built-in assertions and markers
+- Write clear, descriptive test names and docstrings

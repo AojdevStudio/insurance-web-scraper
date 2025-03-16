@@ -1,0 +1,9 @@
+---
+description:  Best practices for using pre-commit hooks
+globs: .pre-commit-config.yaml
+alwaysApply: false
+---
+- Select hooks relevant to your project's needs
+- Configure hooks to run efficiently
+- Use pre-commit.ci for automated hook execution
+- Regularly update hooks to benefit from improvements

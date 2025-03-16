@@ -1,0 +1,9 @@
+---
+description: 
+globs: **/*.py
+alwaysApply: false
+---
+- Use Supabase's real-time capabilities for live updates
+- Implement proper error handling and retries for network requests
+- Utilize Supabase's built-in authentication and authorization
+- Optimize queries with appropriate indexing and filtering

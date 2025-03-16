@@ -1,0 +1,9 @@
+---
+description: Best practices for code linting with Flake8
+globs: **/*.py
+alwaysApply: false
+---
+- Configure Flake8 to align with your project's coding standards
+- Use Flake8's plugins to extend its capabilities
+- Integrate Flake8 into your CI/CD pipeline
+- Address Flake8 warnings and errors promptly

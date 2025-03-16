@@ -1,0 +1,9 @@
+---
+description: Best practices for extracting data from PDFs with pdfplumber
+globs: **/*.py
+alwaysApply: false
+---
+- Use visual debugging to fine-tune extraction logic
+- Implement robust text extraction with fallback methods
+- Utilize pdfplumber's table extraction capabilities
+- Handle multi-page PDFs efficiently

@@ -1,0 +1,9 @@
+---
+description: Best practices for web scraping with Scrapy
+globs: **/*.py
+alwaysApply: false
+---
+- Use item loaders for structured data extraction
+- Implement proper error handling and retries
+- Utilize Scrapy's built-in middleware for common tasks
+- Follow robots.txt and respect website policies

@@ -1,0 +1,67 @@
+version: '3.8'
+
+services:
+  scraper:
+    build: .
+    container_name: dental-scraper
+    volumes:
+      - ./pdfs:/app/pdfs
+      - ./data:/app/data
+      - ./cache:/app/cache
+      - ./logs:/app/logs
+    environment:
+      - MONGO_URI=mongodb://mongodb:27017/dental_scraper
+      - QDRANT_HOST=qdrant
+      - QDRANT_PORT=6333
+      - TOR_PROXY=socks5h://tor-proxy:9050
+    depends_on:
+      - mongodb
+      - qdrant
+      - tor-proxy
+    dns:
+      - 8.8.8.8
+      - 8.8.4.4
+    networks:
+      - scraper-net
+    deploy:
+      resources:
+        limits:
+          memory: 2G
+          cpus: '2'
+    restart: unless-stopped
+
+  mongodb:
+    image: mongo:latest
+    container_name: dental-mongodb
+    volumes:
+      - mongodb_data:/data/db
+    networks:
+      - scraper-net
+    restart: unless-stopped
+
+  qdrant:
+    image: qdrant/qdrant:latest
+    container_name: dental-qdrant
+    volumes:
+      - qdrant_data:/qdrant/storage
+    networks:
+      - scraper-net
+    restart: unless-stopped
+
+  tor-proxy:
+    image: mattes/rotating-proxy:latest
+    container_name: dental-tor-proxy
+    environment:
+      - TOR_INSTANCES=5
+      - TOR_ROTATE_TIME=60
+    networks:
+      - scraper-net
+    restart: unless-stopped
+
+networks:
+  scraper-net:
+    driver: bridge
+
+volumes:
+  mongodb_data:
+  qdrant_data: 

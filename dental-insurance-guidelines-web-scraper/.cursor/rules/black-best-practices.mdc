@@ -1,0 +1,9 @@
+---
+description: Best practices for code formatting with Black
+globs: **/*.py
+alwaysApply: false
+---
+- Configure Black to work with your project's style guide
+- Use Black's pre-commit hook for consistent formatting
+- Combine Black with other linters for comprehensive code quality
+- Regularly update Black to benefit from improvements

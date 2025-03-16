@@ -1,0 +1,40 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dental-insurance-guidelines-web-scraper"
+version = "0.1.0"
+authors = [
+  { name="AojDevStudio" },
+]
+description = "A web scraper for dental insurance guidelines"
+readme = "README.md"
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    "scrapy",
+    "loguru",
+    "pydantic",
+    "aiohttp",
+    "pdfplumber",
+    "beautifulsoup4",
+]
+
+[project.optional-dependencies]
+test = [
+    "pytest",
+    "pytest-asyncio",
+]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+packages = ["dental_insurance_guidelines_web_scraper"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+asyncio_mode = "auto" 
