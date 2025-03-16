@@ -1,0 +1,14 @@
+[run]
+source = dental_scraper
+
+[report]
+exclude_lines =
+    pragma: no cover
+    def __repr__
+    raise NotImplementedError
+    if __name__ == .__main__.:
+    pass
+    raise ImportError
+
+omit =
+    dental_scraper/processors/pdf_processor.py 

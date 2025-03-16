@@ -1,0 +1,32 @@
+2025-03-16 18:14:27 | INFO     | dental_scraper.utils.logging_config:setup_logging:51 - Logging configured successfully
+2025-03-16 18:14:27 | INFO     | dental_scraper.app:main:15 - Starting dental insurance scraper
+2025-03-16 18:14:27 | INFO     | dental_scraper.app:main:24 - Scraper execution completed
+2025-03-16 18:14:27 | INFO     | dental_scraper.spiders.base_spider:__init__:48 - Initialized test_spider spider
+2025-03-16 18:14:27 | INFO     | dental_scraper.spiders.base_spider:__init__:48 - Initialized test_spider spider
+2025-03-16 18:14:27 | INFO     | dental_scraper.spiders.base_spider:__init__:48 - Initialized test_spider spider
+2025-03-16 18:14:27 | INFO     | dental_scraper.spiders.base_spider:__init__:48 - Initialized test_spider spider
+2025-03-16 18:14:27 | INFO     | dental_scraper.spiders.base_spider:__init__:48 - Initialized test_spider spider
+2025-03-16 18:14:27 | INFO     | dental_scraper.spiders.base_spider:__init__:48 - Initialized test_spider spider
+2025-03-16 18:14:27 | INFO     | dental_scraper.spiders.base_spider:__init__:48 - Initialized test_spider spider
+2025-03-16 18:14:27 | WARNING  | dental_scraper.utils.data_cleaner:clean:120 - Could not clean CDT code: X0150
+2025-03-16 18:14:27 | WARNING  | dental_scraper.utils.data_cleaner:clean:120 - Could not clean CDT code: D01
+2025-03-16 18:14:27 | WARNING  | dental_scraper.utils.data_cleaner:normalize:225 - Could not normalize date: not a date
+2025-03-16 18:14:27 | INFO     | dental_scraper.utils.data_cleaner:__init__:312 - Initializing enhanced DataCleaner
+2025-03-16 18:14:27 | INFO     | dental_scraper.utils.data_cleaner:__init__:445 - Initializing DataCleaningPipeline
+2025-03-16 18:14:27 | INFO     | dental_scraper.utils.data_cleaner:__init__:312 - Initializing enhanced DataCleaner
+2025-03-16 18:14:27 | INFO     | dental_scraper.utils.data_cleaner:clean_procedures:434 - Cleaning 1 procedures
+2025-03-16 18:14:27 | INFO     | dental_scraper.utils.data_cleaner:clean_procedures:434 - Cleaning 1 procedures
+2025-03-16 18:14:27 | WARNING  | dental_scraper.utils.data_cleaner:clean:120 - Could not clean CDT code: X0150
+2025-03-16 18:14:27 | WARNING  | dental_scraper.utils.data_cleaner:process:468 - Validation errors: {'structure': {'procedures': [{'procedure_0': {'code': 'Missing required field: code', 'description': 'Missing required field: description', 'requirements': 'Missing required field: requirements'}}]}, 'content': {'procedures': [{'procedure_0': {'requirements': 'Empty requirements list'}}]}}
+2025-03-16 18:14:27 | ERROR    | dental_scraper.models.validation:validate_procedure_data:60 - Validation failed: ["('code',): String should match pattern '^D\\d{4}$'"]
+2025-03-16 18:14:27 | ERROR    | dental_scraper.models.validation:validate_procedure_data:60 - Validation failed: ["('description',): Field required"]
+2025-03-16 18:14:27 | ERROR    | dental_scraper.models.validation:validate_carrier_data:38 - Validation failed: ["('year',): Input should be greater than or equal to 2024"]
+2025-03-16 18:14:27 | ERROR    | dental_scraper.models.validation:validate_carrier_data:38 - Validation failed: ["('source_url',): Input should be a valid URL, relative URL without a base"]
+2025-03-16 18:14:27 | ERROR    | dental_scraper.models.validation:validate_carrier_data:38 - Validation failed: ["('procedures', 0, 'code'): String should match pattern '^D\\d{4}$'"]
+2025-03-16 18:14:27 | ERROR    | dental_scraper.models.validation:validate_procedure_data:60 - Validation failed: ["('code',): String should match pattern '^D\\d{4}$'"]
+2025-03-16 18:14:27 | ERROR    | dental_scraper.utils.download_handler:_ensure_download_dir:27 - Error creating download directory: Access denied
+2025-03-16 18:14:27 | ERROR    | dental_scraper.utils.download_handler:download_pdf:100 - Error writing PDF file: object bytes can't be used in 'await' expression
+2025-03-16 18:14:27 | ERROR    | dental_scraper.utils.download_handler:download_pdf:81 - Failed to download PDF: 404 - https://example.com/test.pdf
+2025-03-16 18:14:27 | ERROR    | dental_scraper.utils.download_handler:download_pdf:87 - Invalid content type: text/html - https://example.com/test.pdf
+2025-03-16 18:14:27 | ERROR    | dental_scraper.utils.download_handler:download_pdf:100 - Error writing PDF file: object bytes can't be used in 'await' expression
+2025-03-16 18:14:27 | INFO     | dental_scraper.utils.download_handler:cleanup_old_files:148 - Removed old file: /tmp/test_downloads/old_file.pdf

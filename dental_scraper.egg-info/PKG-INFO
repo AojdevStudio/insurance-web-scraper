@@ -34,19 +34,17 @@ A web scraping system designed to extract dental insurance guidelines from vario
 
 ```
 .
-├── src/                    # Source code
+├── dental_scraper/         # Main Python package
 │   ├── spiders/           # Spider implementations for each carrier
 │   ├── scrapers/          # Base scraping functionality
 │   ├── models/            # Data models and validation
 │   ├── middlewares/       # Request middleware (rate limiting, etc.)
 │   ├── utils/             # Utility functions and helpers
-│   ├── main.py           # Main entry point
+│   ├── app.py            # Application entry point
 │   ├── exceptions.py     # Custom exceptions
-│   └── pdf_processor.py  # PDF processing functionality
+│   └── pdf/              # PDF processing functionality
 ├── tests/                 # Test suite
 │   └── spiders/          # Spider-specific tests
-├── config/               # Configuration files
-│   └── requirements.txt  # Project dependencies
 ├── data/                 # Data storage
 │   ├── raw/             # Raw downloaded PDFs
 │   └── processed/       # Processed data files

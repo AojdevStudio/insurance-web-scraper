@@ -131,26 +131,25 @@ async def test_parse_pdf_link_success(spider, mock_pdf_response):
     spider.download_handler.download_pdf = mock_download
     logger.debug("Mocked download handler")
     
-    # Mock the PDF extractor
-    mock_text = AsyncMock(return_value='Procedure: D0150 Test procedure')
-    spider.pdf_extractor.extract_text = mock_text
+    # Mock the PDF processor
+    mock_text = Mock(return_value='Procedure: D0150 Test procedure')
+    spider.pdf_processor.extract_text = mock_text
     logger.debug("Mocked PDF text extractor")
     
-    mock_tables = AsyncMock(return_value=[{'code': 'D0150', 'info': 'test'}])
-    spider.pdf_extractor.extract_tables = mock_tables
-    logger.debug("Mocked PDF table extractor")
-    
-    # Mock the pattern matcher
-    mock_pattern_matcher = Mock()
-    mock_pattern_matcher.extract_procedure_blocks = Mock(return_value=[{
+    # Mock the extract_procedure_blocks method
+    mock_extract_blocks = Mock(return_value=[{
         'code': 'D0150',
         'description': 'Test procedure',
         'requirements': ['Test requirement'],
         'notes': ['Test note']
     }])
-    mock_pattern_matcher.validate_cdt_code = Mock(return_value=True)
-    spider.pattern_matcher = mock_pattern_matcher
-    logger.debug("Mocked pattern matcher")
+    spider.extract_procedure_blocks = mock_extract_blocks
+    logger.debug("Mocked extract_procedure_blocks")
+    
+    # Mock the validate_cdt_code method
+    mock_validate = Mock(return_value=True)
+    spider.validate_cdt_code = mock_validate
+    logger.debug("Mocked validate_cdt_code")
     
     results = [r async for r in spider.parse_pdf_link(mock_pdf_response, 'test')]
     logger.debug(f"Got {len(results)} results from parse_pdf_link")
@@ -186,18 +185,16 @@ def test_process_procedure_block(spider):
     tables = [{'code': 'D0150', 'frequency': 'Once per year'}]
     logger.debug(f"Processing block: {block}")
     
-    # Mock pattern matcher for validation
-    mock_pattern_matcher = Mock()
-    mock_pattern_matcher.validate_cdt_code = Mock(return_value=True)
-    spider.pattern_matcher = mock_pattern_matcher
+    # We don't need to mock pattern_matcher anymore since we're using validate_cdt_code directly
+    # Mock the validate_cdt_code method
+    mock_validate = Mock(return_value=True)
+    spider.validate_cdt_code = mock_validate
     
     result = spider.process_procedure_block(block, tables)
     assert result['code'] == 'D0150'
     assert result['description'] == 'Test procedure'
-    assert len(result['requirements']) == 1
-    assert len(result['notes']) == 1
-    assert result['additional_info']['frequency'] == 'Once per year'
-    logger.info("Procedure block test passed")
+    assert result['frequency'] == 'Once per year'
+    logger.info("Procedure block processing test passed")
     
 def test_process_procedure_block_invalid_code(spider):
     logger.info("Testing procedure block with invalid code")

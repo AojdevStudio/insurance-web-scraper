@@ -1,0 +1,58 @@
+{
+  "carrier": "Aetna",
+  "year": 2024,
+  "source_url": "https://www.aetna.com/dental/guidelines-2024.pdf",
+  "last_updated": "2024-01-01",
+  "procedures": [
+    {
+      "code": "D0150",
+      "description": "Comprehensive oral evaluation - new or established patient",
+      "requirements": [
+        "Complete charting of all teeth and existing restorations",
+        "Documentation of patient's chief complaint",
+        "Medical and dental history"
+      ],
+      "effective_date": "2024-01-01",
+      "notes": "Limited to once per provider"
+    },
+    {
+      "code": "D0220",
+      "description": "Intraoral - periapical first radiographic image",
+      "requirements": [
+        "Radiographic image showing entire tooth and surrounding structures",
+        "Date of service"
+      ],
+      "effective_date": "2024-01-01",
+      "notes": "Maximum of 1 PA per day unless documentation supports necessity"
+    },
+    {
+      "code": "",
+      "description": "",
+      "requirements": [],
+      "effective_date": "2024-01-01",
+      "notes": "Some notes"
+    }
+  ],
+  "validation_errors": {
+    "structure": {
+      "procedures": [
+        {
+          "procedure_2": {
+            "code": "Missing required field: code",
+            "description": "Missing required field: description",
+            "requirements": "Missing required field: requirements"
+          }
+        }
+      ]
+    },
+    "content": {
+      "procedures": [
+        {
+          "procedure_2": {
+            "requirements": "Empty requirements list"
+          }
+        }
+      ]
+    }
+  }
+}
