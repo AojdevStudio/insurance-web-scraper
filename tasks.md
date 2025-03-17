@@ -1279,7 +1279,7 @@
      ```
   </IMPORTANT_NOTES>
 
-- [ ] **Story 2.7: URL Management System**
+- [x] **Story 2.7: URL Management System**
   - Create URL configuration interface
   - Implement URL validation and testing
   - Add support for site-specific rules
@@ -1376,7 +1376,7 @@
        * Content verification
   </IMPORTANT_NOTES>
 
-- [ ] **Story 2.8: Generic PDF Processing Pipeline**
+- [x] **Story 2.8: Generic PDF Processing Pipeline**
   - Create unified PDF processing system
   - Implement flexible extraction patterns
   - Add support for different PDF formats

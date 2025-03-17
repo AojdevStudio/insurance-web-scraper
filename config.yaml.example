@@ -1,0 +1,229 @@
+# Dental Insurance Guidelines Web Scraper Configuration
+# This is an example configuration file. Copy to config.yaml and modify as needed.
+
+# Global scraper settings
+scraper:
+  # Rate limiting settings
+  rate_limit:
+    requests_per_minute: 60  # Maximum requests per minute
+    delay_between_requests: 1  # Delay in seconds between requests
+  
+  # Timeout settings (in seconds)
+  timeout:
+    connection: 30  # Connection timeout
+    read: 60       # Read timeout
+    total: 300     # Total operation timeout
+  
+  # Retry settings
+  retry:
+    max_attempts: 3        # Maximum retry attempts
+    delay: 5              # Delay between retries in seconds
+    backoff_factor: 2     # Exponential backoff factor
+    retry_on_status:      # HTTP status codes to retry on
+      - 429  # Too Many Requests
+      - 500  # Internal Server Error
+      - 502  # Bad Gateway
+      - 503  # Service Unavailable
+      - 504  # Gateway Timeout
+
+# Output settings
+output:
+  format: json           # Output format (json, csv, excel)
+  directory: ./data     # Output directory
+  filename_pattern: "{carrier}_{date}_{type}"  # Filename pattern
+  compression: true     # Enable output compression
+  pretty_print: true    # Pretty print JSON output
+  date_format: "%Y-%m-%d"  # Date format for filenames
+
+# Logging configuration
+logging:
+  level: INFO          # Logging level (DEBUG, INFO, WARNING, ERROR, CRITICAL)
+  file: scraper.log   # Log file path
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  rotate:
+    max_size: 10MB    # Maximum log file size
+    backup_count: 5   # Number of backup files to keep
+
+# Proxy settings
+proxy:
+  enabled: false                    # Enable proxy usage
+  url: http://proxy.example.com:8080  # Proxy URL
+  auth:
+    required: false                 # Proxy requires authentication
+    username: user                  # Proxy username
+    password: pass                  # Proxy password
+  rotation:
+    enabled: false                 # Enable proxy rotation
+    interval: 600                  # Rotation interval in seconds
+    max_failures: 3               # Maximum failures before switching
+
+# PDF processing settings
+pdf:
+  engine: pdfplumber     # PDF processing engine (pdfplumber, pypdf2)
+  ocr:
+    enabled: false      # Enable OCR for scanned PDFs
+    language: eng       # OCR language
+  extraction:
+    timeout: 300        # Extraction timeout in seconds
+    max_pages: 1000     # Maximum pages to process
+    batch_size: 10      # Batch size for processing
+
+# Carrier-specific settings
+carriers:
+  aetna:
+    enabled: true
+    base_url: https://www.aetnadental.com
+    login_path: /login
+    guidelines_path: /guidelines
+    auth_type: form     # Authentication type (form, token, oauth)
+    session_timeout: 3600  # Session timeout in seconds
+    extraction_rules:
+      procedure_code:
+        pattern: "D\\d{4}"
+        required: true
+      requirements:
+        pattern: "Requirements:.*?(?=\\n\\n)"
+        multiline: true
+      documentation:
+        pattern: "Documentation:.*?(?=\\n\\n)"
+        multiline: true
+      frequency:
+        pattern: "Frequency:.*?(?=\\n)"
+        required: false
+    
+  cigna:
+    enabled: true
+    base_url: https://www.cignadental.com
+    login_path: /login
+    guidelines_path: /guidelines
+    auth_type: token
+    session_timeout: 7200
+    extraction_rules:
+      procedure_code:
+        pattern: "D\\d{4}"
+        required: true
+      requirements:
+        pattern: "Requirements:.*?(?=\\n\\n)"
+        multiline: true
+      documentation:
+        pattern: "Documentation:.*?(?=\\n\\n)"
+        multiline: true
+      frequency:
+        pattern: "Frequency:.*?(?=\\n)"
+        required: false
+    
+  metlife:
+    enabled: true
+    base_url: https://www.metlifedental.com
+    login_path: /login
+    guidelines_path: /guidelines
+    auth_type: oauth
+    session_timeout: 3600
+    extraction_rules:
+      procedure_code:
+        pattern: "D\\d{4}"
+        required: true
+      requirements:
+        pattern: "Requirements:.*?(?=\\n\\n)"
+        multiline: true
+      documentation:
+        pattern: "Documentation:.*?(?=\\n\\n)"
+        multiline: true
+      frequency:
+        pattern: "Frequency:.*?(?=\\n)"
+        required: false
+    
+  uhc:
+    enabled: true
+    base_url: https://www.uhcdental.com
+    login_path: /login
+    guidelines_path: /guidelines
+    auth_type: form
+    session_timeout: 3600
+    extraction_rules:
+      procedure_code:
+        pattern: "D\\d{4}"
+        required: true
+      requirements:
+        pattern: "Requirements:.*?(?=\\n\\n)"
+        multiline: true
+      documentation:
+        pattern: "Documentation:.*?(?=\\n\\n)"
+        multiline: true
+      frequency:
+        pattern: "Frequency:.*?(?=\\n)"
+        required: false
+
+# Data validation settings
+validation:
+  enabled: true
+  schema: ./schemas/guidelines.json  # JSON schema for validation
+  strict: false                     # Strict validation mode
+  on_error: warn                    # Action on validation error (warn, fail)
+
+# Storage settings
+storage:
+  type: file          # Storage type (file, database)
+  database:
+    enabled: false
+    type: postgresql  # Database type
+    host: localhost
+    port: 5432
+    name: scraper_db
+    user: scraper_user
+    password: password
+    ssl: true
+    pool_size: 5
+    timeout: 30
+
+# Cache settings
+cache:
+  enabled: true
+  type: memory       # Cache type (memory, redis)
+  ttl: 3600         # Cache TTL in seconds
+  max_size: 1000    # Maximum cache size
+  redis:
+    host: localhost
+    port: 6379
+    db: 0
+    password: null
+
+# Error handling
+errors:
+  max_errors: 100          # Maximum number of errors before stopping
+  save_errors: true       # Save error details to file
+  error_file: errors.log  # Error log file
+  alert:
+    enabled: false
+    threshold: 10         # Error threshold for alerts
+    email: admin@example.com
+    slack_webhook: null
+
+# Monitoring
+monitoring:
+  enabled: false
+  metrics:
+    success_rate: true
+    response_time: true
+    error_rate: true
+    memory_usage: true
+  prometheus:
+    enabled: false
+    port: 9090
+  healthcheck:
+    enabled: true
+    interval: 300  # Health check interval in seconds
+    endpoint: /health
+
+# Security
+security:
+  ssl_verify: true              # Verify SSL certificates
+  allowed_domains:              # Allowed domains for scraping
+    - aetnadental.com
+    - cignadental.com
+    - metlifedental.com
+    - uhcdental.com
+  user_agent: "DentalScraper/1.0"  # Custom user agent
+  headers:                      # Custom headers
+    Accept: "text/html,application/xhtml+xml"
+    Accept-Language: "en-US,en;q=0.9" 

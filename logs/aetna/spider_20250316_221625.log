@@ -1,0 +1,2 @@
+2025-03-16 22:19:35.447 | INFO     | __main__:run_aetna_spider:83 - Aetna spider completed
+2025-03-16 22:19:35.448 | INFO     | __main__:<module>:103 - Results saved to data/processed/aetna_guidelines_20250316_221625.json

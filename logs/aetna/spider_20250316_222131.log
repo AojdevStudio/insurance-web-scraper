@@ -1,0 +1,170 @@
+2025-03-16 22:21:31,482 [scrapy.utils.log] INFO: Scrapy 2.11.0 started (bot: scrapybot)
+2025-03-16 22:21:31,493 [scrapy.utils.log] INFO: Versions: lxml 5.1.0.0, libxml2 2.9.13, cssselect 1.3.0, parsel 1.10.0, w3lib 2.3.1, Twisted 22.10.0, Python 3.13.2 (main, Feb  4 2025, 14:51:09) [Clang 16.0.0 (clang-1600.0.26.6)], pyOpenSSL 25.0.0 (OpenSSL 3.4.1 11 Feb 2025), cryptography 44.0.2, Platform macOS-15.3.1-arm64-arm-64bit-Mach-O
+2025-03-16 22:21:31,496 [aetna] INFO: Initialized aetna spider
+2025-03-16 22:21:31 [aetna] INFO: Initialized aetna spider
+2025-03-16 22:21:31,496 [scrapy.addons] INFO: Enabled addons:
+[]
+2025-03-16 22:21:31 [scrapy.addons] INFO: Enabled addons:
+[]
+2025-03-16 22:21:31,497 [py.warnings] WARNING: /Users/aojdevstudio/unified-dental-projects/insurance-web-scraper/venv/lib/python3.13/site-packages/scrapy/utils/request.py:254: ScrapyDeprecationWarning: '2.6' is a deprecated value for the 'REQUEST_FINGERPRINTER_IMPLEMENTATION' setting.
+
+It is also the default value. In other words, it is normal to get this warning if you have not defined a value for the 'REQUEST_FINGERPRINTER_IMPLEMENTATION' setting. This is so for backward compatibility reasons, but it will change in a future version of Scrapy.
+
+See the documentation of the 'REQUEST_FINGERPRINTER_IMPLEMENTATION' setting for information on how to handle this deprecation.
+  return cls(crawler)
+
+2025-03-16 22:21:31 [py.warnings] WARNING: /Users/aojdevstudio/unified-dental-projects/insurance-web-scraper/venv/lib/python3.13/site-packages/scrapy/utils/request.py:254: ScrapyDeprecationWarning: '2.6' is a deprecated value for the 'REQUEST_FINGERPRINTER_IMPLEMENTATION' setting.
+
+It is also the default value. In other words, it is normal to get this warning if you have not defined a value for the 'REQUEST_FINGERPRINTER_IMPLEMENTATION' setting. This is so for backward compatibility reasons, but it will change in a future version of Scrapy.
+
+See the documentation of the 'REQUEST_FINGERPRINTER_IMPLEMENTATION' setting for information on how to handle this deprecation.
+  return cls(crawler)
+
+2025-03-16 22:21:31,499 [scrapy.utils.log] DEBUG: Using reactor: twisted.internet.selectreactor.SelectReactor
+2025-03-16 22:21:31 [scrapy.utils.log] DEBUG: Using reactor: twisted.internet.selectreactor.SelectReactor
+2025-03-16 22:21:31,507 [scrapy.extensions.telnet] INFO: Telnet Password: 4c26a85901f5f73c
+2025-03-16 22:21:31 [scrapy.extensions.telnet] INFO: Telnet Password: 4c26a85901f5f73c
+2025-03-16 22:21:31,537 [scrapy.middleware] INFO: Enabled extensions:
+['scrapy.extensions.corestats.CoreStats',
+ 'scrapy.extensions.telnet.TelnetConsole',
+ 'scrapy.extensions.memusage.MemoryUsage',
+ 'scrapy.extensions.feedexport.FeedExporter',
+ 'scrapy.extensions.logstats.LogStats']
+2025-03-16 22:21:31 [scrapy.middleware] INFO: Enabled extensions:
+['scrapy.extensions.corestats.CoreStats',
+ 'scrapy.extensions.telnet.TelnetConsole',
+ 'scrapy.extensions.memusage.MemoryUsage',
+ 'scrapy.extensions.feedexport.FeedExporter',
+ 'scrapy.extensions.logstats.LogStats']
+2025-03-16 22:21:31,537 [scrapy.crawler] INFO: Overridden settings:
+{'CONCURRENT_REQUESTS': 1,
+ 'DOWNLOAD_DELAY': 3,
+ 'DOWNLOAD_TIMEOUT': 60,
+ 'LOG_FILE': 'logs/aetna/spider_20250316_222131.log',
+ 'RETRY_HTTP_CODES': [500, 502, 503, 504, 408, 429, 403],
+ 'RETRY_TIMES': 3,
+ 'USER_AGENT': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 '
+               '(KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'}
+2025-03-16 22:21:31 [scrapy.crawler] INFO: Overridden settings:
+{'CONCURRENT_REQUESTS': 1,
+ 'DOWNLOAD_DELAY': 3,
+ 'DOWNLOAD_TIMEOUT': 60,
+ 'LOG_FILE': 'logs/aetna/spider_20250316_222131.log',
+ 'RETRY_HTTP_CODES': [500, 502, 503, 504, 408, 429, 403],
+ 'RETRY_TIMES': 3,
+ 'USER_AGENT': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 '
+               '(KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'}
+2025-03-16 22:21:31,588 [scrapy.middleware] INFO: Enabled downloader middlewares:
+['scrapy.downloadermiddlewares.httpauth.HttpAuthMiddleware',
+ 'scrapy.downloadermiddlewares.downloadtimeout.DownloadTimeoutMiddleware',
+ 'scrapy.downloadermiddlewares.defaultheaders.DefaultHeadersMiddleware',
+ 'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware',
+ 'scrapy.downloadermiddlewares.retry.RetryMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.MetaRefreshMiddleware',
+ 'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.RedirectMiddleware',
+ 'scrapy.downloadermiddlewares.cookies.CookiesMiddleware',
+ 'scrapy.downloadermiddlewares.httpproxy.HttpProxyMiddleware',
+ 'scrapy.downloadermiddlewares.stats.DownloaderStats']
+2025-03-16 22:21:31 [scrapy.middleware] INFO: Enabled downloader middlewares:
+['scrapy.downloadermiddlewares.httpauth.HttpAuthMiddleware',
+ 'scrapy.downloadermiddlewares.downloadtimeout.DownloadTimeoutMiddleware',
+ 'scrapy.downloadermiddlewares.defaultheaders.DefaultHeadersMiddleware',
+ 'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware',
+ 'scrapy.downloadermiddlewares.retry.RetryMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.MetaRefreshMiddleware',
+ 'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.RedirectMiddleware',
+ 'scrapy.downloadermiddlewares.cookies.CookiesMiddleware',
+ 'scrapy.downloadermiddlewares.httpproxy.HttpProxyMiddleware',
+ 'scrapy.downloadermiddlewares.stats.DownloaderStats']
+2025-03-16 22:21:31,590 [scrapy.middleware] INFO: Enabled spider middlewares:
+['scrapy.spidermiddlewares.httperror.HttpErrorMiddleware',
+ 'scrapy.spidermiddlewares.offsite.OffsiteMiddleware',
+ 'scrapy.spidermiddlewares.referer.RefererMiddleware',
+ 'scrapy.spidermiddlewares.urllength.UrlLengthMiddleware',
+ 'scrapy.spidermiddlewares.depth.DepthMiddleware']
+2025-03-16 22:21:31 [scrapy.middleware] INFO: Enabled spider middlewares:
+['scrapy.spidermiddlewares.httperror.HttpErrorMiddleware',
+ 'scrapy.spidermiddlewares.offsite.OffsiteMiddleware',
+ 'scrapy.spidermiddlewares.referer.RefererMiddleware',
+ 'scrapy.spidermiddlewares.urllength.UrlLengthMiddleware',
+ 'scrapy.spidermiddlewares.depth.DepthMiddleware']
+2025-03-16 22:21:31,590 [scrapy.middleware] INFO: Enabled item pipelines:
+[]
+2025-03-16 22:21:31 [scrapy.middleware] INFO: Enabled item pipelines:
+[]
+2025-03-16 22:21:31,590 [scrapy.core.engine] INFO: Spider opened
+2025-03-16 22:21:31 [scrapy.core.engine] INFO: Spider opened
+2025-03-16 22:21:31,597 [scrapy.extensions.logstats] INFO: Crawled 0 pages (at 0 pages/min), scraped 0 items (at 0 items/min)
+2025-03-16 22:21:31 [scrapy.extensions.logstats] INFO: Crawled 0 pages (at 0 pages/min), scraped 0 items (at 0 items/min)
+2025-03-16 22:21:31,597 [scrapy.extensions.telnet] INFO: Telnet console listening on 127.0.0.1:6023
+2025-03-16 22:21:31 [scrapy.extensions.telnet] INFO: Telnet console listening on 127.0.0.1:6023
+2025-03-16 22:21:31,597 [aetna] INFO: Starting login process
+2025-03-16 22:21:31 [aetna] INFO: Starting login process
+2025-03-16 22:21:31,898 [scrapy.core.engine] DEBUG: Crawled (404) <GET https://www.aetnadental.com/login.html> (referer: None)
+2025-03-16 22:21:31 [scrapy.core.engine] DEBUG: Crawled (404) <GET https://www.aetnadental.com/login.html> (referer: None)
+2025-03-16 22:21:32,002 [aetna] ERROR: Request failed during step 'initial_login' (attempt 1): Ignoring non-200 response
+2025-03-16 22:21:32 [aetna] ERROR: Request failed during step 'initial_login' (attempt 1): Ignoring non-200 response
+2025-03-16 22:21:32,002 [aetna] ERROR: Response status: 404
+2025-03-16 22:21:32 [aetna] ERROR: Response status: 404
+2025-03-16 22:21:32,002 [aetna] ERROR: Response headers: {b'Date': [b'Mon, 17 Mar 2025 03:21:31 GMT'], b'Content-Type': [b'text/html; charset=iso-8859-1'], b'Set-Cookie': [b'TS01a5ae52=013a6a9a2eaa14dd803f8de3790dce000380bd891da10fbe734819bef6fae2a0edeb8d72694e8210bad7e4052907059e1a03ef4f9e; Path=/; Domain=.www.aetnadental.com;', b'visid_incap_3144620=TeEAniZ8QJqtmOFf6S84STuV12cAAAAAQUIPAAAAAADb6ND1TLiacYbK9kzva431; expires=Mon, 16 Mar 2026 08:43:20 GMT; HttpOnly; path=/; Domain=.aetnadental.com', b'nlbi_3144620=MxrfUzQhB0lv+W4bUC2JvgAAAAB6TIhXSw+0MQcjQRtP8mF0; HttpOnly; path=/; Domain=.aetnadental.com', b'incap_ses_1439_3144620=Qe+fBxijZ3ZPDtkfH1v4EzuV12cAAAAA5ze24oAr7V5MFNO7sp3sMg==; path=/; Domain=.aetnadental.com'], b'X-Cdn': [b'Imperva'], b'X-Iinfo': [b'10-43538206-43538210 NNYY CT(46 47 0) RT(1742181691239 60) q(0 1 1 0) r(1 1) U11']}
+2025-03-16 22:21:32 [aetna] ERROR: Response headers: {b'Date': [b'Mon, 17 Mar 2025 03:21:31 GMT'], b'Content-Type': [b'text/html; charset=iso-8859-1'], b'Set-Cookie': [b'TS01a5ae52=013a6a9a2eaa14dd803f8de3790dce000380bd891da10fbe734819bef6fae2a0edeb8d72694e8210bad7e4052907059e1a03ef4f9e; Path=/; Domain=.www.aetnadental.com;', b'visid_incap_3144620=TeEAniZ8QJqtmOFf6S84STuV12cAAAAAQUIPAAAAAADb6ND1TLiacYbK9kzva431; expires=Mon, 16 Mar 2026 08:43:20 GMT; HttpOnly; path=/; Domain=.aetnadental.com', b'nlbi_3144620=MxrfUzQhB0lv+W4bUC2JvgAAAAB6TIhXSw+0MQcjQRtP8mF0; HttpOnly; path=/; Domain=.aetnadental.com', b'incap_ses_1439_3144620=Qe+fBxijZ3ZPDtkfH1v4EzuV12cAAAAA5ze24oAr7V5MFNO7sp3sMg==; path=/; Domain=.aetnadental.com'], b'X-Cdn': [b'Imperva'], b'X-Iinfo': [b'10-43538206-43538210 NNYY CT(46 47 0) RT(1742181691239 60) q(0 1 1 0) r(1 1) U11']}
+2025-03-16 22:21:32,002 [aetna] ERROR: Response body: ERROR 404: File Not Found
+2025-03-16 22:21:32 [aetna] ERROR: Response body: ERROR 404: File Not Found
+2025-03-16 22:21:32,003 [scrapy.core.engine] INFO: Closing spider (finished)
+2025-03-16 22:21:32 [scrapy.core.engine] INFO: Closing spider (finished)
+2025-03-16 22:21:32,003 [scrapy.extensions.feedexport] INFO: Stored json feed (0 items) in: data/processed/aetna_guidelines_20250316_222131.json
+2025-03-16 22:21:32 [scrapy.extensions.feedexport] INFO: Stored json feed (0 items) in: data/processed/aetna_guidelines_20250316_222131.json
+2025-03-16 22:21:32,003 [scrapy.statscollectors] INFO: Dumping Scrapy stats:
+{'downloader/request_bytes': 310,
+ 'downloader/request_count': 1,
+ 'downloader/request_method_count/GET': 1,
+ 'downloader/response_bytes': 871,
+ 'downloader/response_count': 1,
+ 'downloader/response_status_count/404': 1,
+ 'elapsed_time_seconds': 0.406384,
+ 'feedexport/success_count/FileFeedStorage': 1,
+ 'finish_reason': 'finished',
+ 'finish_time': datetime.datetime(2025, 3, 17, 3, 21, 32, 3255, tzinfo=datetime.timezone.utc),
+ 'httpcompression/response_bytes': 25,
+ 'httpcompression/response_count': 1,
+ 'log_count/DEBUG': 2,
+ 'log_count/ERROR': 4,
+ 'log_count/INFO': 12,
+ 'log_count/WARNING': 1,
+ 'memusage/max': 96927744,
+ 'memusage/startup': 96927744,
+ 'response_received_count': 1,
+ 'scheduler/dequeued': 1,
+ 'scheduler/dequeued/memory': 1,
+ 'scheduler/enqueued': 1,
+ 'scheduler/enqueued/memory': 1,
+ 'start_time': datetime.datetime(2025, 3, 17, 3, 21, 31, 596871, tzinfo=datetime.timezone.utc)}
+2025-03-16 22:21:32 [scrapy.statscollectors] INFO: Dumping Scrapy stats:
+{'downloader/request_bytes': 310,
+ 'downloader/request_count': 1,
+ 'downloader/request_method_count/GET': 1,
+ 'downloader/response_bytes': 871,
+ 'downloader/response_count': 1,
+ 'downloader/response_status_count/404': 1,
+ 'elapsed_time_seconds': 0.406384,
+ 'feedexport/success_count/FileFeedStorage': 1,
+ 'finish_reason': 'finished',
+ 'finish_time': datetime.datetime(2025, 3, 17, 3, 21, 32, 3255, tzinfo=datetime.timezone.utc),
+ 'httpcompression/response_bytes': 25,
+ 'httpcompression/response_count': 1,
+ 'log_count/DEBUG': 2,
+ 'log_count/ERROR': 4,
+ 'log_count/INFO': 12,
+ 'log_count/WARNING': 1,
+ 'memusage/max': 96927744,
+ 'memusage/startup': 96927744,
+ 'response_received_count': 1,
+ 'scheduler/dequeued': 1,
+ 'scheduler/dequeued/memory': 1,
+ 'scheduler/enqueued': 1,
+ 'scheduler/enqueued/memory': 1,
+ 'start_time': datetime.datetime(2025, 3, 17, 3, 21, 31, 596871, tzinfo=datetime.timezone.utc)}
+2025-03-16 22:21:32,003 [scrapy.core.engine] INFO: Spider closed (finished)
+2025-03-16 22:21:32 [scrapy.core.engine] INFO: Spider closed (finished)

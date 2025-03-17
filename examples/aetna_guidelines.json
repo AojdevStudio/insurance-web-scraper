@@ -1,0 +1,141 @@
+{
+  "carrier": "aetna",
+  "extraction_date": "2024-03-20T10:30:00Z",
+  "guidelines": [
+    {
+      "procedure_code": "D0150",
+      "description": "Comprehensive oral evaluation - new or established patient",
+      "requirements": [
+        "New patient or established patient not seen in 36 months",
+        "Complete evaluation of dental and periodontal health"
+      ],
+      "documentation": [
+        "Detailed chart notes documenting all findings",
+        "Full mouth radiographs or panoramic image if taken",
+        "Periodontal charting if completed"
+      ],
+      "frequency": {
+        "value": 36,
+        "unit": "month",
+        "per_benefit_period": false
+      },
+      "age_restrictions": {
+        "min_age": null,
+        "max_age": null
+      },
+      "provider_restrictions": [
+        "general_dentist",
+        "pediatric_dentist"
+      ],
+      "pre_authorization": false,
+      "clinical_criteria": [
+        "Patient has not received D0150 in the past 36 months",
+        "Documentation of medical and dental history",
+        "Evaluation of extraoral and intraoral conditions"
+      ],
+      "exclusions": [
+        "Not covered when performed on the same day as D0120 (periodic oral evaluation)",
+        "Not covered for specialists other than pediatric dentists"
+      ],
+      "source": {
+        "document_name": "Aetna Dental Clinical Policy Bulletins",
+        "page_number": 12,
+        "effective_date": "2024-01-01",
+        "url": "https://www.aetnadental.com/guidelines/2024/cdt-d0150.pdf"
+      },
+      "metadata": {
+        "last_updated": "2024-03-20T10:30:00Z",
+        "version": "2024.1",
+        "confidence_score": 0.95
+      }
+    },
+    {
+      "procedure_code": "D2392",
+      "description": "Resin-based composite - two surfaces, posterior",
+      "requirements": [
+        "Tooth surface must be carious or fractured",
+        "Radiographic evidence of caries or fracture",
+        "Two distinct surfaces must be involved"
+      ],
+      "documentation": [
+        "Pre-operative radiograph showing caries or fracture",
+        "Clinical chart notes documenting surfaces restored",
+        "Post-operative radiograph"
+      ],
+      "frequency": {
+        "value": 24,
+        "unit": "month",
+        "per_benefit_period": true
+      },
+      "age_restrictions": {
+        "min_age": null,
+        "max_age": null
+      },
+      "tooth_restrictions": [
+        "1",
+        "2",
+        "3",
+        "14",
+        "15",
+        "16",
+        "17",
+        "18",
+        "19",
+        "30",
+        "31",
+        "32"
+      ],
+      "surface_restrictions": [
+        "M",
+        "O",
+        "D",
+        "F",
+        "L"
+      ],
+      "provider_restrictions": [
+        "general_dentist",
+        "pediatric_dentist"
+      ],
+      "alternative_procedures": [
+        "D2391",
+        "D2393"
+      ],
+      "pre_authorization": false,
+      "clinical_criteria": [
+        "Radiographic evidence of caries or fracture",
+        "Two distinct surfaces must be involved",
+        "Restoration must restore tooth to form and function"
+      ],
+      "exclusions": [
+        "Not covered for cosmetic purposes",
+        "Not covered when tooth is not restorable",
+        "Not covered when performed solely to replace discolored restoration"
+      ],
+      "source": {
+        "document_name": "Aetna Dental Clinical Policy Bulletins",
+        "page_number": 45,
+        "effective_date": "2024-01-01",
+        "url": "https://www.aetnadental.com/guidelines/2024/cdt-d2392.pdf"
+      },
+      "metadata": {
+        "last_updated": "2024-03-20T10:30:00Z",
+        "version": "2024.1",
+        "confidence_score": 0.98
+      }
+    }
+  ],
+  "metadata": {
+    "version": "1.0.0",
+    "total_guidelines": 2,
+    "source_document": {
+      "name": "Aetna Dental Clinical Policy Bulletins 2024",
+      "effective_date": "2024-01-01",
+      "url": "https://www.aetnadental.com/guidelines/2024/complete.pdf"
+    },
+    "extraction_stats": {
+      "success_rate": 0.98,
+      "error_count": 0,
+      "processing_time": 12.5
+    }
+  }
+} 

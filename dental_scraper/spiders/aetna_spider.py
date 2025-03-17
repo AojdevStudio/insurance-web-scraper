@@ -5,274 +5,400 @@ from typing import Dict, Generator, Any, List, Tuple, Optional
 from pathlib import Path
 from datetime import datetime
 import re
+import json
+import os
+from dotenv import load_dotenv
+import logging
 
-from scrapy.http import Request, Response
+from scrapy.http import Request, Response, FormRequest
 from loguru import logger
 import pdfplumber
 from bs4 import BeautifulSoup
+from scrapy import Spider
+from scrapy.exceptions import IgnoreRequest
 
 from ..models import CarrierGuidelines, Procedure, DataValidator
 from .base_spider import BaseInsuranceSpider
 
+# Load environment variables
+load_dotenv()
 
-class AetnaSpider(BaseInsuranceSpider):
-    """
-    Spider for scraping Aetna dental insurance guidelines.
-    """
+# Set up logging
+log_dir = os.path.join('logs', 'aetna')
+os.makedirs(log_dir, exist_ok=True)
+timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
+log_file = os.path.join(log_dir, f'spider_{timestamp}.log')
+
+# Configure logging
+logging.basicConfig(
+    level=logging.DEBUG,
+    format='%(asctime)s [%(name)s] %(levelname)s: %(message)s',
+    handlers=[
+        logging.FileHandler(log_file),
+        logging.StreamHandler()
+    ]
+)
+
+class AetnaSpider(Spider):
+    """Spider for scraping Aetna dental insurance guidelines."""
     
     name = 'aetna'
-    allowed_domains = ['aetna.com', 'aetnadental.com']
-    start_urls = ['https://www.aetnadental.com/professionals/home.html']
+    allowed_domains = ['aetnadental.com', 'aetna.com', 'ap5.aetna.com']
+    login_url = 'https://ap5.aetna.com/siteminderagent/SmMakeCookie.ccc'
+    target_url = 'https://www.aetnadental.com/professionals/secure/network-resources-programs/dental-office-guides.html'
     
     custom_settings = {
-        'CONCURRENT_REQUESTS': 2,
-        'DOWNLOAD_DELAY': 7,  # Conservative delay as per carrier requirements
-        'ROBOTSTXT_OBEY': True,
+        'ROBOTSTXT_OBEY': False,
+        'DOWNLOAD_DELAY': 3,
+        'USER_AGENT': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
         'COOKIES_ENABLED': True,
-        'DOWNLOAD_TIMEOUT': 60,  # Extended timeout for PDF downloads
+        'CONCURRENT_REQUESTS': 1,
+        'DOWNLOAD_TIMEOUT': 60,
+        'RETRY_TIMES': 3,
+        'RETRY_HTTP_CODES': [500, 502, 503, 504, 408, 429, 403],
+        'HTTPERROR_ALLOW_ALL': True,
+        'ROBOTSTXT_ENABLED': False,
+        'LOG_LEVEL': 'DEBUG',
+        'LOG_FILE': log_file,
+        'REDIRECT_ENABLED': True,
+        'COOKIES_DEBUG': True
     }
     
     def __init__(self, *args, **kwargs):
         """Initialize the Aetna spider."""
-        super().__init__(
-            name=self.name,
-            allowed_domains=self.allowed_domains,
-            start_urls=self.start_urls,
-            *args, **kwargs
-        )
-        self.validator = DataValidator()
-        self.pdf_pattern = re.compile(
-            r'(?i).*(?:dental|guidelines|documentation).*2024.*\.pdf$'
-        )
-        # CDT code pattern (D followed by 4 digits)
-        self.cdt_pattern = re.compile(r'D\d{4}')
+        super().__init__(*args, **kwargs)
+        self.username = os.getenv('AETNA_USERNAME')
+        self.password = os.getenv('AETNA_PASSWORD')
+        self.logger.info(f"Initialized {self.name} spider")
+        self.pdf_dir = os.path.join('data', 'pdfs', self.name)
+        os.makedirs(self.pdf_dir, exist_ok=True)
         
-    def parse(self, response: Response) -> Generator[Request, None, None]:
-        """
-        Parse the main dental resources page.
-        
-        Args:
-            response: Response from the main page
+    def start_requests(self):
+        """Start with the login page."""
+        if not self.username or not self.password:
+            self.logger.error("Username and password are required")
+            return
             
-        Yields:
-            Requests for PDF guidelines or next pages to crawl
-        """
-        logger.info(f"Parsing main page: {response.url}")
-        
-        # Look for resources section links
-        resource_links = response.css('a::attr(href)').getall()
-        
-        # Follow resource links that might contain dental guidelines
-        for link in resource_links:
-            if any(keyword in link.lower() for keyword in ['resource', 'guide', 'manual', 'policy', 'dental']):
-                logger.info(f"Following resource link: {link}")
-                yield response.follow(
-                    link,
-                    callback=self.parse_resource_page,
-                    errback=self.handle_error
-                )
-        
-        # Also check for direct PDF links
-        pdf_links = response.css('a[href*=".pdf"]::attr(href)').getall()
-        
-        for link in pdf_links:
-            if self.pdf_pattern.match(link):
-                logger.info(f"Found PDF link: {link}")
-                yield Request(
-                    url=response.urljoin(link),
-                    callback=self.parse_pdf,
-                    errback=self.handle_error,
-                    meta={'source_url': response.url}
-                )
-    
-    def parse_resource_page(self, response: Response) -> Generator[Request, None, None]:
-        """
-        Parse a resource page that might contain links to dental guidelines PDFs.
-        
-        Args:
-            response: Response from the resource page
-            
-        Yields:
-            Requests for PDF guidelines
-        """
-        logger.info(f"Parsing resource page: {response.url}")
-        
-        # Extract all PDF links
-        pdf_links = response.css('a[href*=".pdf"]::attr(href)').getall()
-        
-        for link in pdf_links:
-            if self.pdf_pattern.match(link) or any(keyword in link.lower() for keyword in ['dental', 'guidelines', 'documentation', 'policy']):
-                logger.info(f"Found PDF link: {link}")
-                yield Request(
-                    url=response.urljoin(link),
-                    callback=self.parse_pdf,
-                    errback=self.handle_error,
-                    meta={'source_url': response.url}
-                )
-        
-        # Follow additional resource links
-        for href in response.css('a::attr(href)').getall():
-            if any(keyword in href.lower() for keyword in ['dental', 'policy', 'bulletin', 'guide']):
-                logger.info(f"Following additional resource link: {href}")
-                yield response.follow(
-                    href,
-                    callback=self.parse_resource_page,
-                    errback=self.handle_error
-                )
-    
-    def parse_pdf(self, response: Response) -> Dict[str, Any]:
-        """
-        Process downloaded PDF file.
-        
-        Args:
-            response: Response containing PDF data
-            
-        Returns:
-            Dictionary containing extracted guidelines data
-        """
-        filename = f"aetna_guidelines_{datetime.now().strftime('%Y%m%d')}.pdf"
-        pdf_path = self.save_pdf(response.body, filename)
-        
-        # Extract text and parse guidelines
-        procedures = self.extract_procedures(pdf_path)
-        
-        if not procedures:
-            logger.error(f"No procedures extracted from {filename}")
-            return None
-            
-        guidelines_data = {
-            'carrier': 'Aetna',
-            'year': 2024,
-            'source_url': response.meta['source_url'],
-            'last_updated': datetime.now().date(),
-            'procedures': procedures,
-            'metadata': {
-                'pdf_filename': filename,
-                'pdf_size': len(response.body),
-                'extraction_date': datetime.now().isoformat(),
-                'quality_metrics': self.generate_quality_report(procedures)
-            }
+        self.logger.info("Starting login process")
+        params = {
+            'SMSESSION': 'QUERY',
+            'PERSIST': '0',
+            'TARGET': f'-SM-{self.target_url.replace(":", "--").replace("/", "--")}'
         }
-        
-        # Validate extracted data
-        success, validated_data, errors = self.validator.validate_carrier_data(
-            guidelines_data
+        yield Request(
+            url=f"{self.login_url}?{'&'.join(f'{k}={v}' for k, v in params.items())}",
+            callback=self.parse_login_page,
+            errback=self.handle_error,
+            dont_filter=True,
+            meta={
+                'dont_redirect': False,
+                'handle_httpstatus_list': [302, 303, 307, 308],
+                'request_info': {'step': 'initial_login', 'attempt': 1}
+            }
         )
+
+    def parse_login_page(self, response):
+        """Parse the login page and submit credentials."""
+        self.logger.info("Parsing login page")
+        soup = BeautifulSoup(response.text, 'html.parser')
+        form = soup.find('form')
         
-        if not success:
-            logger.error(f"Validation failed for {filename}: {errors}")
-            return None
-        
-        # Save metadata alongside PDF
-        self.save_metadata(
-            validated_data.dict(),
-            filename.replace('.pdf', '.json')
-        )
-        
-        return validated_data.dict()
-    
-    def extract_procedures(self, pdf_path: Path) -> List[Dict]:
-        """
-        Extract procedures and requirements from PDF.
-        
-        Args:
-            pdf_path: Path to the saved PDF file
+        if not form:
+            self.logger.error("Login form not found")
+            self.logger.debug(f"Page content: {response.text[:2000]}")
+            return
             
-        Returns:
-            List of procedure dictionaries
-        """
+        # Get form action URL
+        form_action = form.get('action', '')
+        if not form_action:
+            form_action = response.url
+        elif not form_action.startswith('http'):
+            form_action = response.urljoin(form_action)
+            
+        self.logger.info(f"Form action URL: {form_action}")
+        
+        # Get all form inputs
+        formdata = {}
+        for input_tag in form.find_all('input'):
+            name = input_tag.get('name')
+            value = input_tag.get('value', '')
+            if name:
+                formdata[name] = value
+                if 'password' not in name.lower():  # Don't log password field
+                    self.logger.debug(f"Form field: {name} = {value}")
+                
+        # Add credentials
+        username_field = next((
+            input_tag.get('name')
+            for input_tag in form.find_all('input')
+            if input_tag.get('type') in ['text', 'email'] or 'user' in input_tag.get('name', '').lower()
+        ), 'USER')
+        
+        password_field = next((
+            input_tag.get('name')
+            for input_tag in form.find_all('input')
+            if input_tag.get('type') == 'password' or 'pass' in input_tag.get('name', '').lower()
+        ), 'PASSWORD')
+        
+        formdata[username_field] = self.username
+        formdata[password_field] = self.password
+        
+        # Submit the form
+        self.logger.info("Submitting login form")
+        yield FormRequest(
+            url=form_action,
+            formdata=formdata,
+            callback=self.after_login,
+            errback=self.handle_error,
+            dont_filter=True,
+            meta={
+                'dont_redirect': False,
+                'handle_httpstatus_list': [302, 303, 307, 308],
+                'request_info': {'step': 'login_submit', 'attempt': 1}
+            }
+        )
+
+    def after_login(self, response):
+        """Handle the post-login response and navigate to the target page."""
+        self.logger.info("Processing login response")
+        
+        # Check if login was successful
+        if 'login' in response.url.lower() or any(text in response.text.lower() for text in ['sign in', 'log in', 'login', 'invalid credentials']):
+            self.logger.error("Login failed - still on login page or invalid credentials")
+            self.logger.debug(f"Response URL: {response.url}")
+            self.logger.debug(f"Response body: {response.text[:2000]}")
+            return
+            
+        self.logger.info("Login successful, accessing target page")
+        yield Request(
+            url=self.target_url,
+            callback=self.parse_guidelines,
+            errback=self.handle_error,
+            dont_filter=True,
+            meta={
+                'dont_redirect': False,
+                'handle_httpstatus_list': [302, 303, 307, 308],
+                'request_info': {'step': 'access_target', 'attempt': 1}
+            }
+        )
+
+    def parse_guidelines(self, response):
+        """Parse the dental guidelines page."""
+        self.logger.info(f"Parsing guidelines page: {response.url}")
+        
+        # Look for PDF links
+        soup = BeautifulSoup(response.text, 'html.parser')
+        
+        # Look for PDF links
+        for link in soup.find_all('a', href=True):
+            href = link.get('href', '')
+            text = link.get_text().lower()
+            
+            # Check if link points to a PDF
+            if href.lower().endswith('.pdf') or 'pdf' in href.lower():
+                if any(keyword in text.lower() or keyword in href.lower() for keyword in 
+                      ['dental', 'guidelines', 'policies', 'procedures', 'coverage', 'clinical', 'bulletin']):
+                    pdf_url = response.urljoin(href)
+                    self.logger.info(f"Found PDF link: {pdf_url}")
+                    yield Request(
+                        url=pdf_url,
+                        callback=self.parse_pdf,
+                        errback=self.handle_error,
+                        dont_filter=True
+                    )
+
+    def parse_pdf(self, response):
+        """Parse a PDF file and extract dental procedures."""
+        if not response.body or not response.url.endswith('.pdf'):
+            self.logger.warning(f"Invalid PDF response from {response.url}")
+            return
+
+        filename = os.path.join(self.pdf_dir, f"{self.name}_guidelines_{datetime.now().strftime('%Y%m%d_%H%M%S')}.pdf")
+        
+        try:
+            # Save PDF file
+            with open(filename, 'wb') as f:
+                f.write(response.body)
+            
+            procedures = self.extract_procedures(filename)
+            if procedures:
+                validator = DataValidator()
+                for procedure in procedures:
+                    try:
+                        # Validate procedure data
+                        is_valid, validated_procedure, errors = validator.validate_procedure_data(procedure)
+                        if is_valid:
+                            yield {
+                                'carrier': 'Aetna',
+                                'source_url': response.url,
+                                'procedure': validated_procedure.dict(),
+                                'extracted_date': datetime.now().isoformat(),
+                                'file_name': os.path.basename(filename)
+                            }
+                        else:
+                            self.logger.error(f"Invalid procedure data: {errors}")
+                    except Exception as e:
+                        self.logger.error(f"Error processing procedure: {str(e)}")
+            else:
+                self.logger.warning(f"No procedures extracted from {os.path.basename(filename)}")
+        except Exception as e:
+            self.logger.error(f"Error processing PDF {response.url}: {str(e)}")
+        finally:
+            # Clean up the temporary file
+            if os.path.exists(filename):
+                os.remove(filename)
+
+    def extract_procedures(self, pdf_path: str) -> List[Dict]:
+        """Extract dental procedures from a PDF file."""
         procedures = []
         
         try:
             with pdfplumber.open(pdf_path) as pdf:
+                # First pass: collect all text to analyze document structure
+                full_text = ""
                 for page in pdf.pages:
                     text = page.extract_text()
-                    if not text:
+                    if text:
+                        full_text += f"\n--- Page {page.page_number} ---\n{text}"
+
+                # Look for sections that might contain procedures
+                sections = re.split(r'\n(?=(?:SECTION|CATEGORY|PROCEDURES|GUIDELINES|POLICY)\s+[IVX0-9]+[.:)])', full_text)
+                
+                for section in sections:
+                    # Skip empty sections
+                    if not section.strip():
                         continue
                         
-                    # Find CDT codes and their descriptions
-                    cdt_matches = self.cdt_pattern.finditer(text)
-                    for match in cdt_matches:
-                        procedure = self.extract_procedure_data(
-                            text[match.start():],
-                            match.group()
-                        )
-                        if procedure:
-                            procedures.append(procedure)
+                    # Look for procedure codes with various formats
+                    code_patterns = [
+                        r'D\d{4}(?=\s|$|\)|\]|\.)',  # Standard CDT code
+                        r'(?<=Code\s)D\d{4}',        # Code prefixed
+                        r'(?<=CDT\s)D\d{4}',         # CDT prefixed
+                        r'(?<=procedure\s)D\d{4}'    # Procedure prefixed
+                    ]
+                    
+                    for pattern in code_patterns:
+                        matches = re.finditer(pattern, section, re.IGNORECASE)
+                        for match in matches:
+                            code = match.group()
+                            pos = match.start()
+                            
+                            # Get context (up to 1000 characters around the code)
+                            start = max(0, pos - 500)
+                            end = min(len(section), pos + 500)
+                            context = section[start:end]
+                            
+                            # Extract description using multiple patterns
+                            description = None
+                            desc_patterns = [
+                                rf'{code}\s*[-:]+\s*([^.]*\.)',
+                                rf'{code}\s+([^.]*\.)',
+                                rf'{code}\s*\(([^)]*)\)',
+                                rf'{code}\s*\[([^\]]*)\]'
+                            ]
+                            
+                            for desc_pattern in desc_patterns:
+                                desc_match = re.search(desc_pattern, context, re.IGNORECASE)
+                                if desc_match:
+                                    description = desc_match.group(1).strip()
+                                    break
+                            
+                            if not description:
+                                continue
+                            
+                            # Extract requirements
+                            requirements = []
+                            req_indicators = [
+                                'required', 'must', 'should', 'need', 'necessary',
+                                'documentation', 'criteria', 'prerequisite',
+                                'condition', 'requirement'
+                            ]
+                            
+                            # Look for requirements in the context
+                            for indicator in req_indicators:
+                                req_matches = re.finditer(
+                                    rf'({indicator}[^.;]*[.;])',
+                                    context,
+                                    re.IGNORECASE
+                                )
+                                for req_match in req_matches:
+                                    req = req_match.group(1).strip()
+                                    if req not in requirements:
+                                        requirements.append(req)
+                            
+                            # Extract limitations
+                            limitations = []
+                            limit_indicators = [
+                                'limit', 'maximum', 'minimum', 'restricted',
+                                'not covered', 'excluded', 'only when',
+                                'frequency', 'interval'
+                            ]
+                            
+                            # Look for limitations in the context
+                            for indicator in limit_indicators:
+                                limit_matches = re.finditer(
+                                    rf'({indicator}[^.;]*[.;])',
+                                    context,
+                                    re.IGNORECASE
+                                )
+                                for limit_match in limit_matches:
+                                    limit = limit_match.group(1).strip()
+                                    if limit not in limitations:
+                                        limitations.append(limit)
+                            
+                            # Create the procedure object
+                            procedure = {
+                                'code': code,
+                                'description': description,
+                                'requirements': requirements or ['No specific requirements listed'],
+                                'limitations': limitations or ['No specific limitations listed'],
+                                'source_page': int(re.search(r'Page (\d+)', section).group(1))
+                                if re.search(r'Page (\d+)', section) else 1
+                            }
+                            
+                            # Add the procedure if it's not a duplicate
+                            if not any(p['code'] == code for p in procedures):
+                                procedures.append(procedure)
+                                self.logger.info(f"Extracted procedure {code}")
+                            
         except Exception as e:
-            logger.error(f"Error extracting from PDF {pdf_path}: {str(e)}")
-            return []
+            self.logger.error(f"Error extracting procedures from PDF: {str(e)}")
+        
+        if procedures:
+            self.logger.info(f"Extracted {len(procedures)} procedures from {pdf_path}")
+        else:
+            self.logger.warning(f"No procedures found in {pdf_path}")
             
         return procedures
-    
-    def extract_procedure_data(self, text: str, cdt_code: str) -> Optional[Dict]:
-        """Extract single procedure data from text."""
-        try:
-            # Find the end of the procedure section (next CDT code or end of text)
-            next_cdt = self.cdt_pattern.search(text[5:])  # Skip current code
-            proc_text = text[:next_cdt.start()] if next_cdt else text
-            
-            # Split into lines and clean
-            lines = [l.strip() for l in proc_text.split('\n') if l.strip()]
-            if len(lines) < 2:  # Need at least description and one requirement
-                return None
-                
-            # First line after code is description
-            description = lines[0].replace(cdt_code, '').strip()
-            
-            # Remaining lines are requirements and notes
-            requirements = []
-            notes = None
-            
-            for line in lines[1:]:
-                if line.lower().startswith('note'):
-                    notes = line
-                elif line.strip():
-                    requirements.append(line)
-            
-            if not requirements:  # Must have at least one requirement
-                return None
-                
-            return {
-                "code": cdt_code,
-                "description": description,
-                "requirements": self.validator.validate_requirements_format(requirements),
-                "notes": notes,
-                "effective_date": "2024-01-01"  # Default for 2024 guidelines
-            }
-        except Exception as e:
-            logger.error(f"Error extracting procedure {cdt_code}: {str(e)}")
-            return None
-    
-    def generate_quality_report(self, procedures: List[Dict]) -> Dict:
-        """Generate quality metrics for extracted data."""
-        total_procs = len(procedures)
-        if not total_procs:
-            return {"error": "No procedures found"}
-            
-        metrics = {
-            "total_procedures": total_procs,
-            "procedures_with_requirements": sum(
-                1 for p in procedures if p.get('requirements')
-            ),
-            "procedures_with_notes": sum(
-                1 for p in procedures if p.get('notes')
-            ),
-            "avg_requirements_per_procedure": sum(
-                len(p.get('requirements', [])) for p in procedures
-            ) / total_procs,
-            "validation_rate": sum(
-                1 for p in procedures 
-                if self.validator.validate_procedure_data(p)[0]
-            ) / total_procs
-        }
+
+    def handle_error(self, failure):
+        """Handle request errors."""
+        request_info = failure.request.meta.get('request_info', {})
+        step = request_info.get('step', 'unknown')
+        attempt = request_info.get('attempt', 1)
         
-        # Add quality warnings
-        warnings = []
-        if metrics["validation_rate"] < 0.95:
-            warnings.append("High validation failure rate")
-        if metrics["avg_requirements_per_procedure"] < 1:
-            warnings.append("Low average requirements per procedure")
-            
-        metrics["warnings"] = warnings
-        return metrics 
+        self.logger.error(f"Request failed during step '{step}' (attempt {attempt}): {failure.value}")
+        if hasattr(failure.value, 'response'):
+            response = failure.value.response
+            self.logger.error(f"Response status: {response.status}")
+            self.logger.error(f"Response headers: {response.headers}")
+            self.logger.error(f"Response body: {response.text[:2000]}")  # Log first 2000 chars
+        
+        # If we haven't exceeded max retries and it's a retryable error
+        if attempt < 3 and hasattr(failure.value, 'response'):
+            response = failure.value.response
+            if response.status in [429, 500, 502, 503, 504]:
+                self.logger.info(f"Retrying request (attempt {attempt + 1})")
+                return Request(
+                    url=failure.request.url,
+                    callback=failure.request.callback,
+                    errback=self.handle_error,
+                    dont_filter=True,
+                    meta={
+                        'dont_redirect': False,
+                        'handle_httpstatus_list': [302, 303, 307, 308],
+                        'request_info': {'step': step, 'attempt': attempt + 1}
+                    }
+                )
+        
+        return None 

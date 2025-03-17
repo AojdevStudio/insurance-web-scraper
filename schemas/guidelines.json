@@ -1,0 +1,264 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Dental Guidelines Schema",
+  "description": "Schema for dental insurance guidelines data",
+  "type": "object",
+  "required": ["carrier", "extraction_date", "guidelines"],
+  "properties": {
+    "carrier": {
+      "type": "string",
+      "enum": ["aetna", "cigna", "metlife", "uhc"],
+      "description": "Insurance carrier name"
+    },
+    "extraction_date": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Date and time of data extraction"
+    },
+    "guidelines": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["procedure_code", "description"],
+        "properties": {
+          "procedure_code": {
+            "type": "string",
+            "pattern": "^D\\d{4}$",
+            "description": "CDT procedure code"
+          },
+          "description": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Procedure description"
+          },
+          "requirements": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "description": "List of requirements for the procedure"
+          },
+          "documentation": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "description": "Required documentation"
+          },
+          "frequency": {
+            "type": "object",
+            "properties": {
+              "value": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "unit": {
+                "type": "string",
+                "enum": ["day", "month", "year", "lifetime"]
+              },
+              "per_benefit_period": {
+                "type": "boolean"
+              }
+            },
+            "required": ["value", "unit"],
+            "description": "Frequency limitations"
+          },
+          "age_restrictions": {
+            "type": "object",
+            "properties": {
+              "min_age": {
+                "type": ["integer", "null"],
+                "minimum": 0
+              },
+              "max_age": {
+                "type": ["integer", "null"],
+                "minimum": 0
+              }
+            },
+            "description": "Age restrictions for the procedure"
+          },
+          "tooth_restrictions": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[1-9]|[1-3][0-9]|[A-T]$"
+            },
+            "description": "Applicable tooth numbers/letters"
+          },
+          "surface_restrictions": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": ["M", "O", "D", "F", "L", "B", "I"]
+            },
+            "description": "Applicable tooth surfaces"
+          },
+          "quadrant_restrictions": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": ["UR", "UL", "LR", "LL"]
+            },
+            "description": "Applicable quadrants"
+          },
+          "arch_restrictions": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": ["upper", "lower"]
+            },
+            "description": "Applicable dental arches"
+          },
+          "provider_restrictions": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": ["general_dentist", "oral_surgeon", "periodontist", "endodontist", "orthodontist", "pediatric_dentist"]
+            },
+            "description": "Provider types that can perform the procedure"
+          },
+          "alternative_procedures": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^D\\d{4}$"
+            },
+            "description": "Alternative procedure codes"
+          },
+          "pre_authorization": {
+            "type": "boolean",
+            "description": "Whether pre-authorization is required"
+          },
+          "pre_operative_requirements": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "description": "Required pre-operative documentation or conditions"
+          },
+          "post_operative_requirements": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "description": "Required post-operative documentation or conditions"
+          },
+          "clinical_criteria": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "description": "Clinical criteria for procedure approval"
+          },
+          "exclusions": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "description": "Specific exclusions or limitations"
+          },
+          "source": {
+            "type": "object",
+            "properties": {
+              "document_name": {
+                "type": "string"
+              },
+              "page_number": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "effective_date": {
+                "type": "string",
+                "format": "date"
+              },
+              "url": {
+                "type": "string",
+                "format": "uri"
+              }
+            },
+            "required": ["document_name"],
+            "description": "Source information for the guideline"
+          },
+          "metadata": {
+            "type": "object",
+            "properties": {
+              "last_updated": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "version": {
+                "type": "string"
+              },
+              "confidence_score": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              }
+            },
+            "description": "Additional metadata about the guideline"
+          }
+        }
+      },
+      "description": "Array of dental procedure guidelines"
+    },
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "version": {
+          "type": "string",
+          "description": "Schema version"
+        },
+        "total_guidelines": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Total number of guidelines in the document"
+        },
+        "source_document": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "effective_date": {
+              "type": "string",
+              "format": "date"
+            },
+            "url": {
+              "type": "string",
+              "format": "uri"
+            }
+          },
+          "required": ["name", "effective_date"],
+          "description": "Source document information"
+        },
+        "extraction_stats": {
+          "type": "object",
+          "properties": {
+            "success_rate": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "error_count": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "processing_time": {
+              "type": "number",
+              "minimum": 0
+            }
+          },
+          "description": "Statistics about the extraction process"
+        }
+      },
+      "required": ["version", "total_guidelines"],
+      "description": "Additional metadata about the extraction"
+    }
+  }
+} 

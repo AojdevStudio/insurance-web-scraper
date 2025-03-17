@@ -1,0 +1,24 @@
+Dental Insurance Guidelines 2024
+
+CDT Code: D0150
+Description: Comprehensive oral evaluation - new or established patient
+Requirements:
+• Complete charting of all teeth and existing restorations
+• Full mouth radiographs or panoramic image
+• Documentation of medical and dental history
+• Comprehensive periodontal screening
+
+CDT Code: D0220
+Description: Intraoral - periapical first radiographic image
+Requirements:
+• Clear, diagnostic quality image
+• Patient name and date on radiograph
+• Documentation of medical necessity
+
+CDT Code: D2392
+Description: Resin-based composite - two surfaces, posterior
+Requirements:
+• Pre-operative radiograph showing caries or failed restoration
+• Documentation of surface locations
+• Description of caries removal process
+• Materials used in procedure 

@@ -1,0 +1,31 @@
+[
+  {
+    "cdt_code": "D0150",
+    "description": "Comprehensive oral evaluation - new or established patient",
+    "requirements": [
+      "Complete charting of all teeth and existing restorations",
+      "Full mouth radiographs or panoramic image",
+      "Documentation of medical and dental history",
+      "Comprehensive periodontal screening"
+    ]
+  },
+  {
+    "cdt_code": "D0220",
+    "description": "Intraoral - periapical first radiographic image",
+    "requirements": [
+      "Clear, diagnostic quality image",
+      "Patient name and date on radiograph",
+      "Documentation of medical necessity"
+    ]
+  },
+  {
+    "cdt_code": "D2392",
+    "description": "Resin-based composite - two surfaces, posterior",
+    "requirements": [
+      "Pre-operative radiograph showing caries or failed restoration",
+      "Documentation of surface locations",
+      "Description of caries removal process",
+      "Materials used in procedure"
+    ]
+  }
+]

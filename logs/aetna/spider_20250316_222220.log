@@ -1,0 +1,378 @@
+2025-03-16 22:22:20,328 [scrapy.utils.log] INFO: Scrapy 2.11.0 started (bot: scrapybot)
+2025-03-16 22:22:20,339 [scrapy.utils.log] INFO: Versions: lxml 5.1.0.0, libxml2 2.9.13, cssselect 1.3.0, parsel 1.10.0, w3lib 2.3.1, Twisted 22.10.0, Python 3.13.2 (main, Feb  4 2025, 14:51:09) [Clang 16.0.0 (clang-1600.0.26.6)], pyOpenSSL 25.0.0 (OpenSSL 3.4.1 11 Feb 2025), cryptography 44.0.2, Platform macOS-15.3.1-arm64-arm-64bit-Mach-O
+2025-03-16 22:22:20,343 [aetna] INFO: Initialized aetna spider
+2025-03-16 22:22:20 [aetna] INFO: Initialized aetna spider
+2025-03-16 22:22:20,343 [scrapy.addons] INFO: Enabled addons:
+[]
+2025-03-16 22:22:20 [scrapy.addons] INFO: Enabled addons:
+[]
+2025-03-16 22:22:20,344 [py.warnings] WARNING: /Users/aojdevstudio/unified-dental-projects/insurance-web-scraper/venv/lib/python3.13/site-packages/scrapy/utils/request.py:254: ScrapyDeprecationWarning: '2.6' is a deprecated value for the 'REQUEST_FINGERPRINTER_IMPLEMENTATION' setting.
+
+It is also the default value. In other words, it is normal to get this warning if you have not defined a value for the 'REQUEST_FINGERPRINTER_IMPLEMENTATION' setting. This is so for backward compatibility reasons, but it will change in a future version of Scrapy.
+
+See the documentation of the 'REQUEST_FINGERPRINTER_IMPLEMENTATION' setting for information on how to handle this deprecation.
+  return cls(crawler)
+
+2025-03-16 22:22:20 [py.warnings] WARNING: /Users/aojdevstudio/unified-dental-projects/insurance-web-scraper/venv/lib/python3.13/site-packages/scrapy/utils/request.py:254: ScrapyDeprecationWarning: '2.6' is a deprecated value for the 'REQUEST_FINGERPRINTER_IMPLEMENTATION' setting.
+
+It is also the default value. In other words, it is normal to get this warning if you have not defined a value for the 'REQUEST_FINGERPRINTER_IMPLEMENTATION' setting. This is so for backward compatibility reasons, but it will change in a future version of Scrapy.
+
+See the documentation of the 'REQUEST_FINGERPRINTER_IMPLEMENTATION' setting for information on how to handle this deprecation.
+  return cls(crawler)
+
+2025-03-16 22:22:20,346 [scrapy.utils.log] DEBUG: Using reactor: twisted.internet.selectreactor.SelectReactor
+2025-03-16 22:22:20 [scrapy.utils.log] DEBUG: Using reactor: twisted.internet.selectreactor.SelectReactor
+2025-03-16 22:22:20,356 [scrapy.extensions.telnet] INFO: Telnet Password: 7e036fe5932a75a1
+2025-03-16 22:22:20 [scrapy.extensions.telnet] INFO: Telnet Password: 7e036fe5932a75a1
+2025-03-16 22:22:20,386 [scrapy.middleware] INFO: Enabled extensions:
+['scrapy.extensions.corestats.CoreStats',
+ 'scrapy.extensions.telnet.TelnetConsole',
+ 'scrapy.extensions.memusage.MemoryUsage',
+ 'scrapy.extensions.feedexport.FeedExporter',
+ 'scrapy.extensions.logstats.LogStats']
+2025-03-16 22:22:20 [scrapy.middleware] INFO: Enabled extensions:
+['scrapy.extensions.corestats.CoreStats',
+ 'scrapy.extensions.telnet.TelnetConsole',
+ 'scrapy.extensions.memusage.MemoryUsage',
+ 'scrapy.extensions.feedexport.FeedExporter',
+ 'scrapy.extensions.logstats.LogStats']
+2025-03-16 22:22:20,386 [scrapy.crawler] INFO: Overridden settings:
+{'CONCURRENT_REQUESTS': 1,
+ 'COOKIES_DEBUG': True,
+ 'DOWNLOAD_DELAY': 3,
+ 'DOWNLOAD_TIMEOUT': 60,
+ 'LOG_FILE': 'logs/aetna/spider_20250316_222220.log',
+ 'RETRY_HTTP_CODES': [500, 502, 503, 504, 408, 429, 403],
+ 'RETRY_TIMES': 3,
+ 'USER_AGENT': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 '
+               '(KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'}
+2025-03-16 22:22:20 [scrapy.crawler] INFO: Overridden settings:
+{'CONCURRENT_REQUESTS': 1,
+ 'COOKIES_DEBUG': True,
+ 'DOWNLOAD_DELAY': 3,
+ 'DOWNLOAD_TIMEOUT': 60,
+ 'LOG_FILE': 'logs/aetna/spider_20250316_222220.log',
+ 'RETRY_HTTP_CODES': [500, 502, 503, 504, 408, 429, 403],
+ 'RETRY_TIMES': 3,
+ 'USER_AGENT': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 '
+               '(KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'}
+2025-03-16 22:22:20,439 [scrapy.middleware] INFO: Enabled downloader middlewares:
+['scrapy.downloadermiddlewares.httpauth.HttpAuthMiddleware',
+ 'scrapy.downloadermiddlewares.downloadtimeout.DownloadTimeoutMiddleware',
+ 'scrapy.downloadermiddlewares.defaultheaders.DefaultHeadersMiddleware',
+ 'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware',
+ 'scrapy.downloadermiddlewares.retry.RetryMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.MetaRefreshMiddleware',
+ 'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.RedirectMiddleware',
+ 'scrapy.downloadermiddlewares.cookies.CookiesMiddleware',
+ 'scrapy.downloadermiddlewares.httpproxy.HttpProxyMiddleware',
+ 'scrapy.downloadermiddlewares.stats.DownloaderStats']
+2025-03-16 22:22:20 [scrapy.middleware] INFO: Enabled downloader middlewares:
+['scrapy.downloadermiddlewares.httpauth.HttpAuthMiddleware',
+ 'scrapy.downloadermiddlewares.downloadtimeout.DownloadTimeoutMiddleware',
+ 'scrapy.downloadermiddlewares.defaultheaders.DefaultHeadersMiddleware',
+ 'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware',
+ 'scrapy.downloadermiddlewares.retry.RetryMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.MetaRefreshMiddleware',
+ 'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.RedirectMiddleware',
+ 'scrapy.downloadermiddlewares.cookies.CookiesMiddleware',
+ 'scrapy.downloadermiddlewares.httpproxy.HttpProxyMiddleware',
+ 'scrapy.downloadermiddlewares.stats.DownloaderStats']
+2025-03-16 22:22:20,441 [scrapy.middleware] INFO: Enabled spider middlewares:
+['scrapy.spidermiddlewares.httperror.HttpErrorMiddleware',
+ 'scrapy.spidermiddlewares.offsite.OffsiteMiddleware',
+ 'scrapy.spidermiddlewares.referer.RefererMiddleware',
+ 'scrapy.spidermiddlewares.urllength.UrlLengthMiddleware',
+ 'scrapy.spidermiddlewares.depth.DepthMiddleware']
+2025-03-16 22:22:20 [scrapy.middleware] INFO: Enabled spider middlewares:
+['scrapy.spidermiddlewares.httperror.HttpErrorMiddleware',
+ 'scrapy.spidermiddlewares.offsite.OffsiteMiddleware',
+ 'scrapy.spidermiddlewares.referer.RefererMiddleware',
+ 'scrapy.spidermiddlewares.urllength.UrlLengthMiddleware',
+ 'scrapy.spidermiddlewares.depth.DepthMiddleware']
+2025-03-16 22:22:20,441 [scrapy.middleware] INFO: Enabled item pipelines:
+[]
+2025-03-16 22:22:20 [scrapy.middleware] INFO: Enabled item pipelines:
+[]
+2025-03-16 22:22:20,441 [scrapy.core.engine] INFO: Spider opened
+2025-03-16 22:22:20 [scrapy.core.engine] INFO: Spider opened
+2025-03-16 22:22:20,447 [scrapy.extensions.logstats] INFO: Crawled 0 pages (at 0 pages/min), scraped 0 items (at 0 items/min)
+2025-03-16 22:22:20 [scrapy.extensions.logstats] INFO: Crawled 0 pages (at 0 pages/min), scraped 0 items (at 0 items/min)
+2025-03-16 22:22:20,448 [scrapy.extensions.telnet] INFO: Telnet console listening on 127.0.0.1:6023
+2025-03-16 22:22:20 [scrapy.extensions.telnet] INFO: Telnet console listening on 127.0.0.1:6023
+2025-03-16 22:22:20,448 [aetna] INFO: Starting login process
+2025-03-16 22:22:20 [aetna] INFO: Starting login process
+2025-03-16 22:22:20,719 [scrapy.downloadermiddlewares.cookies] DEBUG: Received cookies from: <500 https://ap5.aetna.com/siteminderagent/SmMakeCookie.ccc?SMSESSION=QUERY&PERSIST=0&TARGET=-SM-https------www.aetnadental.com--professionals--secure--network-resources-programs--dental-office-guides.html>
+Set-Cookie: TS5c19c9bf027=08558198ecab2000c1e93113a84cf7c4f598e18569e9e0507d1967b8854dc1934f301ae5c4142b75089f83e08d11300059b8b77c9f5a7bc7822103c35e97ea7474e19590bce5a0aec8180bfdfc798e019f12e487cbf635da8ea5f4b5bca1b247; Path=/
+
+Set-Cookie: visid_incap_2963022=QHPnV3BbTzavHNNG45T1HmyV12cAAAAAQUIPAAAAAAB8q8bCXfcyQuG7K4WHLBkq; expires=Mon, 16 Mar 2026 08:43:20 GMT; HttpOnly; path=/; Domain=.aetna.com; Secure; SameSite=None
+
+Set-Cookie: nlbi_2963022=uDaoZ2EyfT4WaZeLlA3SPgAAAAB3hDGnxUmfs9cy35Cvsaor; HttpOnly; path=/; Domain=.aetna.com; Secure; SameSite=None
+
+Set-Cookie: incap_ses_1439_2963022=NkBVRwmWomK2L9kfH1v4E2yV12cAAAAAPQA7yVQyGmm/X3wJrDr1uQ==; path=/; Domain=.aetna.com; Secure; SameSite=None
+
+2025-03-16 22:22:20 [scrapy.downloadermiddlewares.cookies] DEBUG: Received cookies from: <500 https://ap5.aetna.com/siteminderagent/SmMakeCookie.ccc?SMSESSION=QUERY&PERSIST=0&TARGET=-SM-https------www.aetnadental.com--professionals--secure--network-resources-programs--dental-office-guides.html>
+Set-Cookie: TS5c19c9bf027=08558198ecab2000c1e93113a84cf7c4f598e18569e9e0507d1967b8854dc1934f301ae5c4142b75089f83e08d11300059b8b77c9f5a7bc7822103c35e97ea7474e19590bce5a0aec8180bfdfc798e019f12e487cbf635da8ea5f4b5bca1b247; Path=/
+
+Set-Cookie: visid_incap_2963022=QHPnV3BbTzavHNNG45T1HmyV12cAAAAAQUIPAAAAAAB8q8bCXfcyQuG7K4WHLBkq; expires=Mon, 16 Mar 2026 08:43:20 GMT; HttpOnly; path=/; Domain=.aetna.com; Secure; SameSite=None
+
+Set-Cookie: nlbi_2963022=uDaoZ2EyfT4WaZeLlA3SPgAAAAB3hDGnxUmfs9cy35Cvsaor; HttpOnly; path=/; Domain=.aetna.com; Secure; SameSite=None
+
+Set-Cookie: incap_ses_1439_2963022=NkBVRwmWomK2L9kfH1v4E2yV12cAAAAAPQA7yVQyGmm/X3wJrDr1uQ==; path=/; Domain=.aetna.com; Secure; SameSite=None
+
+2025-03-16 22:22:20,720 [scrapy.downloadermiddlewares.retry] DEBUG: Retrying <GET https://ap5.aetna.com/siteminderagent/SmMakeCookie.ccc?SMSESSION=QUERY&PERSIST=0&TARGET=-SM-https------www.aetnadental.com--professionals--secure--network-resources-programs--dental-office-guides.html> (failed 1 times): 500 Internal Server Error
+2025-03-16 22:22:20 [scrapy.downloadermiddlewares.retry] DEBUG: Retrying <GET https://ap5.aetna.com/siteminderagent/SmMakeCookie.ccc?SMSESSION=QUERY&PERSIST=0&TARGET=-SM-https------www.aetnadental.com--professionals--secure--network-resources-programs--dental-office-guides.html> (failed 1 times): 500 Internal Server Error
+2025-03-16 22:22:20,720 [scrapy.downloadermiddlewares.cookies] DEBUG: Sending cookies to: <GET https://ap5.aetna.com/siteminderagent/SmMakeCookie.ccc?SMSESSION=QUERY&PERSIST=0&TARGET=-SM-https------www.aetnadental.com--professionals--secure--network-resources-programs--dental-office-guides.html>
+Cookie: TS5c19c9bf027=08558198ecab2000c1e93113a84cf7c4f598e18569e9e0507d1967b8854dc1934f301ae5c4142b75089f83e08d11300059b8b77c9f5a7bc7822103c35e97ea7474e19590bce5a0aec8180bfdfc798e019f12e487cbf635da8ea5f4b5bca1b247; visid_incap_2963022=QHPnV3BbTzavHNNG45T1HmyV12cAAAAAQUIPAAAAAAB8q8bCXfcyQuG7K4WHLBkq; nlbi_2963022=uDaoZ2EyfT4WaZeLlA3SPgAAAAB3hDGnxUmfs9cy35Cvsaor; incap_ses_1439_2963022=NkBVRwmWomK2L9kfH1v4E2yV12cAAAAAPQA7yVQyGmm/X3wJrDr1uQ==
+
+2025-03-16 22:22:20 [scrapy.downloadermiddlewares.cookies] DEBUG: Sending cookies to: <GET https://ap5.aetna.com/siteminderagent/SmMakeCookie.ccc?SMSESSION=QUERY&PERSIST=0&TARGET=-SM-https------www.aetnadental.com--professionals--secure--network-resources-programs--dental-office-guides.html>
+Cookie: TS5c19c9bf027=08558198ecab2000c1e93113a84cf7c4f598e18569e9e0507d1967b8854dc1934f301ae5c4142b75089f83e08d11300059b8b77c9f5a7bc7822103c35e97ea7474e19590bce5a0aec8180bfdfc798e019f12e487cbf635da8ea5f4b5bca1b247; visid_incap_2963022=QHPnV3BbTzavHNNG45T1HmyV12cAAAAAQUIPAAAAAAB8q8bCXfcyQuG7K4WHLBkq; nlbi_2963022=uDaoZ2EyfT4WaZeLlA3SPgAAAAB3hDGnxUmfs9cy35Cvsaor; incap_ses_1439_2963022=NkBVRwmWomK2L9kfH1v4E2yV12cAAAAAPQA7yVQyGmm/X3wJrDr1uQ==
+
+2025-03-16 22:22:24,297 [scrapy.downloadermiddlewares.cookies] DEBUG: Received cookies from: <500 https://ap5.aetna.com/siteminderagent/SmMakeCookie.ccc?SMSESSION=QUERY&PERSIST=0&TARGET=-SM-https------www.aetnadental.com--professionals--secure--network-resources-programs--dental-office-guides.html>
+Set-Cookie: TS5c19c9bf027=08558198ecab20002e01af3a9a9db808324c3184011a4c2fcdab306a7f04e785669977e8c68d92c20870aa3ab2113000b95427f98dfdc663c04b15cd95aa9e0d6533912ffe344eafab22a34b28ac0b104fffc62773d05411412907b970f5558f; Path=/
+
+2025-03-16 22:22:24 [scrapy.downloadermiddlewares.cookies] DEBUG: Received cookies from: <500 https://ap5.aetna.com/siteminderagent/SmMakeCookie.ccc?SMSESSION=QUERY&PERSIST=0&TARGET=-SM-https------www.aetnadental.com--professionals--secure--network-resources-programs--dental-office-guides.html>
+Set-Cookie: TS5c19c9bf027=08558198ecab20002e01af3a9a9db808324c3184011a4c2fcdab306a7f04e785669977e8c68d92c20870aa3ab2113000b95427f98dfdc663c04b15cd95aa9e0d6533912ffe344eafab22a34b28ac0b104fffc62773d05411412907b970f5558f; Path=/
+
+2025-03-16 22:22:24,297 [scrapy.downloadermiddlewares.retry] DEBUG: Retrying <GET https://ap5.aetna.com/siteminderagent/SmMakeCookie.ccc?SMSESSION=QUERY&PERSIST=0&TARGET=-SM-https------www.aetnadental.com--professionals--secure--network-resources-programs--dental-office-guides.html> (failed 2 times): 500 Internal Server Error
+2025-03-16 22:22:24 [scrapy.downloadermiddlewares.retry] DEBUG: Retrying <GET https://ap5.aetna.com/siteminderagent/SmMakeCookie.ccc?SMSESSION=QUERY&PERSIST=0&TARGET=-SM-https------www.aetnadental.com--professionals--secure--network-resources-programs--dental-office-guides.html> (failed 2 times): 500 Internal Server Error
+2025-03-16 22:22:24,298 [scrapy.downloadermiddlewares.cookies] DEBUG: Sending cookies to: <GET https://ap5.aetna.com/siteminderagent/SmMakeCookie.ccc?SMSESSION=QUERY&PERSIST=0&TARGET=-SM-https------www.aetnadental.com--professionals--secure--network-resources-programs--dental-office-guides.html>
+Cookie: TS5c19c9bf027=08558198ecab20002e01af3a9a9db808324c3184011a4c2fcdab306a7f04e785669977e8c68d92c20870aa3ab2113000b95427f98dfdc663c04b15cd95aa9e0d6533912ffe344eafab22a34b28ac0b104fffc62773d05411412907b970f5558f; visid_incap_2963022=QHPnV3BbTzavHNNG45T1HmyV12cAAAAAQUIPAAAAAAB8q8bCXfcyQuG7K4WHLBkq; nlbi_2963022=uDaoZ2EyfT4WaZeLlA3SPgAAAAB3hDGnxUmfs9cy35Cvsaor; incap_ses_1439_2963022=NkBVRwmWomK2L9kfH1v4E2yV12cAAAAAPQA7yVQyGmm/X3wJrDr1uQ==
+
+2025-03-16 22:22:24 [scrapy.downloadermiddlewares.cookies] DEBUG: Sending cookies to: <GET https://ap5.aetna.com/siteminderagent/SmMakeCookie.ccc?SMSESSION=QUERY&PERSIST=0&TARGET=-SM-https------www.aetnadental.com--professionals--secure--network-resources-programs--dental-office-guides.html>
+Cookie: TS5c19c9bf027=08558198ecab20002e01af3a9a9db808324c3184011a4c2fcdab306a7f04e785669977e8c68d92c20870aa3ab2113000b95427f98dfdc663c04b15cd95aa9e0d6533912ffe344eafab22a34b28ac0b104fffc62773d05411412907b970f5558f; visid_incap_2963022=QHPnV3BbTzavHNNG45T1HmyV12cAAAAAQUIPAAAAAAB8q8bCXfcyQuG7K4WHLBkq; nlbi_2963022=uDaoZ2EyfT4WaZeLlA3SPgAAAAB3hDGnxUmfs9cy35Cvsaor; incap_ses_1439_2963022=NkBVRwmWomK2L9kfH1v4E2yV12cAAAAAPQA7yVQyGmm/X3wJrDr1uQ==
+
+2025-03-16 22:22:28,467 [scrapy.downloadermiddlewares.cookies] DEBUG: Received cookies from: <500 https://ap5.aetna.com/siteminderagent/SmMakeCookie.ccc?SMSESSION=QUERY&PERSIST=0&TARGET=-SM-https------www.aetnadental.com--professionals--secure--network-resources-programs--dental-office-guides.html>
+Set-Cookie: TS5c19c9bf027=08558198ecab20002b454f0028013f208689898739f105d00861238759cfab240d939d59a78335e008566a9b2a1130004c0b8b688f213daba9c78936a1f454d6656a4ae76345b0277d83aa8426c37f537cd7522d38f3fe5a944777e4e9ed8b21; Path=/
+
+2025-03-16 22:22:28 [scrapy.downloadermiddlewares.cookies] DEBUG: Received cookies from: <500 https://ap5.aetna.com/siteminderagent/SmMakeCookie.ccc?SMSESSION=QUERY&PERSIST=0&TARGET=-SM-https------www.aetnadental.com--professionals--secure--network-resources-programs--dental-office-guides.html>
+Set-Cookie: TS5c19c9bf027=08558198ecab20002b454f0028013f208689898739f105d00861238759cfab240d939d59a78335e008566a9b2a1130004c0b8b688f213daba9c78936a1f454d6656a4ae76345b0277d83aa8426c37f537cd7522d38f3fe5a944777e4e9ed8b21; Path=/
+
+2025-03-16 22:22:28,468 [scrapy.downloadermiddlewares.retry] DEBUG: Retrying <GET https://ap5.aetna.com/siteminderagent/SmMakeCookie.ccc?SMSESSION=QUERY&PERSIST=0&TARGET=-SM-https------www.aetnadental.com--professionals--secure--network-resources-programs--dental-office-guides.html> (failed 3 times): 500 Internal Server Error
+2025-03-16 22:22:28 [scrapy.downloadermiddlewares.retry] DEBUG: Retrying <GET https://ap5.aetna.com/siteminderagent/SmMakeCookie.ccc?SMSESSION=QUERY&PERSIST=0&TARGET=-SM-https------www.aetnadental.com--professionals--secure--network-resources-programs--dental-office-guides.html> (failed 3 times): 500 Internal Server Error
+2025-03-16 22:22:28,469 [scrapy.downloadermiddlewares.cookies] DEBUG: Sending cookies to: <GET https://ap5.aetna.com/siteminderagent/SmMakeCookie.ccc?SMSESSION=QUERY&PERSIST=0&TARGET=-SM-https------www.aetnadental.com--professionals--secure--network-resources-programs--dental-office-guides.html>
+Cookie: TS5c19c9bf027=08558198ecab20002b454f0028013f208689898739f105d00861238759cfab240d939d59a78335e008566a9b2a1130004c0b8b688f213daba9c78936a1f454d6656a4ae76345b0277d83aa8426c37f537cd7522d38f3fe5a944777e4e9ed8b21; visid_incap_2963022=QHPnV3BbTzavHNNG45T1HmyV12cAAAAAQUIPAAAAAAB8q8bCXfcyQuG7K4WHLBkq; nlbi_2963022=uDaoZ2EyfT4WaZeLlA3SPgAAAAB3hDGnxUmfs9cy35Cvsaor; incap_ses_1439_2963022=NkBVRwmWomK2L9kfH1v4E2yV12cAAAAAPQA7yVQyGmm/X3wJrDr1uQ==
+
+2025-03-16 22:22:28 [scrapy.downloadermiddlewares.cookies] DEBUG: Sending cookies to: <GET https://ap5.aetna.com/siteminderagent/SmMakeCookie.ccc?SMSESSION=QUERY&PERSIST=0&TARGET=-SM-https------www.aetnadental.com--professionals--secure--network-resources-programs--dental-office-guides.html>
+Cookie: TS5c19c9bf027=08558198ecab20002b454f0028013f208689898739f105d00861238759cfab240d939d59a78335e008566a9b2a1130004c0b8b688f213daba9c78936a1f454d6656a4ae76345b0277d83aa8426c37f537cd7522d38f3fe5a944777e4e9ed8b21; visid_incap_2963022=QHPnV3BbTzavHNNG45T1HmyV12cAAAAAQUIPAAAAAAB8q8bCXfcyQuG7K4WHLBkq; nlbi_2963022=uDaoZ2EyfT4WaZeLlA3SPgAAAAB3hDGnxUmfs9cy35Cvsaor; incap_ses_1439_2963022=NkBVRwmWomK2L9kfH1v4E2yV12cAAAAAPQA7yVQyGmm/X3wJrDr1uQ==
+
+2025-03-16 22:22:32,592 [scrapy.downloadermiddlewares.cookies] DEBUG: Received cookies from: <500 https://ap5.aetna.com/siteminderagent/SmMakeCookie.ccc?SMSESSION=QUERY&PERSIST=0&TARGET=-SM-https------www.aetnadental.com--professionals--secure--network-resources-programs--dental-office-guides.html>
+Set-Cookie: TS5c19c9bf027=08558198ecab20005f72bea8a62625c8fadbc8edbb3cdca7bf43795eae416ec34856a0616ad31ef208c279017c1130000ab0793400a17e1c275b26d615c1421537e9ea8e40a944848c55fefa2e49c9674945faa8d4a0d938b05a3ee87e6f6dcc; Path=/
+
+2025-03-16 22:22:32 [scrapy.downloadermiddlewares.cookies] DEBUG: Received cookies from: <500 https://ap5.aetna.com/siteminderagent/SmMakeCookie.ccc?SMSESSION=QUERY&PERSIST=0&TARGET=-SM-https------www.aetnadental.com--professionals--secure--network-resources-programs--dental-office-guides.html>
+Set-Cookie: TS5c19c9bf027=08558198ecab20005f72bea8a62625c8fadbc8edbb3cdca7bf43795eae416ec34856a0616ad31ef208c279017c1130000ab0793400a17e1c275b26d615c1421537e9ea8e40a944848c55fefa2e49c9674945faa8d4a0d938b05a3ee87e6f6dcc; Path=/
+
+2025-03-16 22:22:32,593 [scrapy.downloadermiddlewares.retry] ERROR: Gave up retrying <GET https://ap5.aetna.com/siteminderagent/SmMakeCookie.ccc?SMSESSION=QUERY&PERSIST=0&TARGET=-SM-https------www.aetnadental.com--professionals--secure--network-resources-programs--dental-office-guides.html> (failed 4 times): 500 Internal Server Error
+2025-03-16 22:22:32 [scrapy.downloadermiddlewares.retry] ERROR: Gave up retrying <GET https://ap5.aetna.com/siteminderagent/SmMakeCookie.ccc?SMSESSION=QUERY&PERSIST=0&TARGET=-SM-https------www.aetnadental.com--professionals--secure--network-resources-programs--dental-office-guides.html> (failed 4 times): 500 Internal Server Error
+2025-03-16 22:22:32,593 [scrapy.core.engine] DEBUG: Crawled (500) <GET https://ap5.aetna.com/siteminderagent/SmMakeCookie.ccc?SMSESSION=QUERY&PERSIST=0&TARGET=-SM-https------www.aetnadental.com--professionals--secure--network-resources-programs--dental-office-guides.html> (referer: None)
+2025-03-16 22:22:32 [scrapy.core.engine] DEBUG: Crawled (500) <GET https://ap5.aetna.com/siteminderagent/SmMakeCookie.ccc?SMSESSION=QUERY&PERSIST=0&TARGET=-SM-https------www.aetnadental.com--professionals--secure--network-resources-programs--dental-office-guides.html> (referer: None)
+2025-03-16 22:22:32,697 [aetna] ERROR: Request failed during step 'initial_login' (attempt 1): Ignoring non-200 response
+2025-03-16 22:22:32 [aetna] ERROR: Request failed during step 'initial_login' (attempt 1): Ignoring non-200 response
+2025-03-16 22:22:32,697 [aetna] ERROR: Response status: 500
+2025-03-16 22:22:32 [aetna] ERROR: Response status: 500
+2025-03-16 22:22:32,697 [aetna] ERROR: Response headers: {b'Date': [b'Mon, 17 Mar 2025 03:22:32 GMT'], b'Expires': [b'Thu, 01 Dec 1994 16:00:00 GMT'], b'Content-Type': [b'text/html; charset=ISO-8859-1'], b'Set-Cookie': [b'TS5c19c9bf027=08558198ecab20005f72bea8a62625c8fadbc8edbb3cdca7bf43795eae416ec34856a0616ad31ef208c279017c1130000ab0793400a17e1c275b26d615c1421537e9ea8e40a944848c55fefa2e49c9674945faa8d4a0d938b05a3ee87e6f6dcc; Path=/'], b'Strict-Transport-Security': [b'max-age=31536000'], b'X-Cdn': [b'Imperva'], b'X-Iinfo': [b'14-105756911-105756914 NNYY CT(46 47 0) RT(1742181751926 52) q(0 1 1 -1) r(1 1) U11']}
+2025-03-16 22:22:32 [aetna] ERROR: Response headers: {b'Date': [b'Mon, 17 Mar 2025 03:22:32 GMT'], b'Expires': [b'Thu, 01 Dec 1994 16:00:00 GMT'], b'Content-Type': [b'text/html; charset=ISO-8859-1'], b'Set-Cookie': [b'TS5c19c9bf027=08558198ecab20005f72bea8a62625c8fadbc8edbb3cdca7bf43795eae416ec34856a0616ad31ef208c279017c1130000ab0793400a17e1c275b26d615c1421537e9ea8e40a944848c55fefa2e49c9674945faa8d4a0d938b05a3ee87e6f6dcc; Path=/'], b'Strict-Transport-Security': [b'max-age=31536000'], b'X-Cdn': [b'Imperva'], b'X-Iinfo': [b'14-105756911-105756914 NNYY CT(46 47 0) RT(1742181751926 52) q(0 1 1 -1) r(1 1) U11']}
+2025-03-16 22:22:32,697 [aetna] ERROR: Response body: Server Error. The server was unable to process your request. 
+2025-03-16 22:22:32 [aetna] ERROR: Response body: Server Error. The server was unable to process your request. 
+2025-03-16 22:22:32,697 [aetna] INFO: Retrying request (attempt 2)
+2025-03-16 22:22:32 [aetna] INFO: Retrying request (attempt 2)
+2025-03-16 22:22:32,698 [scrapy.downloadermiddlewares.cookies] DEBUG: Sending cookies to: <GET https://ap5.aetna.com/siteminderagent/SmMakeCookie.ccc?SMSESSION=QUERY&PERSIST=0&TARGET=-SM-https------www.aetnadental.com--professionals--secure--network-resources-programs--dental-office-guides.html>
+Cookie: TS5c19c9bf027=08558198ecab20005f72bea8a62625c8fadbc8edbb3cdca7bf43795eae416ec34856a0616ad31ef208c279017c1130000ab0793400a17e1c275b26d615c1421537e9ea8e40a944848c55fefa2e49c9674945faa8d4a0d938b05a3ee87e6f6dcc; visid_incap_2963022=QHPnV3BbTzavHNNG45T1HmyV12cAAAAAQUIPAAAAAAB8q8bCXfcyQuG7K4WHLBkq; nlbi_2963022=uDaoZ2EyfT4WaZeLlA3SPgAAAAB3hDGnxUmfs9cy35Cvsaor; incap_ses_1439_2963022=NkBVRwmWomK2L9kfH1v4E2yV12cAAAAAPQA7yVQyGmm/X3wJrDr1uQ==
+
+2025-03-16 22:22:32 [scrapy.downloadermiddlewares.cookies] DEBUG: Sending cookies to: <GET https://ap5.aetna.com/siteminderagent/SmMakeCookie.ccc?SMSESSION=QUERY&PERSIST=0&TARGET=-SM-https------www.aetnadental.com--professionals--secure--network-resources-programs--dental-office-guides.html>
+Cookie: TS5c19c9bf027=08558198ecab20005f72bea8a62625c8fadbc8edbb3cdca7bf43795eae416ec34856a0616ad31ef208c279017c1130000ab0793400a17e1c275b26d615c1421537e9ea8e40a944848c55fefa2e49c9674945faa8d4a0d938b05a3ee87e6f6dcc; visid_incap_2963022=QHPnV3BbTzavHNNG45T1HmyV12cAAAAAQUIPAAAAAAB8q8bCXfcyQuG7K4WHLBkq; nlbi_2963022=uDaoZ2EyfT4WaZeLlA3SPgAAAAB3hDGnxUmfs9cy35Cvsaor; incap_ses_1439_2963022=NkBVRwmWomK2L9kfH1v4E2yV12cAAAAAPQA7yVQyGmm/X3wJrDr1uQ==
+
+2025-03-16 22:22:36,087 [scrapy.downloadermiddlewares.cookies] DEBUG: Received cookies from: <500 https://ap5.aetna.com/siteminderagent/SmMakeCookie.ccc?SMSESSION=QUERY&PERSIST=0&TARGET=-SM-https------www.aetnadental.com--professionals--secure--network-resources-programs--dental-office-guides.html>
+Set-Cookie: TS5c19c9bf027=08558198ecab2000c5d65610fd39fb2fb1bc2995fcafc5cb8fe658022ffd36056fa8ff14c256cb35080182041711300071aa2d24fee1e822ea80a7ea70fff1d18d33a9f9370526c97111d650d308bad887f4545a7858f0b293e45ebf43b51d7f; Path=/
+
+2025-03-16 22:22:36 [scrapy.downloadermiddlewares.cookies] DEBUG: Received cookies from: <500 https://ap5.aetna.com/siteminderagent/SmMakeCookie.ccc?SMSESSION=QUERY&PERSIST=0&TARGET=-SM-https------www.aetnadental.com--professionals--secure--network-resources-programs--dental-office-guides.html>
+Set-Cookie: TS5c19c9bf027=08558198ecab2000c5d65610fd39fb2fb1bc2995fcafc5cb8fe658022ffd36056fa8ff14c256cb35080182041711300071aa2d24fee1e822ea80a7ea70fff1d18d33a9f9370526c97111d650d308bad887f4545a7858f0b293e45ebf43b51d7f; Path=/
+
+2025-03-16 22:22:36,087 [scrapy.downloadermiddlewares.retry] DEBUG: Retrying <GET https://ap5.aetna.com/siteminderagent/SmMakeCookie.ccc?SMSESSION=QUERY&PERSIST=0&TARGET=-SM-https------www.aetnadental.com--professionals--secure--network-resources-programs--dental-office-guides.html> (failed 1 times): 500 Internal Server Error
+2025-03-16 22:22:36 [scrapy.downloadermiddlewares.retry] DEBUG: Retrying <GET https://ap5.aetna.com/siteminderagent/SmMakeCookie.ccc?SMSESSION=QUERY&PERSIST=0&TARGET=-SM-https------www.aetnadental.com--professionals--secure--network-resources-programs--dental-office-guides.html> (failed 1 times): 500 Internal Server Error
+2025-03-16 22:22:36,087 [scrapy.downloadermiddlewares.cookies] DEBUG: Sending cookies to: <GET https://ap5.aetna.com/siteminderagent/SmMakeCookie.ccc?SMSESSION=QUERY&PERSIST=0&TARGET=-SM-https------www.aetnadental.com--professionals--secure--network-resources-programs--dental-office-guides.html>
+Cookie: TS5c19c9bf027=08558198ecab2000c5d65610fd39fb2fb1bc2995fcafc5cb8fe658022ffd36056fa8ff14c256cb35080182041711300071aa2d24fee1e822ea80a7ea70fff1d18d33a9f9370526c97111d650d308bad887f4545a7858f0b293e45ebf43b51d7f; visid_incap_2963022=QHPnV3BbTzavHNNG45T1HmyV12cAAAAAQUIPAAAAAAB8q8bCXfcyQuG7K4WHLBkq; nlbi_2963022=uDaoZ2EyfT4WaZeLlA3SPgAAAAB3hDGnxUmfs9cy35Cvsaor; incap_ses_1439_2963022=NkBVRwmWomK2L9kfH1v4E2yV12cAAAAAPQA7yVQyGmm/X3wJrDr1uQ==
+
+2025-03-16 22:22:36 [scrapy.downloadermiddlewares.cookies] DEBUG: Sending cookies to: <GET https://ap5.aetna.com/siteminderagent/SmMakeCookie.ccc?SMSESSION=QUERY&PERSIST=0&TARGET=-SM-https------www.aetnadental.com--professionals--secure--network-resources-programs--dental-office-guides.html>
+Cookie: TS5c19c9bf027=08558198ecab2000c5d65610fd39fb2fb1bc2995fcafc5cb8fe658022ffd36056fa8ff14c256cb35080182041711300071aa2d24fee1e822ea80a7ea70fff1d18d33a9f9370526c97111d650d308bad887f4545a7858f0b293e45ebf43b51d7f; visid_incap_2963022=QHPnV3BbTzavHNNG45T1HmyV12cAAAAAQUIPAAAAAAB8q8bCXfcyQuG7K4WHLBkq; nlbi_2963022=uDaoZ2EyfT4WaZeLlA3SPgAAAAB3hDGnxUmfs9cy35Cvsaor; incap_ses_1439_2963022=NkBVRwmWomK2L9kfH1v4E2yV12cAAAAAPQA7yVQyGmm/X3wJrDr1uQ==
+
+2025-03-16 22:22:39,532 [scrapy.downloadermiddlewares.cookies] DEBUG: Received cookies from: <500 https://ap5.aetna.com/siteminderagent/SmMakeCookie.ccc?SMSESSION=QUERY&PERSIST=0&TARGET=-SM-https------www.aetnadental.com--professionals--secure--network-resources-programs--dental-office-guides.html>
+Set-Cookie: TS5c19c9bf027=08558198ecab2000ef0b7373eb8d14ee690fccea95937a1703e1f5d472879c91538a456c2682364708b54bb1cf1130003bce747017520b53258b120c8ba9f42a1c144db06f1e997b95e93c761d3c7943241c24e173b7a24c715f1c2a4d3073db; Path=/
+
+2025-03-16 22:22:39 [scrapy.downloadermiddlewares.cookies] DEBUG: Received cookies from: <500 https://ap5.aetna.com/siteminderagent/SmMakeCookie.ccc?SMSESSION=QUERY&PERSIST=0&TARGET=-SM-https------www.aetnadental.com--professionals--secure--network-resources-programs--dental-office-guides.html>
+Set-Cookie: TS5c19c9bf027=08558198ecab2000ef0b7373eb8d14ee690fccea95937a1703e1f5d472879c91538a456c2682364708b54bb1cf1130003bce747017520b53258b120c8ba9f42a1c144db06f1e997b95e93c761d3c7943241c24e173b7a24c715f1c2a4d3073db; Path=/
+
+2025-03-16 22:22:39,533 [scrapy.downloadermiddlewares.retry] DEBUG: Retrying <GET https://ap5.aetna.com/siteminderagent/SmMakeCookie.ccc?SMSESSION=QUERY&PERSIST=0&TARGET=-SM-https------www.aetnadental.com--professionals--secure--network-resources-programs--dental-office-guides.html> (failed 2 times): 500 Internal Server Error
+2025-03-16 22:22:39 [scrapy.downloadermiddlewares.retry] DEBUG: Retrying <GET https://ap5.aetna.com/siteminderagent/SmMakeCookie.ccc?SMSESSION=QUERY&PERSIST=0&TARGET=-SM-https------www.aetnadental.com--professionals--secure--network-resources-programs--dental-office-guides.html> (failed 2 times): 500 Internal Server Error
+2025-03-16 22:22:39,533 [scrapy.downloadermiddlewares.cookies] DEBUG: Sending cookies to: <GET https://ap5.aetna.com/siteminderagent/SmMakeCookie.ccc?SMSESSION=QUERY&PERSIST=0&TARGET=-SM-https------www.aetnadental.com--professionals--secure--network-resources-programs--dental-office-guides.html>
+Cookie: TS5c19c9bf027=08558198ecab2000ef0b7373eb8d14ee690fccea95937a1703e1f5d472879c91538a456c2682364708b54bb1cf1130003bce747017520b53258b120c8ba9f42a1c144db06f1e997b95e93c761d3c7943241c24e173b7a24c715f1c2a4d3073db; visid_incap_2963022=QHPnV3BbTzavHNNG45T1HmyV12cAAAAAQUIPAAAAAAB8q8bCXfcyQuG7K4WHLBkq; nlbi_2963022=uDaoZ2EyfT4WaZeLlA3SPgAAAAB3hDGnxUmfs9cy35Cvsaor; incap_ses_1439_2963022=NkBVRwmWomK2L9kfH1v4E2yV12cAAAAAPQA7yVQyGmm/X3wJrDr1uQ==
+
+2025-03-16 22:22:39 [scrapy.downloadermiddlewares.cookies] DEBUG: Sending cookies to: <GET https://ap5.aetna.com/siteminderagent/SmMakeCookie.ccc?SMSESSION=QUERY&PERSIST=0&TARGET=-SM-https------www.aetnadental.com--professionals--secure--network-resources-programs--dental-office-guides.html>
+Cookie: TS5c19c9bf027=08558198ecab2000ef0b7373eb8d14ee690fccea95937a1703e1f5d472879c91538a456c2682364708b54bb1cf1130003bce747017520b53258b120c8ba9f42a1c144db06f1e997b95e93c761d3c7943241c24e173b7a24c715f1c2a4d3073db; visid_incap_2963022=QHPnV3BbTzavHNNG45T1HmyV12cAAAAAQUIPAAAAAAB8q8bCXfcyQuG7K4WHLBkq; nlbi_2963022=uDaoZ2EyfT4WaZeLlA3SPgAAAAB3hDGnxUmfs9cy35Cvsaor; incap_ses_1439_2963022=NkBVRwmWomK2L9kfH1v4E2yV12cAAAAAPQA7yVQyGmm/X3wJrDr1uQ==
+
+2025-03-16 22:22:42,633 [scrapy.downloadermiddlewares.cookies] DEBUG: Received cookies from: <500 https://ap5.aetna.com/siteminderagent/SmMakeCookie.ccc?SMSESSION=QUERY&PERSIST=0&TARGET=-SM-https------www.aetnadental.com--professionals--secure--network-resources-programs--dental-office-guides.html>
+Set-Cookie: TS5c19c9bf027=08558198ecab20001c0086414953b739bf880f66da6273fc2e3fad22358e54ec821891899208e1ab08966f9ff9113000f4e897b75b292036d9b830869f79b42f1a516950bc54c0ed57568750f4a29d4aa485c11248a75cac9feaca2b3228c47a; Path=/
+
+2025-03-16 22:22:42 [scrapy.downloadermiddlewares.cookies] DEBUG: Received cookies from: <500 https://ap5.aetna.com/siteminderagent/SmMakeCookie.ccc?SMSESSION=QUERY&PERSIST=0&TARGET=-SM-https------www.aetnadental.com--professionals--secure--network-resources-programs--dental-office-guides.html>
+Set-Cookie: TS5c19c9bf027=08558198ecab20001c0086414953b739bf880f66da6273fc2e3fad22358e54ec821891899208e1ab08966f9ff9113000f4e897b75b292036d9b830869f79b42f1a516950bc54c0ed57568750f4a29d4aa485c11248a75cac9feaca2b3228c47a; Path=/
+
+2025-03-16 22:22:42,633 [scrapy.downloadermiddlewares.retry] DEBUG: Retrying <GET https://ap5.aetna.com/siteminderagent/SmMakeCookie.ccc?SMSESSION=QUERY&PERSIST=0&TARGET=-SM-https------www.aetnadental.com--professionals--secure--network-resources-programs--dental-office-guides.html> (failed 3 times): 500 Internal Server Error
+2025-03-16 22:22:42 [scrapy.downloadermiddlewares.retry] DEBUG: Retrying <GET https://ap5.aetna.com/siteminderagent/SmMakeCookie.ccc?SMSESSION=QUERY&PERSIST=0&TARGET=-SM-https------www.aetnadental.com--professionals--secure--network-resources-programs--dental-office-guides.html> (failed 3 times): 500 Internal Server Error
+2025-03-16 22:22:42,633 [scrapy.downloadermiddlewares.cookies] DEBUG: Sending cookies to: <GET https://ap5.aetna.com/siteminderagent/SmMakeCookie.ccc?SMSESSION=QUERY&PERSIST=0&TARGET=-SM-https------www.aetnadental.com--professionals--secure--network-resources-programs--dental-office-guides.html>
+Cookie: TS5c19c9bf027=08558198ecab20001c0086414953b739bf880f66da6273fc2e3fad22358e54ec821891899208e1ab08966f9ff9113000f4e897b75b292036d9b830869f79b42f1a516950bc54c0ed57568750f4a29d4aa485c11248a75cac9feaca2b3228c47a; visid_incap_2963022=QHPnV3BbTzavHNNG45T1HmyV12cAAAAAQUIPAAAAAAB8q8bCXfcyQuG7K4WHLBkq; nlbi_2963022=uDaoZ2EyfT4WaZeLlA3SPgAAAAB3hDGnxUmfs9cy35Cvsaor; incap_ses_1439_2963022=NkBVRwmWomK2L9kfH1v4E2yV12cAAAAAPQA7yVQyGmm/X3wJrDr1uQ==
+
+2025-03-16 22:22:42 [scrapy.downloadermiddlewares.cookies] DEBUG: Sending cookies to: <GET https://ap5.aetna.com/siteminderagent/SmMakeCookie.ccc?SMSESSION=QUERY&PERSIST=0&TARGET=-SM-https------www.aetnadental.com--professionals--secure--network-resources-programs--dental-office-guides.html>
+Cookie: TS5c19c9bf027=08558198ecab20001c0086414953b739bf880f66da6273fc2e3fad22358e54ec821891899208e1ab08966f9ff9113000f4e897b75b292036d9b830869f79b42f1a516950bc54c0ed57568750f4a29d4aa485c11248a75cac9feaca2b3228c47a; visid_incap_2963022=QHPnV3BbTzavHNNG45T1HmyV12cAAAAAQUIPAAAAAAB8q8bCXfcyQuG7K4WHLBkq; nlbi_2963022=uDaoZ2EyfT4WaZeLlA3SPgAAAAB3hDGnxUmfs9cy35Cvsaor; incap_ses_1439_2963022=NkBVRwmWomK2L9kfH1v4E2yV12cAAAAAPQA7yVQyGmm/X3wJrDr1uQ==
+
+2025-03-16 22:22:47,112 [scrapy.downloadermiddlewares.cookies] DEBUG: Received cookies from: <500 https://ap5.aetna.com/siteminderagent/SmMakeCookie.ccc?SMSESSION=QUERY&PERSIST=0&TARGET=-SM-https------www.aetnadental.com--professionals--secure--network-resources-programs--dental-office-guides.html>
+Set-Cookie: TS5c19c9bf027=08558198ecab2000407d12a56a4f8cf81db4adb589a997f3fc0655644d9a19a14d6a0f0a9f0b4aed088417c3ee113000ddb62e45fc0d332d9944ac8d34ed9baab4cfea5fc6b2f929012e3c42cd49dd36f2a18ca1418714808db9d74dcf6e1d3a; Path=/
+
+2025-03-16 22:22:47 [scrapy.downloadermiddlewares.cookies] DEBUG: Received cookies from: <500 https://ap5.aetna.com/siteminderagent/SmMakeCookie.ccc?SMSESSION=QUERY&PERSIST=0&TARGET=-SM-https------www.aetnadental.com--professionals--secure--network-resources-programs--dental-office-guides.html>
+Set-Cookie: TS5c19c9bf027=08558198ecab2000407d12a56a4f8cf81db4adb589a997f3fc0655644d9a19a14d6a0f0a9f0b4aed088417c3ee113000ddb62e45fc0d332d9944ac8d34ed9baab4cfea5fc6b2f929012e3c42cd49dd36f2a18ca1418714808db9d74dcf6e1d3a; Path=/
+
+2025-03-16 22:22:47,112 [scrapy.downloadermiddlewares.retry] ERROR: Gave up retrying <GET https://ap5.aetna.com/siteminderagent/SmMakeCookie.ccc?SMSESSION=QUERY&PERSIST=0&TARGET=-SM-https------www.aetnadental.com--professionals--secure--network-resources-programs--dental-office-guides.html> (failed 4 times): 500 Internal Server Error
+2025-03-16 22:22:47 [scrapy.downloadermiddlewares.retry] ERROR: Gave up retrying <GET https://ap5.aetna.com/siteminderagent/SmMakeCookie.ccc?SMSESSION=QUERY&PERSIST=0&TARGET=-SM-https------www.aetnadental.com--professionals--secure--network-resources-programs--dental-office-guides.html> (failed 4 times): 500 Internal Server Error
+2025-03-16 22:22:47,112 [scrapy.core.engine] DEBUG: Crawled (500) <GET https://ap5.aetna.com/siteminderagent/SmMakeCookie.ccc?SMSESSION=QUERY&PERSIST=0&TARGET=-SM-https------www.aetnadental.com--professionals--secure--network-resources-programs--dental-office-guides.html> (referer: https://ap5.aetna.com/siteminderagent/SmMakeCookie.ccc?SMSESSION=QUERY&PERSIST=0&TARGET=-SM-https------www.aetnadental.com--professionals--secure--network-resources-programs--dental-office-guides.html)
+2025-03-16 22:22:47 [scrapy.core.engine] DEBUG: Crawled (500) <GET https://ap5.aetna.com/siteminderagent/SmMakeCookie.ccc?SMSESSION=QUERY&PERSIST=0&TARGET=-SM-https------www.aetnadental.com--professionals--secure--network-resources-programs--dental-office-guides.html> (referer: https://ap5.aetna.com/siteminderagent/SmMakeCookie.ccc?SMSESSION=QUERY&PERSIST=0&TARGET=-SM-https------www.aetnadental.com--professionals--secure--network-resources-programs--dental-office-guides.html)
+2025-03-16 22:22:47,217 [aetna] ERROR: Request failed during step 'initial_login' (attempt 2): Ignoring non-200 response
+2025-03-16 22:22:47 [aetna] ERROR: Request failed during step 'initial_login' (attempt 2): Ignoring non-200 response
+2025-03-16 22:22:47,217 [aetna] ERROR: Response status: 500
+2025-03-16 22:22:47 [aetna] ERROR: Response status: 500
+2025-03-16 22:22:47,217 [aetna] ERROR: Response headers: {b'Date': [b'Mon, 17 Mar 2025 03:22:47 GMT'], b'Expires': [b'Thu, 01 Dec 1994 16:00:00 GMT'], b'Content-Type': [b'text/html; charset=ISO-8859-1'], b'Set-Cookie': [b'TS5c19c9bf027=08558198ecab2000407d12a56a4f8cf81db4adb589a997f3fc0655644d9a19a14d6a0f0a9f0b4aed088417c3ee113000ddb62e45fc0d332d9944ac8d34ed9baab4cfea5fc6b2f929012e3c42cd49dd36f2a18ca1418714808db9d74dcf6e1d3a; Path=/'], b'Strict-Transport-Security': [b'max-age=31536000'], b'X-Cdn': [b'Imperva'], b'X-Iinfo': [b'12-78228435-78228437 NNYY CT(48 47 0) RT(1742181766459 53) q(0 0 0 -1) r(0 0) U11']}
+2025-03-16 22:22:47 [aetna] ERROR: Response headers: {b'Date': [b'Mon, 17 Mar 2025 03:22:47 GMT'], b'Expires': [b'Thu, 01 Dec 1994 16:00:00 GMT'], b'Content-Type': [b'text/html; charset=ISO-8859-1'], b'Set-Cookie': [b'TS5c19c9bf027=08558198ecab2000407d12a56a4f8cf81db4adb589a997f3fc0655644d9a19a14d6a0f0a9f0b4aed088417c3ee113000ddb62e45fc0d332d9944ac8d34ed9baab4cfea5fc6b2f929012e3c42cd49dd36f2a18ca1418714808db9d74dcf6e1d3a; Path=/'], b'Strict-Transport-Security': [b'max-age=31536000'], b'X-Cdn': [b'Imperva'], b'X-Iinfo': [b'12-78228435-78228437 NNYY CT(48 47 0) RT(1742181766459 53) q(0 0 0 -1) r(0 0) U11']}
+2025-03-16 22:22:47,217 [aetna] ERROR: Response body: Server Error. The server was unable to process your request. 
+2025-03-16 22:22:47 [aetna] ERROR: Response body: Server Error. The server was unable to process your request. 
+2025-03-16 22:22:47,217 [aetna] INFO: Retrying request (attempt 3)
+2025-03-16 22:22:47 [aetna] INFO: Retrying request (attempt 3)
+2025-03-16 22:22:47,218 [scrapy.downloadermiddlewares.cookies] DEBUG: Sending cookies to: <GET https://ap5.aetna.com/siteminderagent/SmMakeCookie.ccc?SMSESSION=QUERY&PERSIST=0&TARGET=-SM-https------www.aetnadental.com--professionals--secure--network-resources-programs--dental-office-guides.html>
+Cookie: TS5c19c9bf027=08558198ecab2000407d12a56a4f8cf81db4adb589a997f3fc0655644d9a19a14d6a0f0a9f0b4aed088417c3ee113000ddb62e45fc0d332d9944ac8d34ed9baab4cfea5fc6b2f929012e3c42cd49dd36f2a18ca1418714808db9d74dcf6e1d3a; visid_incap_2963022=QHPnV3BbTzavHNNG45T1HmyV12cAAAAAQUIPAAAAAAB8q8bCXfcyQuG7K4WHLBkq; nlbi_2963022=uDaoZ2EyfT4WaZeLlA3SPgAAAAB3hDGnxUmfs9cy35Cvsaor; incap_ses_1439_2963022=NkBVRwmWomK2L9kfH1v4E2yV12cAAAAAPQA7yVQyGmm/X3wJrDr1uQ==
+
+2025-03-16 22:22:47 [scrapy.downloadermiddlewares.cookies] DEBUG: Sending cookies to: <GET https://ap5.aetna.com/siteminderagent/SmMakeCookie.ccc?SMSESSION=QUERY&PERSIST=0&TARGET=-SM-https------www.aetnadental.com--professionals--secure--network-resources-programs--dental-office-guides.html>
+Cookie: TS5c19c9bf027=08558198ecab2000407d12a56a4f8cf81db4adb589a997f3fc0655644d9a19a14d6a0f0a9f0b4aed088417c3ee113000ddb62e45fc0d332d9944ac8d34ed9baab4cfea5fc6b2f929012e3c42cd49dd36f2a18ca1418714808db9d74dcf6e1d3a; visid_incap_2963022=QHPnV3BbTzavHNNG45T1HmyV12cAAAAAQUIPAAAAAAB8q8bCXfcyQuG7K4WHLBkq; nlbi_2963022=uDaoZ2EyfT4WaZeLlA3SPgAAAAB3hDGnxUmfs9cy35Cvsaor; incap_ses_1439_2963022=NkBVRwmWomK2L9kfH1v4E2yV12cAAAAAPQA7yVQyGmm/X3wJrDr1uQ==
+
+2025-03-16 22:22:50,824 [scrapy.downloadermiddlewares.cookies] DEBUG: Received cookies from: <500 https://ap5.aetna.com/siteminderagent/SmMakeCookie.ccc?SMSESSION=QUERY&PERSIST=0&TARGET=-SM-https------www.aetnadental.com--professionals--secure--network-resources-programs--dental-office-guides.html>
+Set-Cookie: TS5c19c9bf027=08558198ecab200025ef43a5806d8199049d774486799be5ce150c8b8fee2fa082f7aabe9dc1ad0f080608bf82113000e5a957863c6e9ca50e40803636532d3e6a5b7ff0b0de025580ed0161c5953cd6e3cbf62a197bbf0ddab0fc73fa0378a9; Path=/
+
+2025-03-16 22:22:50 [scrapy.downloadermiddlewares.cookies] DEBUG: Received cookies from: <500 https://ap5.aetna.com/siteminderagent/SmMakeCookie.ccc?SMSESSION=QUERY&PERSIST=0&TARGET=-SM-https------www.aetnadental.com--professionals--secure--network-resources-programs--dental-office-guides.html>
+Set-Cookie: TS5c19c9bf027=08558198ecab200025ef43a5806d8199049d774486799be5ce150c8b8fee2fa082f7aabe9dc1ad0f080608bf82113000e5a957863c6e9ca50e40803636532d3e6a5b7ff0b0de025580ed0161c5953cd6e3cbf62a197bbf0ddab0fc73fa0378a9; Path=/
+
+2025-03-16 22:22:50,825 [scrapy.downloadermiddlewares.retry] DEBUG: Retrying <GET https://ap5.aetna.com/siteminderagent/SmMakeCookie.ccc?SMSESSION=QUERY&PERSIST=0&TARGET=-SM-https------www.aetnadental.com--professionals--secure--network-resources-programs--dental-office-guides.html> (failed 1 times): 500 Internal Server Error
+2025-03-16 22:22:50 [scrapy.downloadermiddlewares.retry] DEBUG: Retrying <GET https://ap5.aetna.com/siteminderagent/SmMakeCookie.ccc?SMSESSION=QUERY&PERSIST=0&TARGET=-SM-https------www.aetnadental.com--professionals--secure--network-resources-programs--dental-office-guides.html> (failed 1 times): 500 Internal Server Error
+2025-03-16 22:22:50,825 [scrapy.downloadermiddlewares.cookies] DEBUG: Sending cookies to: <GET https://ap5.aetna.com/siteminderagent/SmMakeCookie.ccc?SMSESSION=QUERY&PERSIST=0&TARGET=-SM-https------www.aetnadental.com--professionals--secure--network-resources-programs--dental-office-guides.html>
+Cookie: TS5c19c9bf027=08558198ecab200025ef43a5806d8199049d774486799be5ce150c8b8fee2fa082f7aabe9dc1ad0f080608bf82113000e5a957863c6e9ca50e40803636532d3e6a5b7ff0b0de025580ed0161c5953cd6e3cbf62a197bbf0ddab0fc73fa0378a9; visid_incap_2963022=QHPnV3BbTzavHNNG45T1HmyV12cAAAAAQUIPAAAAAAB8q8bCXfcyQuG7K4WHLBkq; nlbi_2963022=uDaoZ2EyfT4WaZeLlA3SPgAAAAB3hDGnxUmfs9cy35Cvsaor; incap_ses_1439_2963022=NkBVRwmWomK2L9kfH1v4E2yV12cAAAAAPQA7yVQyGmm/X3wJrDr1uQ==
+
+2025-03-16 22:22:50 [scrapy.downloadermiddlewares.cookies] DEBUG: Sending cookies to: <GET https://ap5.aetna.com/siteminderagent/SmMakeCookie.ccc?SMSESSION=QUERY&PERSIST=0&TARGET=-SM-https------www.aetnadental.com--professionals--secure--network-resources-programs--dental-office-guides.html>
+Cookie: TS5c19c9bf027=08558198ecab200025ef43a5806d8199049d774486799be5ce150c8b8fee2fa082f7aabe9dc1ad0f080608bf82113000e5a957863c6e9ca50e40803636532d3e6a5b7ff0b0de025580ed0161c5953cd6e3cbf62a197bbf0ddab0fc73fa0378a9; visid_incap_2963022=QHPnV3BbTzavHNNG45T1HmyV12cAAAAAQUIPAAAAAAB8q8bCXfcyQuG7K4WHLBkq; nlbi_2963022=uDaoZ2EyfT4WaZeLlA3SPgAAAAB3hDGnxUmfs9cy35Cvsaor; incap_ses_1439_2963022=NkBVRwmWomK2L9kfH1v4E2yV12cAAAAAPQA7yVQyGmm/X3wJrDr1uQ==
+
+2025-03-16 22:22:54,477 [scrapy.downloadermiddlewares.cookies] DEBUG: Received cookies from: <500 https://ap5.aetna.com/siteminderagent/SmMakeCookie.ccc?SMSESSION=QUERY&PERSIST=0&TARGET=-SM-https------www.aetnadental.com--professionals--secure--network-resources-programs--dental-office-guides.html>
+Set-Cookie: TS5c19c9bf027=08558198ecab2000cd7d544ef39c2012fb05129b89cf4fe477456bf84d6e768d8224deb99a22e75a0817eaf2a9113000033bec370a7ff326ebf03458ce915a017ab50909fa2d422c8ed61f2ddf3db726796e318b037e0b9568f0398890bc6764; Path=/
+
+2025-03-16 22:22:54 [scrapy.downloadermiddlewares.cookies] DEBUG: Received cookies from: <500 https://ap5.aetna.com/siteminderagent/SmMakeCookie.ccc?SMSESSION=QUERY&PERSIST=0&TARGET=-SM-https------www.aetnadental.com--professionals--secure--network-resources-programs--dental-office-guides.html>
+Set-Cookie: TS5c19c9bf027=08558198ecab2000cd7d544ef39c2012fb05129b89cf4fe477456bf84d6e768d8224deb99a22e75a0817eaf2a9113000033bec370a7ff326ebf03458ce915a017ab50909fa2d422c8ed61f2ddf3db726796e318b037e0b9568f0398890bc6764; Path=/
+
+2025-03-16 22:22:54,477 [scrapy.downloadermiddlewares.retry] DEBUG: Retrying <GET https://ap5.aetna.com/siteminderagent/SmMakeCookie.ccc?SMSESSION=QUERY&PERSIST=0&TARGET=-SM-https------www.aetnadental.com--professionals--secure--network-resources-programs--dental-office-guides.html> (failed 2 times): 500 Internal Server Error
+2025-03-16 22:22:54 [scrapy.downloadermiddlewares.retry] DEBUG: Retrying <GET https://ap5.aetna.com/siteminderagent/SmMakeCookie.ccc?SMSESSION=QUERY&PERSIST=0&TARGET=-SM-https------www.aetnadental.com--professionals--secure--network-resources-programs--dental-office-guides.html> (failed 2 times): 500 Internal Server Error
+2025-03-16 22:22:54,478 [scrapy.downloadermiddlewares.cookies] DEBUG: Sending cookies to: <GET https://ap5.aetna.com/siteminderagent/SmMakeCookie.ccc?SMSESSION=QUERY&PERSIST=0&TARGET=-SM-https------www.aetnadental.com--professionals--secure--network-resources-programs--dental-office-guides.html>
+Cookie: TS5c19c9bf027=08558198ecab2000cd7d544ef39c2012fb05129b89cf4fe477456bf84d6e768d8224deb99a22e75a0817eaf2a9113000033bec370a7ff326ebf03458ce915a017ab50909fa2d422c8ed61f2ddf3db726796e318b037e0b9568f0398890bc6764; visid_incap_2963022=QHPnV3BbTzavHNNG45T1HmyV12cAAAAAQUIPAAAAAAB8q8bCXfcyQuG7K4WHLBkq; nlbi_2963022=uDaoZ2EyfT4WaZeLlA3SPgAAAAB3hDGnxUmfs9cy35Cvsaor; incap_ses_1439_2963022=NkBVRwmWomK2L9kfH1v4E2yV12cAAAAAPQA7yVQyGmm/X3wJrDr1uQ==
+
+2025-03-16 22:22:54 [scrapy.downloadermiddlewares.cookies] DEBUG: Sending cookies to: <GET https://ap5.aetna.com/siteminderagent/SmMakeCookie.ccc?SMSESSION=QUERY&PERSIST=0&TARGET=-SM-https------www.aetnadental.com--professionals--secure--network-resources-programs--dental-office-guides.html>
+Cookie: TS5c19c9bf027=08558198ecab2000cd7d544ef39c2012fb05129b89cf4fe477456bf84d6e768d8224deb99a22e75a0817eaf2a9113000033bec370a7ff326ebf03458ce915a017ab50909fa2d422c8ed61f2ddf3db726796e318b037e0b9568f0398890bc6764; visid_incap_2963022=QHPnV3BbTzavHNNG45T1HmyV12cAAAAAQUIPAAAAAAB8q8bCXfcyQuG7K4WHLBkq; nlbi_2963022=uDaoZ2EyfT4WaZeLlA3SPgAAAAB3hDGnxUmfs9cy35Cvsaor; incap_ses_1439_2963022=NkBVRwmWomK2L9kfH1v4E2yV12cAAAAAPQA7yVQyGmm/X3wJrDr1uQ==
+
+2025-03-16 22:22:57,792 [scrapy.downloadermiddlewares.cookies] DEBUG: Received cookies from: <500 https://ap5.aetna.com/siteminderagent/SmMakeCookie.ccc?SMSESSION=QUERY&PERSIST=0&TARGET=-SM-https------www.aetnadental.com--professionals--secure--network-resources-programs--dental-office-guides.html>
+Set-Cookie: TS5c19c9bf027=08558198ecab20004cd79ae64f5fd12b3629ac2463a1f50b6f6136337c698b296e2422b1d57859ee0802cccdb0113000ab57f7ba66a0753be9b7862973c290c174d87a62894e8823176282054634719f67bc554aa7223724f37fc39e857b4f5b; Path=/
+
+2025-03-16 22:22:57 [scrapy.downloadermiddlewares.cookies] DEBUG: Received cookies from: <500 https://ap5.aetna.com/siteminderagent/SmMakeCookie.ccc?SMSESSION=QUERY&PERSIST=0&TARGET=-SM-https------www.aetnadental.com--professionals--secure--network-resources-programs--dental-office-guides.html>
+Set-Cookie: TS5c19c9bf027=08558198ecab20004cd79ae64f5fd12b3629ac2463a1f50b6f6136337c698b296e2422b1d57859ee0802cccdb0113000ab57f7ba66a0753be9b7862973c290c174d87a62894e8823176282054634719f67bc554aa7223724f37fc39e857b4f5b; Path=/
+
+2025-03-16 22:22:57,792 [scrapy.downloadermiddlewares.retry] DEBUG: Retrying <GET https://ap5.aetna.com/siteminderagent/SmMakeCookie.ccc?SMSESSION=QUERY&PERSIST=0&TARGET=-SM-https------www.aetnadental.com--professionals--secure--network-resources-programs--dental-office-guides.html> (failed 3 times): 500 Internal Server Error
+2025-03-16 22:22:57 [scrapy.downloadermiddlewares.retry] DEBUG: Retrying <GET https://ap5.aetna.com/siteminderagent/SmMakeCookie.ccc?SMSESSION=QUERY&PERSIST=0&TARGET=-SM-https------www.aetnadental.com--professionals--secure--network-resources-programs--dental-office-guides.html> (failed 3 times): 500 Internal Server Error
+2025-03-16 22:22:57,792 [scrapy.downloadermiddlewares.cookies] DEBUG: Sending cookies to: <GET https://ap5.aetna.com/siteminderagent/SmMakeCookie.ccc?SMSESSION=QUERY&PERSIST=0&TARGET=-SM-https------www.aetnadental.com--professionals--secure--network-resources-programs--dental-office-guides.html>
+Cookie: TS5c19c9bf027=08558198ecab20004cd79ae64f5fd12b3629ac2463a1f50b6f6136337c698b296e2422b1d57859ee0802cccdb0113000ab57f7ba66a0753be9b7862973c290c174d87a62894e8823176282054634719f67bc554aa7223724f37fc39e857b4f5b; visid_incap_2963022=QHPnV3BbTzavHNNG45T1HmyV12cAAAAAQUIPAAAAAAB8q8bCXfcyQuG7K4WHLBkq; nlbi_2963022=uDaoZ2EyfT4WaZeLlA3SPgAAAAB3hDGnxUmfs9cy35Cvsaor; incap_ses_1439_2963022=NkBVRwmWomK2L9kfH1v4E2yV12cAAAAAPQA7yVQyGmm/X3wJrDr1uQ==
+
+2025-03-16 22:22:57 [scrapy.downloadermiddlewares.cookies] DEBUG: Sending cookies to: <GET https://ap5.aetna.com/siteminderagent/SmMakeCookie.ccc?SMSESSION=QUERY&PERSIST=0&TARGET=-SM-https------www.aetnadental.com--professionals--secure--network-resources-programs--dental-office-guides.html>
+Cookie: TS5c19c9bf027=08558198ecab20004cd79ae64f5fd12b3629ac2463a1f50b6f6136337c698b296e2422b1d57859ee0802cccdb0113000ab57f7ba66a0753be9b7862973c290c174d87a62894e8823176282054634719f67bc554aa7223724f37fc39e857b4f5b; visid_incap_2963022=QHPnV3BbTzavHNNG45T1HmyV12cAAAAAQUIPAAAAAAB8q8bCXfcyQuG7K4WHLBkq; nlbi_2963022=uDaoZ2EyfT4WaZeLlA3SPgAAAAB3hDGnxUmfs9cy35Cvsaor; incap_ses_1439_2963022=NkBVRwmWomK2L9kfH1v4E2yV12cAAAAAPQA7yVQyGmm/X3wJrDr1uQ==
+
+2025-03-16 22:23:01,015 [scrapy.downloadermiddlewares.cookies] DEBUG: Received cookies from: <500 https://ap5.aetna.com/siteminderagent/SmMakeCookie.ccc?SMSESSION=QUERY&PERSIST=0&TARGET=-SM-https------www.aetnadental.com--professionals--secure--network-resources-programs--dental-office-guides.html>
+Set-Cookie: TS5c19c9bf027=08558198ecab200055d011d6bc253b49589c4523df5f76ff484a539dbade8cf64e75523948662d5a08dab93b74113000fe4c57bbcf419c01abf677df04232026e369b1daff2771a89ffb2f4ec315ce04509bc2da2030683554b022a72d549ac4; Path=/
+
+2025-03-16 22:23:01 [scrapy.downloadermiddlewares.cookies] DEBUG: Received cookies from: <500 https://ap5.aetna.com/siteminderagent/SmMakeCookie.ccc?SMSESSION=QUERY&PERSIST=0&TARGET=-SM-https------www.aetnadental.com--professionals--secure--network-resources-programs--dental-office-guides.html>
+Set-Cookie: TS5c19c9bf027=08558198ecab200055d011d6bc253b49589c4523df5f76ff484a539dbade8cf64e75523948662d5a08dab93b74113000fe4c57bbcf419c01abf677df04232026e369b1daff2771a89ffb2f4ec315ce04509bc2da2030683554b022a72d549ac4; Path=/
+
+2025-03-16 22:23:01,015 [scrapy.downloadermiddlewares.retry] ERROR: Gave up retrying <GET https://ap5.aetna.com/siteminderagent/SmMakeCookie.ccc?SMSESSION=QUERY&PERSIST=0&TARGET=-SM-https------www.aetnadental.com--professionals--secure--network-resources-programs--dental-office-guides.html> (failed 4 times): 500 Internal Server Error
+2025-03-16 22:23:01 [scrapy.downloadermiddlewares.retry] ERROR: Gave up retrying <GET https://ap5.aetna.com/siteminderagent/SmMakeCookie.ccc?SMSESSION=QUERY&PERSIST=0&TARGET=-SM-https------www.aetnadental.com--professionals--secure--network-resources-programs--dental-office-guides.html> (failed 4 times): 500 Internal Server Error
+2025-03-16 22:23:01,016 [scrapy.core.engine] DEBUG: Crawled (500) <GET https://ap5.aetna.com/siteminderagent/SmMakeCookie.ccc?SMSESSION=QUERY&PERSIST=0&TARGET=-SM-https------www.aetnadental.com--professionals--secure--network-resources-programs--dental-office-guides.html> (referer: https://ap5.aetna.com/siteminderagent/SmMakeCookie.ccc?SMSESSION=QUERY&PERSIST=0&TARGET=-SM-https------www.aetnadental.com--professionals--secure--network-resources-programs--dental-office-guides.html)
+2025-03-16 22:23:01 [scrapy.core.engine] DEBUG: Crawled (500) <GET https://ap5.aetna.com/siteminderagent/SmMakeCookie.ccc?SMSESSION=QUERY&PERSIST=0&TARGET=-SM-https------www.aetnadental.com--professionals--secure--network-resources-programs--dental-office-guides.html> (referer: https://ap5.aetna.com/siteminderagent/SmMakeCookie.ccc?SMSESSION=QUERY&PERSIST=0&TARGET=-SM-https------www.aetnadental.com--professionals--secure--network-resources-programs--dental-office-guides.html)
+2025-03-16 22:23:01,121 [aetna] ERROR: Request failed during step 'initial_login' (attempt 3): Ignoring non-200 response
+2025-03-16 22:23:01 [aetna] ERROR: Request failed during step 'initial_login' (attempt 3): Ignoring non-200 response
+2025-03-16 22:23:01,121 [aetna] ERROR: Response status: 500
+2025-03-16 22:23:01 [aetna] ERROR: Response status: 500
+2025-03-16 22:23:01,121 [aetna] ERROR: Response headers: {b'Date': [b'Mon, 17 Mar 2025 03:23:00 GMT'], b'Expires': [b'Thu, 01 Dec 1994 16:00:00 GMT'], b'Content-Type': [b'text/html; charset=ISO-8859-1'], b'Set-Cookie': [b'TS5c19c9bf027=08558198ecab200055d011d6bc253b49589c4523df5f76ff484a539dbade8cf64e75523948662d5a08dab93b74113000fe4c57bbcf419c01abf677df04232026e369b1daff2771a89ffb2f4ec315ce04509bc2da2030683554b022a72d549ac4; Path=/'], b'Strict-Transport-Security': [b'max-age=31536000'], b'X-Cdn': [b'Imperva'], b'X-Iinfo': [b'9-26240470-26240471 NNYY CT(46 48 0) RT(1742181780355 57) q(0 0 0 -1) r(1 1) U11']}
+2025-03-16 22:23:01 [aetna] ERROR: Response headers: {b'Date': [b'Mon, 17 Mar 2025 03:23:00 GMT'], b'Expires': [b'Thu, 01 Dec 1994 16:00:00 GMT'], b'Content-Type': [b'text/html; charset=ISO-8859-1'], b'Set-Cookie': [b'TS5c19c9bf027=08558198ecab200055d011d6bc253b49589c4523df5f76ff484a539dbade8cf64e75523948662d5a08dab93b74113000fe4c57bbcf419c01abf677df04232026e369b1daff2771a89ffb2f4ec315ce04509bc2da2030683554b022a72d549ac4; Path=/'], b'Strict-Transport-Security': [b'max-age=31536000'], b'X-Cdn': [b'Imperva'], b'X-Iinfo': [b'9-26240470-26240471 NNYY CT(46 48 0) RT(1742181780355 57) q(0 0 0 -1) r(1 1) U11']}
+2025-03-16 22:23:01,121 [aetna] ERROR: Response body: Server Error. The server was unable to process your request. 
+2025-03-16 22:23:01 [aetna] ERROR: Response body: Server Error. The server was unable to process your request. 
+2025-03-16 22:23:01,123 [scrapy.core.engine] INFO: Closing spider (finished)
+2025-03-16 22:23:01 [scrapy.core.engine] INFO: Closing spider (finished)
+2025-03-16 22:23:01,124 [scrapy.extensions.feedexport] INFO: Stored json feed (0 items) in: data/processed/aetna_guidelines_20250316_222220.json
+2025-03-16 22:23:01 [scrapy.extensions.feedexport] INFO: Stored json feed (0 items) in: data/processed/aetna_guidelines_20250316_222220.json
+2025-03-16 22:23:01,124 [scrapy.statscollectors] INFO: Dumping Scrapy stats:
+{'downloader/request_bytes': 12258,
+ 'downloader/request_count': 12,
+ 'downloader/request_method_count/GET': 12,
+ 'downloader/response_bytes': 8183,
+ 'downloader/response_count': 12,
+ 'downloader/response_status_count/500': 12,
+ 'elapsed_time_seconds': 40.676149,
+ 'feedexport/success_count/FileFeedStorage': 1,
+ 'finish_reason': 'finished',
+ 'finish_time': datetime.datetime(2025, 3, 17, 3, 23, 1, 123677, tzinfo=datetime.timezone.utc),
+ 'httpcompression/response_bytes': 732,
+ 'httpcompression/response_count': 12,
+ 'log_count/DEBUG': 36,
+ 'log_count/ERROR': 15,
+ 'log_count/INFO': 14,
+ 'log_count/WARNING': 1,
+ 'memusage/max': 95436800,
+ 'memusage/startup': 95436800,
+ 'request_depth_max': 2,
+ 'response_received_count': 3,
+ 'retry/count': 9,
+ 'retry/max_reached': 3,
+ 'retry/reason_count/500 Internal Server Error': 9,
+ 'scheduler/dequeued': 12,
+ 'scheduler/dequeued/memory': 12,
+ 'scheduler/enqueued': 12,
+ 'scheduler/enqueued/memory': 12,
+ 'start_time': datetime.datetime(2025, 3, 17, 3, 22, 20, 447528, tzinfo=datetime.timezone.utc)}
+2025-03-16 22:23:01 [scrapy.statscollectors] INFO: Dumping Scrapy stats:
+{'downloader/request_bytes': 12258,
+ 'downloader/request_count': 12,
+ 'downloader/request_method_count/GET': 12,
+ 'downloader/response_bytes': 8183,
+ 'downloader/response_count': 12,
+ 'downloader/response_status_count/500': 12,
+ 'elapsed_time_seconds': 40.676149,
+ 'feedexport/success_count/FileFeedStorage': 1,
+ 'finish_reason': 'finished',
+ 'finish_time': datetime.datetime(2025, 3, 17, 3, 23, 1, 123677, tzinfo=datetime.timezone.utc),
+ 'httpcompression/response_bytes': 732,
+ 'httpcompression/response_count': 12,
+ 'log_count/DEBUG': 36,
+ 'log_count/ERROR': 15,
+ 'log_count/INFO': 14,
+ 'log_count/WARNING': 1,
+ 'memusage/max': 95436800,
+ 'memusage/startup': 95436800,
+ 'request_depth_max': 2,
+ 'response_received_count': 3,
+ 'retry/count': 9,
+ 'retry/max_reached': 3,
+ 'retry/reason_count/500 Internal Server Error': 9,
+ 'scheduler/dequeued': 12,
+ 'scheduler/dequeued/memory': 12,
+ 'scheduler/enqueued': 12,
+ 'scheduler/enqueued/memory': 12,
+ 'start_time': datetime.datetime(2025, 3, 17, 3, 22, 20, 447528, tzinfo=datetime.timezone.utc)}
+2025-03-16 22:23:01,124 [scrapy.core.engine] INFO: Spider closed (finished)
+2025-03-16 22:23:01 [scrapy.core.engine] INFO: Spider closed (finished)

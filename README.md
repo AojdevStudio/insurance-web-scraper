@@ -1,6 +1,85 @@
-# Insurance Web Scraper
+# Dental Insurance Guidelines Web Scraper
 
-A web scraping system designed to extract dental insurance guidelines from various carriers including Aetna, Cigna, MetLife, and UnitedHealthcare.
+A Python-based web scraper for extracting dental insurance guidelines from major carriers' provider portals.
+
+## Features
+
+- Automated extraction of dental insurance guidelines
+- Support for major carriers (Aetna, Cigna, MetLife, UHC)
+- PDF processing and text extraction
+- Structured data output in JSON format
+- Rate limiting and proxy support
+- Comprehensive error handling
+
+## Requirements
+
+- Python 3.11+
+- Docker (optional, for containerized deployment)
+- Access to provider portals
+
+## Quick Start
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/insurance-web-scraper.git
+   cd insurance-web-scraper
+   ```
+
+2. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+3. Configure your credentials:
+   ```bash
+   cp .env.example .env
+   # Edit .env with your credentials
+   ```
+
+4. Run the scraper:
+   ```bash
+   python -m scraper run --carrier aetna
+   ```
+
+## Documentation
+
+Detailed documentation is available in the `docs` directory:
+
+- [Installation Guide](docs/installation.md)
+- [Configuration Guide](docs/configuration.md)
+- [Usage Examples](docs/usage.md)
+- [Troubleshooting](docs/troubleshooting.md)
+- [API Documentation](docs/api.md)
+
+## Configuration
+
+The scraper uses YAML configuration files for easy setup and maintenance. See the [Configuration Guide](docs/configuration.md) for details.
+
+Example configuration:
+```yaml
+scraper:
+  rate_limit: 5  # requests per second
+  output_dir: "./data"
+  proxy:
+    enabled: true
+    rotate_every: 60  # seconds
+
+carriers:
+  aetna:
+    enabled: true
+    base_url: "https://www.aetna.com/health-care-professionals"
+  cigna:
+    enabled: true
+    base_url: "https://www.cigna.com/healthcare-providers"
+```
+
+## Support
+
+For issues and feature requests, please use the [GitHub issue tracker](https://github.com/yourusername/insurance-web-scraper/issues).
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## System Requirements
 

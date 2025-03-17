@@ -1,0 +1,3 @@
+2025-03-16 21:14:52.997 | INFO     | pdf_processor.pdf_processor:process_pdf:29 - Processing PDF: sample_dental_guidelines.pdf
+2025-03-16 21:14:53.005 | INFO     | pdf_processor.pdf_processor:process_pdf:47 - Successfully processed PDF. Found 0 CDT codes.
+2025-03-16 21:14:53.005 | INFO     | __main__:main:43 - Results saved to extracted_data.json
