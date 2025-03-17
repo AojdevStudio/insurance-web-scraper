@@ -1,0 +1,13 @@
+{
+  "Title": "Test PDF Document",
+  "Author": "Test Author",
+  "Creator": "Test Creator",
+  "Producer": "Test Producer",
+  "CreationDate": "D:20250101000000",
+  "ModDate": "D:20250101000000",
+  "num_pages": 5,
+  "file_name": "test.pdf",
+  "extraction_date": "2025-03-16T18:48:40.210639",
+  "file_size": 1024,
+  "extracted_text": "\n    D0150 Comprehensive oral evaluation\n    \n    Requirements:\n    - Patient must be new\n    - Complete examination required\n    \n    D0210 Intraoral - complete series\n    \n    Requirements:\n    - Limited to once every 3 years\n    - Full mouth series\n    "
+}

@@ -616,6 +616,7 @@
          }
      ```
 
+
   2. PDF Processing Customization:
      ```python
      class CignaPDFProcessor(PDFProcessor):
@@ -1175,7 +1176,7 @@
 ## Sprint 3: Testing & Refinement (Day 2-3)
 
 ### Testing
-- [ ] **Story 3.1: Unit Test Suite**
+- [x] **Story 3.1: Unit Test Suite**
   - Set up testing framework
   - Write core component tests
   - Add mock responses
@@ -1363,12 +1364,18 @@
         * Code quality
   </IMPORTANT_NOTES>
 
-- [ ] **Story 3.2: Integration Testing**
-  - Test full extraction pipeline
-  - Verify carrier integrations
-  - Test data flow
-  - Validate output format
-  - AC: End-to-end pipeline verified
+- [x] **Story 3.2: Integration Testing**
+  - End-to-end test framework
+  - Pipeline components integration tests
+  - Carrier-specific integration tests
+  - Data flow validation
+  - Mock service integration
+  - Error scenario testing
+  - Performance integration tests
+  - Data consistency checks
+  - System integration tests
+  - Quality assurance
+  - AC: All integration points tested
 
   <IMPORTANT_NOTES>
   1. End-to-End Test Framework:
