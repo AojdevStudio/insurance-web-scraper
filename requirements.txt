@@ -31,7 +31,22 @@ pytest==8.0.0
 pytest-asyncio==0.23.5
 pytest-mock==3.12.0
 pytest-cov==4.1.0
+responses>=0.24.1
 
 # Documentation
 Sphinx==7.2.6
-sphinx-rtd-theme==2.0.0 
+sphinx-rtd-theme==2.0.0
+
+# Authentication
+python-dotenv>=1.0.0
+keyring>=24.3.0
+cryptography>=42.0.0
+pydantic>=2.6.0
+beautifulsoup4>=4.12.0
+requests>=2.31.0
+
+# URL Management
+validators>=0.22.0
+urllib3>=2.2.0
+python-dateutil>=2.8.2
+robotexclusionrulesparser>=1.7.1 
