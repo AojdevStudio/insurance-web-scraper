@@ -8,8 +8,16 @@ import os
 import json
 import re
 import PyPDF2
+import pdfplumber
+import hashlib
+import asyncio
+from concurrent.futures import ProcessPoolExecutor, ThreadPoolExecutor
+from functools import lru_cache
 from pathlib import Path
 from loguru import logger
+from typing import Dict, List, Any, Optional, Tuple, Union
+import time
+import psutil
 
 
 def extract_text_with_pypdf2(pdf_path):
@@ -49,8 +57,6 @@ def extract_text_with_pdfplumber(pdf_path):
     Returns:
         dict: Dictionary containing the extracted text with page numbers as keys
     """
-    import pdfplumber
-    
     result = {}
     
     with pdfplumber.open(pdf_path) as pdf:
@@ -67,44 +73,25 @@ def pdf_to_json(pdf_path, output_path=None, method="pypdf2"):
     
     Args:
         pdf_path (str): Path to the PDF file
-        output_path (str, optional): Path to save the JSON file. If None,
-                                     saves to data/json directory with same filename
-        method (str, optional): Method to use for text extraction. 
-                               Either "pypdf2" or "pdfplumber"
-    
+        output_path (str, optional): Path to save the JSON file. If None, the output is saved in the same directory as the PDF file.
+        method (str, optional): Method to use for text extraction. Default is "pypdf2".
+        
     Returns:
         str: Path to the saved JSON file
     """
-    # Extract text based on the chosen method
     if method.lower() == "pypdf2":
-        extracted_data = extract_text_with_pypdf2(pdf_path)
+        extracted_text = extract_text_with_pypdf2(pdf_path)
     elif method.lower() == "pdfplumber":
-        extracted_data = extract_text_with_pdfplumber(pdf_path)
+        extracted_text = extract_text_with_pdfplumber(pdf_path)
     else:
         raise ValueError("Method must be either 'pypdf2' or 'pdfplumber'")
     
-    # Add metadata to the extracted data
-    pdf_filename = os.path.basename(pdf_path)
-    result = {
-        "filename": pdf_filename,
-        "source_path": pdf_path,
-        "extraction_method": method,
-        "content": extracted_data
-    }
-    
-    # Determine output path
+    # If output_path is not provided, save the output in the same directory as the PDF file
     if output_path is None:
-        # Convert PDF filename to JSON filename
-        json_filename = Path(pdf_filename).stem + ".json"
-        # Create path in the data/json directory
-        output_path = os.path.join(os.getcwd(), "data", "json", json_filename)
+        output_path = pdf_path.replace(".pdf", ".json")
     
-    # Create directory if it doesn't exist
-    os.makedirs(os.path.dirname(output_path), exist_ok=True)
-    
-    # Write to JSON file
-    with open(output_path, "w", encoding="utf-8") as f:
-        json.dump(result, f, indent=4, ensure_ascii=False)
+    with open(output_path, "w") as f:
+        json.dump(extracted_text, f, indent=4)
     
     return output_path
 
@@ -115,31 +102,66 @@ def batch_process_pdfs(pdf_directory, output_directory=None, method="pypdf2"):
     
     Args:
         pdf_directory (str): Directory containing PDF files
-        output_directory (str, optional): Directory to save JSON files
-        method (str, optional): Method to use for text extraction
-    
+        output_directory (str, optional): Directory to save the output JSON files. If None, the output is saved in the same directory as the PDF files.
+        method (str, optional): Method to use for text extraction. Default is "pypdf2".
+        
     Returns:
-        list: Paths to all processed JSON files
+        list: List of paths to the saved JSON files
     """
-    if output_directory is None:
-        output_directory = os.path.join(os.getcwd(), "data", "json")
+    pdf_files = [f for f in os.listdir(pdf_directory) if f.endswith(".pdf")]
+    output_files = []
     
-    # Create output directory if it doesn't exist
-    os.makedirs(output_directory, exist_ok=True)
+    for pdf_file in pdf_files:
+        pdf_path = os.path.join(pdf_directory, pdf_file)
+        
+        if output_directory is not None:
+            output_file = os.path.join(output_directory, pdf_file.replace(".pdf", ".json"))
+        else:
+            output_file = None
+        
+        output_path = pdf_to_json(pdf_path, output_file, method)
+        output_files.append(output_path)
     
-    processed_files = []
+    return output_files
+
+
+class PerformanceMonitor:
+    """
+    Utility class for monitoring performance metrics of PDF processing.
+    """
     
-    # Process each PDF file
-    for filename in os.listdir(pdf_directory):
-        if filename.lower().endswith(".pdf"):
-            pdf_path = os.path.join(pdf_directory, filename)
-            json_filename = Path(filename).stem + ".json"
-            output_path = os.path.join(output_directory, json_filename)
-            
-            processed_path = pdf_to_json(pdf_path, output_path, method)
-            processed_files.append(processed_path)
+    def __init__(self):
+        """Initialize the performance monitor."""
+        self.start_time = None
+        self.end_time = None
+        self.start_memory = None
+        self.end_memory = None
+        self.metrics = {}
     
-    return processed_files
+    def start(self):
+        """Start monitoring performance."""
+        self.start_time = time.time()
+        self.start_memory = psutil.Process(os.getpid()).memory_info().rss / (1024 * 1024)  # MB
+    
+    def stop(self):
+        """Stop monitoring performance and calculate metrics."""
+        self.end_time = time.time()
+        self.end_memory = psutil.Process(os.getpid()).memory_info().rss / (1024 * 1024)  # MB
+        
+        self.metrics = {
+            "execution_time": self.end_time - self.start_time,
+            "memory_used": self.end_memory - self.start_memory,
+            "peak_memory": self.end_memory,
+        }
+        
+        return self.metrics
+    
+    def log_metrics(self, operation: str):
+        """Log performance metrics."""
+        logger.info(f"Performance metrics for {operation}:")
+        logger.info(f"Execution time: {self.metrics['execution_time']:.2f} seconds")
+        logger.info(f"Memory used: {self.metrics['memory_used']:.2f} MB")
+        logger.info(f"Peak memory: {self.metrics['peak_memory']:.2f} MB")
 
 
 class PDFProcessor:
@@ -147,65 +169,211 @@ class PDFProcessor:
     Process PDF files for dental insurance guidelines extraction.
     """
     
-    def __init__(self):
-        """Initialize the PDF processor."""
-        logger.info("Initializing PDFProcessor")
-    
-    def extract_text(self, pdf_path, method="pdfplumber"):
+    def __init__(self, cache_dir: Optional[str] = None, max_workers: int = None):
         """
-        Extract text from a PDF file.
+        Initialize the PDF processor.
         
         Args:
-            pdf_path (str): Path to the PDF file
-            method (str, optional): Method to use for extraction (pypdf2 or pdfplumber)
+            cache_dir: Directory to store cache files. If None, caching is disabled.
+            max_workers: Maximum number of workers for parallel processing. 
+                         If None, uses the number of processors on the machine.
+        """
+        logger.info("Initializing PDFProcessor")
+        self.cache_dir = cache_dir
+        self.max_workers = max_workers or os.cpu_count()
+        
+        if self.cache_dir:
+            os.makedirs(self.cache_dir, exist_ok=True)
+            logger.info(f"Using cache directory: {self.cache_dir}")
+            
+        self.monitor = PerformanceMonitor()
+    
+    def _get_cache_path(self, pdf_path: Union[str, Path], operation: str) -> Optional[Path]:
+        """Generate a cache file path for a PDF."""
+        if not self.cache_dir:
+            return None
+            
+        pdf_hash = hashlib.md5(str(pdf_path).encode()).hexdigest()
+        return Path(self.cache_dir) / f"{pdf_hash}_{operation}.json"
+    
+    def _determine_best_method(self, pdf_path: Union[str, Path]) -> str:
+        """
+        Determine the best extraction method based on PDF characteristics.
+        
+        Simple PDFs work well with PyPDF2 which is faster.
+        Complex PDFs with tables and multiple columns need pdfplumber.
+        """
+        try:
+            # Check file size - larger PDFs often have complex layouts
+            file_size = os.path.getsize(pdf_path) / (1024 * 1024)  # Size in MB
+            
+            # Check if the PDF has images or complex layouts
+            with open(pdf_path, "rb") as file:
+                reader = PyPDF2.PdfReader(file)
+                first_page = reader.pages[0]
+                
+                # Check for /XObject in resources, which often indicates images
+                has_images = False
+                if hasattr(first_page, 'resources') and '/XObject' in first_page.resources:
+                    has_images = True
+                
+                # Try to determine if it has multiple columns using extracted text
+                text = first_page.extract_text()
+                has_multiple_columns = False
+                if text:
+                    lines = text.split('\n')
+                    if len(lines) > 5:
+                        # Check if there are short lines in a pattern that suggests columns
+                        short_lines = [line for line in lines if len(line) < 30]
+                        if len(short_lines) > len(lines) * 0.5:
+                            has_multiple_columns = True
+            
+            # Decision logic
+            if file_size > 10 or has_images or has_multiple_columns:
+                return "pdfplumber"
+            return "pypdf2"
+        except Exception as e:
+            logger.warning(f"Error determining extraction method: {e}, defaulting to pdfplumber")
+            return "pdfplumber"
+    
+    async def extract_text(self, pdf_path: Union[str, Path], method: Optional[str] = None) -> Dict[str, str]:
+        """
+        Extract text from a PDF file with performance monitoring.
+        
+        Args:
+            pdf_path: Path to the PDF file
+            method: Method to use for extraction (pypdf2 or pdfplumber). 
+                    If None, the best method is automatically determined.
             
         Returns:
             dict: Dictionary containing the extracted text with page numbers as keys
         """
-        logger.info(f"Extracting text from {pdf_path} using {method}")
-        if method.lower() == "pypdf2":
-            return extract_text_with_pypdf2(pdf_path)
-        elif method.lower() == "pdfplumber":
-            return extract_text_with_pdfplumber(pdf_path)
-        else:
-            raise ValueError("Method must be either 'pypdf2' or 'pdfplumber'")
+        pdf_path = str(pdf_path)
+        logger.info(f"Extracting text from {pdf_path}")
+        
+        # Check cache first
+        cache_path = self._get_cache_path(pdf_path, "text")
+        if cache_path and cache_path.exists():
+            logger.info(f"Using cached text for {pdf_path}")
+            try:
+                with open(cache_path, 'r') as f:
+                    return json.loads(f.read())
+            except Exception as e:
+                logger.warning(f"Failed to read cache: {e}")
+        
+        # Auto-select method if not specified
+        if method is None:
+            method = self._determine_best_method(pdf_path)
+        
+        logger.info(f"Using extraction method: {method}")
+        
+        self.monitor.start()
+        
+        try:
+            if method.lower() == "pypdf2":
+                result = extract_text_with_pypdf2(pdf_path)
+            elif method.lower() == "pdfplumber":
+                result = extract_text_with_pdfplumber(pdf_path)
+            else:
+                raise ValueError("Method must be either 'pypdf2' or 'pdfplumber'")
+                
+            # Save to cache
+            if cache_path:
+                try:
+                    with open(cache_path, 'w') as f:
+                        f.write(json.dumps(result))
+                except Exception as e:
+                    logger.warning(f"Failed to write cache: {e}")
+                    
+            return result
+        finally:
+            self.monitor.stop()
+            self.monitor.log_metrics(f"text extraction with {method}")
     
-    def pdf_to_json(self, pdf_path, output_path=None, method="pdfplumber"):
+    async def pdf_to_json(self, pdf_path: Union[str, Path], output_path: Optional[str] = None, 
+                     method: Optional[str] = None) -> str:
         """
-        Convert a PDF file to a JSON file.
+        Convert a PDF file to a JSON file with performance monitoring.
         
         Args:
-            pdf_path (str): Path to the PDF file
-            output_path (str, optional): Path to save the JSON file
-            method (str, optional): Method to use for text extraction
+            pdf_path: Path to the PDF file
+            output_path: Path to save the JSON file
+            method: Method to use for text extraction. If None, auto-selects.
             
         Returns:
             str: Path to the saved JSON file
         """
-        logger.info(f"Converting {pdf_path} to JSON using {method}")
-        return pdf_to_json(pdf_path, output_path, method)
+        pdf_path = str(pdf_path)
+        logger.info(f"Converting {pdf_path} to JSON")
+        
+        self.monitor.start()
+        
+        try:
+            # Extract text
+            extracted_text = await self.extract_text(pdf_path, method)
+            
+            # If output_path is not provided, save the output in the same directory as the PDF file
+            if output_path is None:
+                output_path = pdf_path.replace(".pdf", ".json")
+            
+            with open(output_path, "w") as f:
+                json.dump(extracted_text, f, indent=4)
+            
+            return output_path
+        finally:
+            self.monitor.stop()
+            self.monitor.log_metrics("pdf to json conversion")
     
-    def batch_process(self, pdf_directory, output_directory=None, method="pdfplumber"):
+    async def batch_process(self, pdf_directory: Union[str, Path], 
+                        output_directory: Optional[Union[str, Path]] = None,
+                        method: Optional[str] = None) -> List[str]:
         """
-        Process all PDF files in a directory.
+        Process all PDF files in a directory in parallel.
         
         Args:
-            pdf_directory (str): Directory containing PDF files
-            output_directory (str, optional): Directory to save JSON files
-            method (str, optional): Method to use for text extraction
+            pdf_directory: Directory containing PDF files
+            output_directory: Directory to save JSON files
+            method: Method to use for text extraction. If None, auto-selects.
             
         Returns:
             list: Paths to all processed JSON files
         """
+        pdf_directory = str(pdf_directory)
         logger.info(f"Batch processing PDFs in {pdf_directory}")
-        return batch_process_pdfs(pdf_directory, output_directory, method)
+        
+        self.monitor.start()
+        
+        try:
+            pdf_files = [f for f in os.listdir(pdf_directory) if f.endswith(".pdf")]
+            output_files = []
+            
+            # Process PDFs in parallel
+            tasks = []
+            for pdf_file in pdf_files:
+                pdf_path = os.path.join(pdf_directory, pdf_file)
+                
+                if output_directory is not None:
+                    output_file = os.path.join(str(output_directory), pdf_file.replace(".pdf", ".json"))
+                else:
+                    output_file = None
+                
+                task = self.pdf_to_json(pdf_path, output_file, method)
+                tasks.append(task)
+            
+            # Wait for all tasks to complete
+            output_files = await asyncio.gather(*tasks)
+            
+            return output_files
+        finally:
+            self.monitor.stop()
+            self.monitor.log_metrics("batch processing")
     
-    def process_content(self, content):
+    async def process_content(self, content: Dict[str, str]) -> str:
         """
         Process the extracted PDF content into a structured format.
         
         Args:
-            content (dict): The extracted PDF content with page numbers as keys
+            content: The extracted PDF content with page numbers as keys
             
         Returns:
             str: The combined content as a single string
@@ -220,60 +388,84 @@ class PDFProcessor:
         
         return combined_text
 
-    def extract_procedure_codes(self, text):
+    @lru_cache(maxsize=100)
+    def extract_procedure_codes(self, text: str) -> List[str]:
         """
         Extract CDT procedure codes from text.
         
         Args:
-            text (str): The text to extract codes from
+            text: The text to extract codes from
             
         Returns:
-            list: List of extracted CDT codes
+            list: List of extracted procedure codes
         """
-        # Simple regex pattern for CDT codes (D followed by 4 digits)
-        logger.debug("Extracting procedure codes from text")
-        pattern = r'D\d{4}'
-        return re.findall(pattern, text)
+        logger.debug("Extracting procedure codes")
         
-    def extract_procedures(self, text):
+        # Define the pattern for CDT procedure codes (D followed by 4 digits)
+        pattern = r'D\d{4}'
+        
+        # Find all matches in the text
+        matches = re.findall(pattern, text)
+        
+        # Remove duplicates and sort
+        unique_codes = sorted(list(set(matches)))
+        
+        return unique_codes
+
+    async def extract_procedures(self, text: str) -> List[Dict[str, Any]]:
         """
-        Extract full procedure information including codes and descriptions.
+        Extract procedure information from text.
         
         Args:
-            text (str): The text to extract procedures from
+            text: The text to extract procedures from
             
         Returns:
-            list: List of dictionaries with procedure information
+            list: List of procedure dictionaries
         """
-        logger.info("Extracting procedures from text")
+        logger.debug("Extracting procedures")
+        
+        # Get procedure codes
+        codes = self.extract_procedure_codes(text)
+        
         procedures = []
         
-        # Look for procedure blocks (this pattern would need to be adapted)
-        procedure_pattern = r'(D\d{4}).*?(?=D\d{4}|\Z)'
-        procedure_blocks = re.findall(procedure_pattern, text, re.DOTALL)
-        
-        for block in procedure_blocks:
-            procedure = {}
+        # Process each code
+        for code in codes:
+            # Find text sections containing the code
+            pattern = fr'{code}[\s\S]{{10,1000}}?(?=D\d{{4}}|\Z)'
+            matches = re.findall(pattern, text)
             
-            # Extract code
-            code_match = re.search(r'(D\d{4})', block)
-            if code_match:
-                procedure['code'] = code_match.group(1)
+            if matches:
+                description = ""
+                requirements = []
                 
-                # Extract description (text after the code until the next section)
-                desc_match = re.search(r'D\d{4}\s+(.*?)(?=\n|$)', block)
-                if desc_match:
-                    procedure['description'] = desc_match.group(1).strip()
+                # Extract description and requirements from the matched text
+                for match in matches:
+                    lines = match.split('\n')
+                    
+                    # Assume the first line contains the description
+                    if not description and len(lines) > 0:
+                        description = lines[0].replace(code, '').strip()
+                    
+                    # Look for requirements
+                    req_section = False
+                    for line in lines[1:]:
+                        line = line.strip()
+                        if not line:
+                            continue
+                            
+                        if 'requirement' in line.lower() or 'documentation' in line.lower():
+                            req_section = True
+                            continue
+                            
+                        if req_section and line and not line.startswith('D'):
+                            requirements.append(line)
                 
-                # Extract requirements
-                req_match = re.search(r'Requirements?:?\s*(.*?)(?=\n\n|\Z)', block, re.DOTALL)
-                if req_match:
-                    requirements_text = req_match.group(1).strip()
-                    # Split into bullet points or lines
-                    requirements = [r.strip() for r in re.split(r'[\n•]+', requirements_text) if r.strip()]
-                    procedure['requirements'] = requirements
-                
-                procedures.append(procedure)
+                procedures.append({
+                    'code': code,
+                    'description': description,
+                    'requirements': requirements
+                })
         
         return procedures
 

@@ -1173,6 +1173,391 @@
         * API responses
   </IMPORTANT_NOTES>
 
+### Authentication and Configuration
+- [ ] **Story 2.6: Authentication Configuration System**
+  - Create configuration system for authentication details
+  - Implement secure credential storage
+  - Add support for different auth methods
+  - Test with sample portals
+  - AC: System securely handles authentication for any provider portal
+
+  <IMPORTANT_NOTES>
+  1. Authentication Configuration:
+     ```python
+     class AuthConfig:
+         def __init__(self):
+             self.auth_types = {
+                 'basic': self.handle_basic_auth,
+                 'form': self.handle_form_auth,
+                 'token': self.handle_token_auth,
+                 'cookie': self.handle_cookie_auth,
+                 'oauth': self.handle_oauth_auth  # Added OAuth support
+             }
+             self.credentials_store = CredentialsManager()
+             self.session_manager = SessionManager()  # Added session management
+             
+         def configure_auth(self, site_config: Dict):
+             # Configure authentication based on site requirements
+             # Handle different auth types
+             # Store credentials securely
+             # Implement rate limiting
+             pass
+     ```
+
+  2. Credential Management:
+     ```python
+     class CredentialsManager:
+         def __init__(self):
+             self.keyring = KeyringHandler()
+             self.encryption = EncryptionHandler()
+             self.env_handler = EnvVarHandler()  # Added environment variable support
+             
+         def store_credentials(self, site: str, credentials: Dict):
+             # Encrypt and store credentials
+             # Use system keyring when available
+             # Support environment variables
+             # Fall back to encrypted file storage
+             pass
+     ```
+
+  3. Authentication Handlers:
+     - Basic Auth:
+       * Username/password
+       * API keys
+       * Access tokens
+     - Form-based:
+       * Login form detection
+       * Field mapping
+       * CSRF handling
+       * Multi-step auth
+     - Token-based:
+       * Bearer tokens
+       * JWT handling
+       * Token refresh
+       * Session management
+     - OAuth:
+       * OAuth 2.0 flow
+       * Refresh tokens
+       * Scope management
+
+  4. Security Measures:
+     - Encryption:
+       * AES-256 for stored credentials
+       * Secure key management
+       * Salt and IV handling
+     - Storage:
+       * System keyring integration
+       * Environment variables
+       * Encrypted file fallback
+       * Memory-only options
+     - Session Management:
+       * Cookie handling
+       * Session persistence
+       * Auto-renewal
+       * Secure cleanup
+
+  5. Configuration Format:
+     ```yaml
+     auth_config:
+       site_name: "Provider Portal"
+       auth_type: "form"
+       login_url: "https://example.com/login"
+       rate_limit: 5  # requests per second
+       retry_policy:
+         max_attempts: 3
+         backoff_factor: 2
+       credentials:
+         username: "ENV:PORTAL_USER"
+         password: "ENV:PORTAL_PASS"
+       form_data:
+         username_field: "user"
+         password_field: "pass"
+         submit_button: "//button[@type='submit']"
+       session:
+         persist: true
+         max_age: 3600
+     ```
+  </IMPORTANT_NOTES>
+
+- [ ] **Story 2.7: URL Management System**
+  - Create URL configuration interface
+  - Implement URL validation and testing
+  - Add support for site-specific rules
+  - Create URL grouping functionality
+  - AC: Users can easily manage and validate scraping URLs
+
+  <IMPORTANT_NOTES>
+  1. URL Configuration:
+     ```python
+     class URLManager:
+         def __init__(self):
+             self.url_store = URLStore()
+             self.validator = URLValidator()
+             self.rules_engine = RulesEngine()
+             self.rate_limiter = RateLimiter()  # Added rate limiting
+             
+         def add_url_config(self, config: Dict):
+             # Validate URL structure
+             # Check accessibility
+             # Apply site-specific rules
+             # Configure rate limiting
+             # Store configuration
+             pass
+     ```
+
+  2. URL Validation:
+     ```python
+     class URLValidator:
+         def __init__(self):
+             self.checkers = {
+                 'accessibility': self.check_accessibility,
+                 'auth_required': self.check_auth_required,
+                 'robots_txt': self.check_robots_txt,
+                 'rate_limits': self.check_rate_limits,
+                 'content_type': self.check_content_type  # Added content validation
+             }
+             
+         def validate_url(self, url: str) -> Dict:
+             # Run all validation checks
+             # Check robots.txt compliance
+             # Verify content accessibility
+             # Return validation results
+             pass
+     ```
+
+  3. Configuration Format:
+     ```yaml
+     url_config:
+       name: "Resource Page"
+       base_url: "https://example.com/resources"
+       patterns:
+         - "*.pdf"
+         - "/guidelines/*"
+       exclusions:
+         - "/archived/*"
+       rate_limit: 5  # requests per second
+       requires_auth: true
+       auth_config: "provider_portal"
+       robots_txt:
+         respect: true
+         custom_rules: []
+       retry_policy:
+         max_attempts: 3
+         backoff_factor: 2
+     ```
+
+  4. Rules Engine:
+     - URL Patterns:
+       * PDF detection
+       * Resource identification
+       * Version matching
+       * Content validation
+     - Site Rules:
+       * Rate limiting
+       * Delay settings
+       * Retry policies
+       * Error handling
+     - Grouping:
+       * By content type
+       * By auth requirements
+       * By priority
+       * By domain
+
+  5. Storage System:
+     - Configuration:
+       * YAML/JSON format
+       * Version control
+       * Backup system
+       * Change tracking
+     - Validation:
+       * Schema validation
+       * URL accessibility
+       * Auth requirements
+       * Content verification
+  </IMPORTANT_NOTES>
+
+- [ ] **Story 2.8: Generic PDF Processing Pipeline**
+  - Create unified PDF processing system
+  - Implement flexible extraction patterns
+  - Add support for different PDF formats
+  - Create validation framework
+  - AC: System can process PDFs from any source consistently
+
+  <IMPORTANT_NOTES>
+  1. PDF Processing Pipeline:
+     ```python
+     class PDFProcessor:
+         def __init__(self):
+             self.extractors = {
+                 'text': TextExtractor(),
+                 'table': TableExtractor(),
+                 'form': FormExtractor(),
+                 'image': ImageExtractor(),
+                 'structured': StructuredExtractor()  # Added structured content support
+             }
+             self.validators = DataValidators()
+             self.content_analyzer = ContentAnalyzer()  # Added content analysis
+             
+         def process_pdf(self, pdf_path: str, config: Dict):
+             # Extract content based on config
+             # Apply validation rules
+             # Analyze content structure
+             # Transform to standard format
+             pass
+     ```
+
+  2. Extraction Configuration:
+     ```yaml
+     pdf_config:
+       extraction_mode: "auto"  # or specific mode
+       content_types:
+         - "text"
+         - "tables"
+         - "forms"
+         - "structured"
+       patterns:
+         cdt_codes: "D\\d{4}"
+         requirements: "Required.*?(?=\\n\\n)"
+       validation:
+         required_fields: ["code", "description", "requirements"]
+         format_rules: {}
+       ocr:
+         enabled: true
+         engine: "tesseract"
+         language: "eng"
+       preprocessing:
+         deskew: true
+         enhance_contrast: true
+     ```
+
+  3. Processing Features:
+     - Content Detection:
+       * Layout analysis
+       * Content type identification
+       * Structure recognition
+       * Pattern matching
+     - Extraction Methods:
+       * Text extraction
+       * Table parsing
+       * Form field reading
+       * Image processing
+       * OCR support
+
+  4. Validation Framework:
+     - Data Validation:
+       * Field presence
+       * Format checking
+       * Relationship validation
+       * Business rules
+     - Quality Checks:
+       * Completeness
+       * Accuracy
+       * Consistency
+       * Confidence scores
+
+  5. Output Formats:
+     - Standard Format:
+       * JSON structure
+       * CSV export
+       * Database ready
+       * XML support
+     - Validation Reports:
+       * Quality metrics
+       * Error reports
+       * Confidence scores
+       * Recommendations
+     - Metadata:
+       * Processing history
+       * Extraction methods
+       * Validation results
+       * Source tracking
+  </IMPORTANT_NOTES>
+
+- [ ] **Story 2.9: User Documentation and Configuration Guide**
+  - Create comprehensive user guide
+  - Implement configuration templates
+  - Add usage examples
+  - Create troubleshooting guide
+  - AC: Users can set up and run the scraper with minimal technical knowledge
+
+  <IMPORTANT_NOTES>
+  1. User Guide Structure:
+     ```markdown
+     # Insurance Web Scraper Guide
+     
+     ## Quick Start
+     1. Install requirements
+     2. Configure credentials
+     3. Add URLs to scrape
+     4. Run the scraper
+     
+     ## Configuration
+     - Authentication setup
+     - URL management
+     - Rate limiting
+     - Output formats
+     
+     ## Examples
+     - Basic usage
+     - Custom configurations
+     - Common scenarios
+     ```
+
+  2. Configuration Templates:
+     ```yaml
+     # config.yaml
+     scraper:
+       auth:
+         type: "form"  # or "basic", "token"
+         credentials_source: "env"  # or "file"
+         env_prefix: "SCRAPER_"
+       
+       urls:
+         - name: "Provider Portal"
+           url: "https://example.com/portal"
+           auth_required: true
+           rate_limit: 5  # requests per second
+           
+       output:
+         format: "json"  # or "csv"
+         path: "./data"
+     ```
+
+  3. Usage Examples:
+     ```python
+     # Example 1: Basic Usage
+     from insurance_scraper import Scraper
+     
+     scraper = Scraper.from_config("config.yaml")
+     results = scraper.run()
+     
+     # Example 2: Custom Configuration
+     scraper = Scraper(
+         auth_config={"type": "form", "username": "user", "password": "pass"},
+         urls=["https://example.com/portal"],
+         rate_limit=5
+     )
+     results = scraper.run()
+     ```
+
+  4. Documentation Features:
+     - Step-by-step guides
+     - Configuration reference
+     - Best practices
+     - Troubleshooting tips
+     - Rate limit guidelines
+     - Error resolution
+     - Security considerations
+
+  5. User Experience:
+     - Clear error messages
+     - Progress indicators
+     - Validation feedback
+     - Configuration wizards
+     - Interactive examples
+     - Testing tools
+  </IMPORTANT_NOTES>
+
 ## Sprint 3: Testing & Refinement (Day 2-3)
 
 ### Testing
@@ -1547,7 +1932,7 @@
   </IMPORTANT_NOTES>
 
 ### Refinement
-- [ ] **Story 3.3: Performance Optimization**
+- [x] **Story 3.3: Performance Optimization**
   - Profile system performance
   - Optimize memory usage
   - Implement caching
@@ -1742,7 +2127,7 @@
         * Storage < 1GB/day
   </IMPORTANT_NOTES>
 
-- [ ] **Story 3.4: Error Recovery**
+- [x] **Story 3.4: Error Recovery**
   - Implement retry mechanism
   - Add error logging
   - Create recovery strategies
@@ -1755,214 +2140,166 @@
      # error_handler.py
      from typing import Dict, List, Optional
      import logging
-     from enum import Enum
+     from loguru import logger
+     from tenacity import (
+         retry, stop_after_attempt, stop_after_delay,
+         wait_exponential, retry_if_exception_type,
+         before_sleep_log
+     )
      
-     class ErrorSeverity(Enum):
-         LOW = 1
-         MEDIUM = 2
-         HIGH = 3
-         CRITICAL = 4
-         
-     class ErrorHandler:
-         def __init__(self):
-             self.logger = logging.getLogger(__name__)
-             self.recovery_strategies = {}
-             self.error_counts = {}
-             
-         def handle_error(self, error: Exception, context: Dict) -> Optional[Dict]:
-             severity = self.classify_error(error)
-             self.log_error(error, severity, context)
-             return self.apply_recovery_strategy(error, severity)
+     class CircuitBreaker:
+         def __init__(
+             self,
+             failure_threshold: int = 5,
+             reset_timeout: int = 60,
+             half_open_timeout: int = 30
+         ):
+             self.failure_threshold = failure_threshold
+             self.reset_timeout = reset_timeout
+             self.half_open_timeout = half_open_timeout
+             self.failures = 0
+             self.last_failure_time = 0
+             self.state = "closed"
      ```
 
-  2. Retry Mechanism:
+  2. Carrier-Specific Error Handling:
      ```python
-     from tenacity import retry, stop_after_attempt, wait_exponential
-     
-     class RetryManager:
-         def __init__(self):
-             self.max_attempts = 3
-             self.wait_multiplier = 2
-             
-         @retry(
-             stop=stop_after_attempt(3),
-             wait=wait_exponential(multiplier=2),
-             retry=retry_if_exception_type(RetryableError)
-         )
-         def retry_operation(self, func, *args, **kwargs):
-             try:
-                 return func(*args, **kwargs)
-             except Exception as e:
-                 self.log_retry_attempt(e)
-                 raise
+     # Implemented error handlers for specific carriers
+     def handle_rate_limit(func: Callable) -> Callable:
+         """Specific handler for rate limit exceptions with appropriate backoff."""
+         return retry_with_logging(
+             retry_exceptions=RateLimitException,
+             max_attempts=5,
+             max_delay=120,
+             exponential_base=4,
+         )(func)
+
+     def handle_auth_error(func: Callable) -> Callable:
+         """Specific handler for authentication errors with refresh attempt."""
+         return retry_with_logging(
+             retry_exceptions=AuthenticationException,
+             max_attempts=2,
+             max_delay=30,
+         )(func)
+
+     def handle_parsing_error(func: Callable) -> Callable:
+         """Specific handler for parsing errors with limited retries."""
+         return retry_with_logging(
+             retry_exceptions=ParsingException,
+             max_attempts=2,
+             max_delay=10,
+         )(func)
      ```
 
-  3. Error Logging System:
-     ```python
-     class ErrorLogger:
-         def __init__(self):
-             self.logger = logging.getLogger(__name__)
-             self.setup_logging()
-             
-         def log_error(self, error: Exception, context: Dict):
-             self.logger.error(
-                 "Error occurred",
-                 extra={
-                     'error_type': type(error).__name__,
-                     'error_message': str(error),
-                     'context': context,
-                     'stack_trace': traceback.format_exc()
-                 }
-             )
-             
-         def setup_logging(self):
-             # Configure logging handlers
-             # Set up log rotation
-             # Define log format
-             # Set up alerts
-             pass
-     ```
-
-  4. Recovery Strategies:
-     ```python
-     class RecoveryStrategy:
-         def __init__(self):
-             self.strategies = {
-                 NetworkError: self.handle_network_error,
-                 PDFError: self.handle_pdf_error,
-                 ValidationError: self.handle_validation_error,
-                 DatabaseError: self.handle_database_error
-             }
-             
-         async def handle_network_error(self, context: Dict):
-             # Implement exponential backoff
-             # Check alternative endpoints
-             # Verify network status
-             # Update connection pool
-             pass
-             
-         def handle_pdf_error(self, context: Dict):
-             # Try alternative PDF library
-             # Check file integrity
-             # Attempt repair
-             # Log unrecoverable cases
-             pass
-     ```
-
-  5. Monitoring Setup:
+  3. Error Monitoring System:
      ```python
      class ErrorMonitor:
+         """Monitors error rates and system health."""
+         
          def __init__(self):
-             self.alert_thresholds = {
-                 ErrorSeverity.LOW: 100,
-                 ErrorSeverity.MEDIUM: 50,
-                 ErrorSeverity.HIGH: 10,
-                 ErrorSeverity.CRITICAL: 1
-             }
+             self.error_counts: Dict[str, int] = {}
+             self.start_time = time.time()
+         
+         def record_error(self, error_type: str) -> None:
+             """Record an error occurrence."""
+             self.error_counts[error_type] = self.error_counts.get(error_type, 0) + 1
              
-         def check_error_rates(self):
-             for severity, count in self.error_counts.items():
-                 if count >= self.alert_thresholds[severity]:
-                     self.trigger_alert(severity, count)
-                     
-         def generate_error_report(self):
-             return {
-                 'error_counts': self.error_counts,
-                 'error_rates': self.calculate_rates(),
-                 'top_errors': self.get_top_errors()
-             }
+             # Log if error rate is high
+             error_rate = self.get_error_rate(error_type)
+             if error_rate > 0.1:  # More than 10% error rate
+                 logger.warning(f"High error rate for {error_type}: {error_rate:.2%}")
      ```
 
-  6. Circuit Breaker:
+  4. Logging Configuration:
      ```python
-     class CircuitBreaker:
-         def __init__(self):
-             self.failure_threshold = 5
-             self.reset_timeout = 60
-             self.state = 'closed'
-             
-         def execute(self, func, *args, **kwargs):
-             if self.state == 'open':
-                 if self.should_reset():
-                     self.half_open()
-                 else:
-                     raise CircuitBreakerOpen()
-                     
-             try:
-                 result = func(*args, **kwargs)
-                 self.record_success()
-                 return result
-             except Exception as e:
-                 self.record_failure()
-                 raise
+     # Configure loguru logger
+     logger.add(
+         "logs/error.log",
+         rotation="500 MB",
+         retention="10 days",
+         level="ERROR",
+         backtrace=True,
+         diagnose=True,
+     )
+     logger.add(
+         "logs/info.log",
+         rotation="100 MB",
+         retention="7 days",
+         level="INFO",
+     )
      ```
 
-  7. Data Recovery:
+  5. Spider Integration:
      ```python
-     class DataRecovery:
-         def __init__(self):
-             self.backup_manager = BackupManager()
-             self.checkpoint_interval = 100
+     class BaseInsuranceSpider(Spider):
+         def handle_error(self, failure):
+             """Generic error handler for failed requests."""
+             logger.error(f"Request failed: {failure.value}")
+             if hasattr(failure.value, 'response') and failure.value.response:
+                 logger.error(f"Response status: {failure.value.response.status}")
+                 logger.error(f"Response headers: {failure.value.response.headers}")
              
-         def create_checkpoint(self, data: Dict):
-             self.backup_manager.save_checkpoint({
-                 'data': data,
-                 'timestamp': time.time(),
-                 'metadata': self.get_metadata()
-             })
-             
-         def restore_from_checkpoint(self):
-             latest_checkpoint = self.backup_manager.get_latest()
-             return self.restore_data(latest_checkpoint)
+             # Re-raise the exception for the middleware to handle
+             raise ScraperException(f"Request failed: {failure.value}")
      ```
 
-  8. Health Checks:
+  6. PDF Processing Error Handling:
      ```python
-     class SystemHealth:
-         def __init__(self):
-             self.checks = {
-                 'database': self.check_database,
-                 'network': self.check_network,
-                 'pdf_service': self.check_pdf_service,
-                 'cache': self.check_cache
-             }
-             
-         async def run_health_checks(self):
-             results = {}
-             for name, check in self.checks.items():
-                 try:
-                     results[name] = await check()
-                 except Exception as e:
-                     results[name] = {
-                         'status': 'failed',
-                         'error': str(e)
-                     }
-             return results
+     def save_pdf(self, content: bytes, filename: str) -> Path:
+         """Save PDF content with error handling."""
+         try:
+             file_path = self.output_dir / filename
+             file_path.write_bytes(content)
+             logger.info(f"Saved PDF to {file_path}")
+             return file_path
+         except Exception as e:
+             raise DownloadException(f"Failed to save PDF {filename}: {e}")
      ```
 
-  9. Error Prevention:
-     - Input Validation:
-       * Schema validation
-       * Type checking
-       * Range validation
-       * Format verification
-     - Resource Checks:
-       * Memory availability
-       * Disk space
-       * Network connectivity
-       * Service health
+  7. Test Coverage:
+     - Circuit breaker tests
+     - Error monitoring tests
+     - Retry mechanism tests
+     - PDF error handling tests
+     - Spider error handling tests
+     - Logging configuration tests
 
-  10. Recovery Workflow:
-      - Detection Phase:
-        * Error identification
-        * Context gathering
-        * Impact assessment
-        * Priority assignment
-      - Recovery Phase:
-        * Strategy selection
-        * Action execution
-        * Verification
-        * Reporting
+  8. Error Prevention:
+     - Input validation with type checking
+     - Resource monitoring (CPU, memory, disk)
+     - Network connectivity checks
+     - PDF integrity verification
+     - Authentication state validation
+
+  9. Recovery Workflow:
+     - Error Detection:
+       * Exception type identification
+       * Context gathering
+       * Severity assessment
+     - Recovery Actions:
+       * Retry with backoff
+       * Circuit breaker activation
+       * Resource cleanup
+       * State restoration
+     - Monitoring:
+       * Error rate tracking
+       * System health checks
+       * Alert triggering
+       * Performance metrics
+
+  10. Carrier-Specific Considerations:
+      - Aetna:
+        * Authentication error handling
+        * Rate limiting detection
+        * URL validation and updates
+      - Cigna:
+        * PDF download retry logic
+        * Procedure block validation
+        * Table extraction error handling
+      - Other carriers:
+        * Generic error handling
+        * Common failure patterns
+        * Recovery strategies
   </IMPORTANT_NOTES>
 
 ## Sprint 4: Final Data Collection & Documentation (Day 3)

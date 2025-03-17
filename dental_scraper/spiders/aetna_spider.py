@@ -21,8 +21,8 @@ class AetnaSpider(BaseInsuranceSpider):
     """
     
     name = 'aetna'
-    allowed_domains = ['aetna.com']
-    start_urls = ['https://www.aetna.com/health-care-professionals/dental-resources.html']
+    allowed_domains = ['aetna.com', 'aetnadental.com']
+    start_urls = ['https://www.aetnadental.com/professionals/home.html']
     
     custom_settings = {
         'CONCURRENT_REQUESTS': 2,
@@ -57,11 +57,52 @@ class AetnaSpider(BaseInsuranceSpider):
         Yields:
             Requests for PDF guidelines or next pages to crawl
         """
-        # Extract all PDF links
+        logger.info(f"Parsing main page: {response.url}")
+        
+        # Look for resources section links
+        resource_links = response.css('a::attr(href)').getall()
+        
+        # Follow resource links that might contain dental guidelines
+        for link in resource_links:
+            if any(keyword in link.lower() for keyword in ['resource', 'guide', 'manual', 'policy', 'dental']):
+                logger.info(f"Following resource link: {link}")
+                yield response.follow(
+                    link,
+                    callback=self.parse_resource_page,
+                    errback=self.handle_error
+                )
+        
+        # Also check for direct PDF links
         pdf_links = response.css('a[href*=".pdf"]::attr(href)').getall()
         
         for link in pdf_links:
             if self.pdf_pattern.match(link):
+                logger.info(f"Found PDF link: {link}")
+                yield Request(
+                    url=response.urljoin(link),
+                    callback=self.parse_pdf,
+                    errback=self.handle_error,
+                    meta={'source_url': response.url}
+                )
+    
+    def parse_resource_page(self, response: Response) -> Generator[Request, None, None]:
+        """
+        Parse a resource page that might contain links to dental guidelines PDFs.
+        
+        Args:
+            response: Response from the resource page
+            
+        Yields:
+            Requests for PDF guidelines
+        """
+        logger.info(f"Parsing resource page: {response.url}")
+        
+        # Extract all PDF links
+        pdf_links = response.css('a[href*=".pdf"]::attr(href)').getall()
+        
+        for link in pdf_links:
+            if self.pdf_pattern.match(link) or any(keyword in link.lower() for keyword in ['dental', 'guidelines', 'documentation', 'policy']):
+                logger.info(f"Found PDF link: {link}")
                 yield Request(
                     url=response.urljoin(link),
                     callback=self.parse_pdf,
@@ -69,13 +110,15 @@ class AetnaSpider(BaseInsuranceSpider):
                     meta={'source_url': response.url}
                 )
         
-        # Follow pagination or section links
-        for href in response.css('a.pagination::attr(href)').getall():
-            yield response.follow(
-                href,
-                callback=self.parse,
-                errback=self.handle_error
-            )
+        # Follow additional resource links
+        for href in response.css('a::attr(href)').getall():
+            if any(keyword in href.lower() for keyword in ['dental', 'policy', 'bulletin', 'guide']):
+                logger.info(f"Following additional resource link: {href}")
+                yield response.follow(
+                    href,
+                    callback=self.parse_resource_page,
+                    errback=self.handle_error
+                )
     
     def parse_pdf(self, response: Response) -> Dict[str, Any]:
         """

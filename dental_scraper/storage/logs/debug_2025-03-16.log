@@ -30,3 +30,206 @@
 2025-03-16 18:14:27 | ERROR    | dental_scraper.utils.download_handler:download_pdf:87 - Invalid content type: text/html - https://example.com/test.pdf
 2025-03-16 18:14:27 | ERROR    | dental_scraper.utils.download_handler:download_pdf:100 - Error writing PDF file: object bytes can't be used in 'await' expression
 2025-03-16 18:14:27 | INFO     | dental_scraper.utils.download_handler:cleanup_old_files:148 - Removed old file: /tmp/test_downloads/old_file.pdf
+2025-03-16 19:45:43 | INFO     | dental_scraper.utils.logging_config:setup_logging:51 - Logging configured successfully
+2025-03-16 19:45:43 | INFO     | __main__:run_aetna_spider:35 - Starting Aetna spider
+2025-03-16 19:45:43 | INFO     | dental_scraper.spiders.base_spider:__init__:48 - Initialized aetna spider
+2025-03-16 19:45:43 | INFO     | __main__:run_aetna_spider:64 - Spider will save results to data/processed/aetna_guidelines_20250316_194543.json
+2025-03-16 19:45:51 | INFO     | __main__:run_aetna_spider:69 - Aetna spider completed
+2025-03-16 19:45:51 | INFO     | __main__:<module>:84 - Results saved to data/processed/aetna_guidelines_20250316_194543.json
+2025-03-16 19:46:54 | INFO     | dental_scraper.utils.logging_config:setup_logging:51 - Logging configured successfully
+2025-03-16 19:46:54 | INFO     | __main__:run_aetna_spider:35 - Starting Aetna spider
+2025-03-16 19:46:54 | INFO     | dental_scraper.spiders.base_spider:__init__:48 - Initialized aetna spider
+2025-03-16 19:46:54 | INFO     | __main__:run_aetna_spider:64 - Spider will save results to data/processed/aetna_guidelines_20250316_194654.json
+2025-03-16 19:47:04 | INFO     | dental_scraper.spiders.aetna_spider:parse:60 - Parsing main page: https://www.aetnadental.com/professionals/home.html
+2025-03-16 19:47:04 | INFO     | dental_scraper.spiders.aetna_spider:parse:68 - Following resource link: /professionals/join-aetna-dental-network.html
+2025-03-16 19:47:04 | INFO     | dental_scraper.spiders.aetna_spider:parse:68 - Following resource link: /professionals/join-aetna-dental-network/apply-for-participation.html
+2025-03-16 19:47:04 | INFO     | dental_scraper.spiders.aetna_spider:parse:68 - Following resource link: /professionals/forms-resources/dental-forms.html
+2025-03-16 19:47:04 | INFO     | dental_scraper.spiders.aetna_spider:parse:68 - Following resource link: /professionals/claim-submission-guidelines.html
+2025-03-16 19:47:04 | INFO     | dental_scraper.spiders.aetna_spider:parse:68 - Following resource link: /professionals/pdf/Eligibility%20and%20Benefit%20Search%20for%20Aetna%20Members%20on%20DentalXChange.pdf
+2025-03-16 19:47:04 | INFO     | dental_scraper.spiders.aetna_spider:parse:68 - Following resource link: /professionals/claim-submission-guidelines/oral-surgery-benefits.html
+2025-03-16 19:47:04 | INFO     | dental_scraper.spiders.aetna_spider:parse:68 - Following resource link: https://www.aetna.com/health-care-professionals/clinical-policy-bulletins.html
+2025-03-16 19:47:04 | INFO     | dental_scraper.spiders.aetna_spider:parse:68 - Following resource link: /professionals/forms-resources/Dental_Medicare.html
+2025-03-16 19:47:04 | INFO     | dental_scraper.spiders.aetna_spider:parse:68 - Following resource link: /professionals/forms-resources/Dental-OLU.html
+2025-03-16 19:47:04 | INFO     | dental_scraper.spiders.aetna_spider:parse:68 - Following resource link: /professionals/dental-overall-health.html
+2025-03-16 19:47:04 | INFO     | dental_scraper.spiders.aetna_spider:parse:68 - Following resource link: https://www.aetna.com/individuals-families/dental-health.html
+2025-03-16 19:47:04 | INFO     | dental_scraper.spiders.aetna_spider:parse:68 - Following resource link: /professionals/forms-resources/AetnaDentalPlans.html
+2025-03-16 19:47:04 | INFO     | dental_scraper.spiders.aetna_spider:parse:68 - Following resource link: /professionals/join-aetna-dental-network.html
+2025-03-16 19:47:04 | INFO     | dental_scraper.spiders.aetna_spider:parse:68 - Following resource link: /professionals/join-aetna-dental-network/apply-for-participation.html
+2025-03-16 19:47:04 | INFO     | dental_scraper.spiders.aetna_spider:parse:68 - Following resource link: /professionals/forms-resources/dental-forms.html
+2025-03-16 19:47:04 | INFO     | dental_scraper.spiders.aetna_spider:parse:68 - Following resource link: /professionals/claim-submission-guidelines/oral-surgery-benefits.html
+2025-03-16 19:47:04 | INFO     | dental_scraper.spiders.aetna_spider:parse:68 - Following resource link: https://www.aetna.com/health-care-professionals/clinical-policy-bulletins.html
+2025-03-16 19:47:04 | INFO     | dental_scraper.spiders.aetna_spider:parse:68 - Following resource link: /professionals/forms-resources/Dental_Medicare.html
+2025-03-16 19:47:04 | INFO     | dental_scraper.spiders.aetna_spider:parse:68 - Following resource link: /professionals/forms-resources/Dental-OLU.html
+2025-03-16 19:47:04 | INFO     | dental_scraper.spiders.aetna_spider:parse:68 - Following resource link: /professionals/dental-overall-health.html
+2025-03-16 19:47:04 | INFO     | dental_scraper.spiders.aetna_spider:parse:68 - Following resource link: https://www.aetna.com/individuals-families/dental-health.html
+2025-03-16 19:47:04 | INFO     | dental_scraper.spiders.aetna_spider:parse:68 - Following resource link: /professionals/forms-resources/AetnaDentalPlans.html
+2025-03-16 19:47:04 | INFO     | dental_scraper.spiders.aetna_spider:parse:68 - Following resource link: /professionals/pdf/Aetnadental%20announcement.pdf
+2025-03-16 19:47:04 | INFO     | dental_scraper.spiders.aetna_spider:parse:68 - Following resource link: /professionals/join-aetna-dental-network.html
+2025-03-16 19:47:04 | INFO     | dental_scraper.spiders.aetna_spider:parse:68 - Following resource link: /professionals/join-aetna-dental-network/apply-for-participation.html
+2025-03-16 19:47:04 | INFO     | dental_scraper.spiders.aetna_spider:parse:68 - Following resource link: /professionals/join-aetna-dental-network.html
+2025-03-16 19:47:04 | INFO     | dental_scraper.spiders.aetna_spider:parse:68 - Following resource link: /professionals/pdf/Eligibility and Benefit Search for Aetna Members on DentalXChange.pdf
+2025-03-16 19:47:04 | INFO     | dental_scraper.spiders.aetna_spider:parse:68 - Following resource link: /professionals/claim-submission-guidelines.html
+2025-03-16 19:47:04 | INFO     | dental_scraper.spiders.aetna_spider:parse:68 - Following resource link: /professionals/claim-submission-guidelines/oral-surgery-benefits.html
+2025-03-16 19:47:04 | INFO     | dental_scraper.spiders.aetna_spider:parse:68 - Following resource link: https://prelive.dentalxchange.com/dci/era/searchera/RegType?3
+2025-03-16 19:47:04 | INFO     | dental_scraper.spiders.aetna_spider:parse:68 - Following resource link: /professionals/forms-resources/dental-forms.html
+2025-03-16 19:47:04 | INFO     | dental_scraper.spiders.aetna_spider:parse:68 - Following resource link: /professionals/pdf/Aetnadental%20announcement.pdf
+2025-03-16 19:47:04 | INFO     | dental_scraper.spiders.aetna_spider:parse:68 - Following resource link: https://www.aetna.com/individuals-families/member-rights-resources/rights/disclosure-information.html
+2025-03-16 19:47:14 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:98 - Parsing resource page: https://www.aetnadental.com/professionals/forms-resources/dental-forms.html
+2025-03-16 19:47:14 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:105 - Found PDF link: /professionals/pdf/Eligibility%20and%20Benefit%20Search%20for%20Aetna%20Members%20on%20DentalXChange.pdf
+2025-03-16 19:47:14 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:105 - Found PDF link: /professionals/pdf/dental-claim-form.pdf
+2025-03-16 19:47:14 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:105 - Found PDF link: /professionals/pdf/spanish-dental-claim-form.pdf
+2025-03-16 19:47:14 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: /professionals/join-aetna-dental-network.html
+2025-03-16 19:47:14 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: /professionals/join-aetna-dental-network/apply-for-participation.html
+2025-03-16 19:47:14 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: /professionals/forms-resources/dental-forms.html
+2025-03-16 19:47:14 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: /professionals/claim-submission-guidelines.html
+2025-03-16 19:47:14 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: /professionals/pdf/Eligibility%20and%20Benefit%20Search%20for%20Aetna%20Members%20on%20DentalXChange.pdf
+2025-03-16 19:47:14 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: /professionals/claim-submission-guidelines/oral-surgery-benefits.html
+2025-03-16 19:47:14 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: https://www.aetna.com/health-care-professionals/clinical-policy-bulletins.html
+2025-03-16 19:47:14 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: /professionals/forms-resources/Dental_Medicare.html
+2025-03-16 19:47:14 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: /professionals/forms-resources/Dental-OLU.html
+2025-03-16 19:47:14 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: /professionals/dental-overall-health.html
+2025-03-16 19:47:14 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: https://www.aetna.com/individuals-families/dental-health.html
+2025-03-16 19:47:14 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: /professionals/forms-resources/AetnaDentalPlans.html
+2025-03-16 19:47:14 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: /professionals/join-aetna-dental-network.html
+2025-03-16 19:47:14 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: /professionals/join-aetna-dental-network/apply-for-participation.html
+2025-03-16 19:47:14 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: /professionals/forms-resources/dental-forms.html
+2025-03-16 19:47:14 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: /professionals/claim-submission-guidelines/oral-surgery-benefits.html
+2025-03-16 19:47:14 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: https://www.aetna.com/health-care-professionals/clinical-policy-bulletins.html
+2025-03-16 19:47:14 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: /professionals/forms-resources/Dental_Medicare.html
+2025-03-16 19:47:14 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: /professionals/forms-resources/Dental-OLU.html
+2025-03-16 19:47:14 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: /professionals/dental-overall-health.html
+2025-03-16 19:47:14 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: https://www.aetna.com/individuals-families/dental-health.html
+2025-03-16 19:47:14 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: /professionals/forms-resources/AetnaDentalPlans.html
+2025-03-16 19:47:14 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: /professionals/pdf/dental-claim-form.pdf
+2025-03-16 19:47:14 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: /professionals/pdf/spanish-dental-claim-form.pdf
+2025-03-16 19:47:14 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: /professionals/join-aetna-dental-network/apply-for-participation.html#parsys_columnlayout_571683394
+2025-03-16 19:47:20 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:98 - Parsing resource page: https://www.aetnadental.com/professionals/join-aetna-dental-network/apply-for-participation.html
+2025-03-16 19:47:20 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:105 - Found PDF link: /professionals/pdf/Eligibility%20and%20Benefit%20Search%20for%20Aetna%20Members%20on%20DentalXChange.pdf
+2025-03-16 19:47:20 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: /professionals/join-aetna-dental-network.html
+2025-03-16 19:47:20 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: /professionals/join-aetna-dental-network/apply-for-participation.html
+2025-03-16 19:47:20 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: /professionals/forms-resources/dental-forms.html
+2025-03-16 19:47:20 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: /professionals/claim-submission-guidelines.html
+2025-03-16 19:47:20 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: /professionals/pdf/Eligibility%20and%20Benefit%20Search%20for%20Aetna%20Members%20on%20DentalXChange.pdf
+2025-03-16 19:47:20 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: /professionals/claim-submission-guidelines/oral-surgery-benefits.html
+2025-03-16 19:47:20 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: https://www.aetna.com/health-care-professionals/clinical-policy-bulletins.html
+2025-03-16 19:47:20 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: /professionals/forms-resources/Dental_Medicare.html
+2025-03-16 19:47:20 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: /professionals/forms-resources/Dental-OLU.html
+2025-03-16 19:47:20 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: /professionals/dental-overall-health.html
+2025-03-16 19:47:20 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: https://www.aetna.com/individuals-families/dental-health.html
+2025-03-16 19:47:20 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: /professionals/forms-resources/AetnaDentalPlans.html
+2025-03-16 19:47:20 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: /professionals/join-aetna-dental-network.html
+2025-03-16 19:47:20 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: /professionals/join-aetna-dental-network/apply-for-participation.html
+2025-03-16 19:47:20 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: /professionals/forms-resources/dental-forms.html
+2025-03-16 19:47:20 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: /professionals/claim-submission-guidelines/oral-surgery-benefits.html
+2025-03-16 19:47:20 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: https://www.aetna.com/health-care-professionals/clinical-policy-bulletins.html
+2025-03-16 19:47:20 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: /professionals/forms-resources/Dental_Medicare.html
+2025-03-16 19:47:20 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: /professionals/forms-resources/Dental-OLU.html
+2025-03-16 19:47:20 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: /professionals/dental-overall-health.html
+2025-03-16 19:47:20 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: https://www.aetna.com/individuals-families/dental-health.html
+2025-03-16 19:47:20 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: /professionals/forms-resources/AetnaDentalPlans.html
+2025-03-16 19:47:20 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: /professionals/join-aetna-dental-network.html
+2025-03-16 19:47:20 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:98 - Parsing resource page: https://www.aetna.com/individuals-families/member-rights-resources/rights/disclosure-information.html
+2025-03-16 19:47:20 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: /individuals-families/buy-dental-coverage.html
+2025-03-16 19:47:20 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: /health-guide.html
+2025-03-16 19:47:20 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: /health-guide/living-healthy.html
+2025-03-16 19:47:20 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: /health-guide/understanding-healthcare.html
+2025-03-16 19:47:20 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: /health-guide/managing-health.html
+2025-03-16 19:47:20 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: https://www.aetna.com/individuals-families/member-rights-resources/rights/irs-guidelines.html
+2025-03-16 19:47:31 | INFO     | dental_scraper.spiders.base_spider:save_pdf:89 - Saved PDF to data/pdfs/aetna_guidelines_20250316.pdf
+2025-03-16 19:47:33 | ERROR    | dental_scraper.spiders.aetna_spider:parse_pdf:140 - No procedures extracted from aetna_guidelines_20250316.pdf
+2025-03-16 19:47:33 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:98 - Parsing resource page: https://www.aetna.com/individuals-families/member-rights-resources/rights/irs-guidelines.html
+2025-03-16 19:47:33 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: /individuals-families/buy-dental-coverage.html
+2025-03-16 19:47:33 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: /health-guide.html
+2025-03-16 19:47:33 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: /health-guide/living-healthy.html
+2025-03-16 19:47:33 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: /health-guide/understanding-healthcare.html
+2025-03-16 19:47:33 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: /health-guide/managing-health.html
+2025-03-16 19:47:38 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:98 - Parsing resource page: https://www.aetna.com/health-guide/managing-health.html
+2025-03-16 19:47:38 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: /individuals-families/buy-dental-coverage.html
+2025-03-16 19:47:38 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: /health-guide.html
+2025-03-16 19:47:38 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: /health-guide/living-healthy.html
+2025-03-16 19:47:38 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: /health-guide/understanding-healthcare.html
+2025-03-16 19:47:38 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: /health-guide/managing-health.html
+2025-03-16 19:47:38 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: /health-guide/medical-emergency-go-er-urgent-care.html
+2025-03-16 19:47:38 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: /health-guide/5-health-care-questions-ask-youre-starting-family.html
+2025-03-16 19:47:38 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: /health-guide/how-to-lower-cholesterol.html
+2025-03-16 19:47:46 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:98 - Parsing resource page: https://www.aetna.com/health-guide/understanding-healthcare.html
+2025-03-16 19:47:46 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: /individuals-families/buy-dental-coverage.html
+2025-03-16 19:47:46 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: /health-guide.html
+2025-03-16 19:47:46 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: /health-guide/living-healthy.html
+2025-03-16 19:47:46 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: /health-guide/understanding-healthcare.html
+2025-03-16 19:47:46 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: /health-guide/managing-health.html
+2025-03-16 19:47:46 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: /health-guide/lesser-known-health-perks-plan-may-offer.html
+2025-03-16 19:47:46 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: /health-guide/explaining-premiums-deductibles-coinsurance-and-copays.html
+2025-03-16 19:47:46 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: /health-guide/secondary-health-insurance.html
+2025-03-16 19:47:55 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:98 - Parsing resource page: https://www.aetna.com/health-guide/how-to-lower-cholesterol.html
+2025-03-16 19:47:55 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: /individuals-families/buy-dental-coverage.html
+2025-03-16 19:47:55 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: /health-guide.html
+2025-03-16 19:47:55 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: /health-guide/living-healthy.html
+2025-03-16 19:47:55 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: /health-guide/understanding-healthcare.html
+2025-03-16 19:47:55 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: /health-guide/managing-health.html
+2025-03-16 19:47:55 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: https://www.aetnamedicare.com/?icid=int-healthguide
+2025-03-16 19:47:55 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: https://www.aetnamedicare.com/?icid=int-healthguide
+2025-03-16 19:48:03 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:98 - Parsing resource page: https://www.aetna.com/health-guide/secondary-health-insurance.html
+2025-03-16 19:48:03 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: /individuals-families/buy-dental-coverage.html
+2025-03-16 19:48:03 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: /health-guide.html
+2025-03-16 19:48:03 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: /health-guide/living-healthy.html
+2025-03-16 19:48:03 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: /health-guide/understanding-healthcare.html
+2025-03-16 19:48:03 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: /health-guide/managing-health.html
+2025-03-16 19:48:03 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: https://www.aetna.com/health-guide/lesser-known-health-perks-plan-may-offer.html
+2025-03-16 19:48:03 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: https://www.aetna.com/individuals-families/dental-health/oral-health-overall-health.html
+2025-03-16 19:48:03 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: https://www.aetna.com/individuals-families/dental-health/diabetes-oral-health.html
+2025-03-16 19:48:03 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: https://www.aetna.com/health-guide/2020-vision-still-need-eye-exam.html
+2025-03-16 19:48:03 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: https://www.aetna.com/health-guide/hmo-pos-ppo-hdhp-whats-the-difference.html
+2025-03-16 19:48:10 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:98 - Parsing resource page: https://www.aetna.com/health-guide/explaining-premiums-deductibles-coinsurance-and-copays.html
+2025-03-16 19:48:10 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: /individuals-families/buy-dental-coverage.html
+2025-03-16 19:48:10 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: /health-guide.html
+2025-03-16 19:48:10 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: /health-guide/living-healthy.html
+2025-03-16 19:48:10 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: /health-guide/understanding-healthcare.html
+2025-03-16 19:48:10 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: /health-guide/managing-health.html
+2025-03-16 19:48:10 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: /health-guide/hmo-pos-ppo-hdhp-whats-the-difference.html
+2025-03-16 19:48:10 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: /health-guide/hsa-vs-fsa.html
+2025-03-16 19:48:10 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: /health-guide/secondary-health-insurance.html
+2025-03-16 19:48:10 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: https://www.aetna.com/health-guide/health-insurance-ultimate-guide.html
+2025-03-16 19:48:19 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:98 - Parsing resource page: https://www.aetna.com/health-guide/lesser-known-health-perks-plan-may-offer.html
+2025-03-16 19:48:19 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: /individuals-families/buy-dental-coverage.html
+2025-03-16 19:48:19 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: /health-guide.html
+2025-03-16 19:48:19 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: /health-guide/living-healthy.html
+2025-03-16 19:48:19 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: /health-guide/understanding-healthcare.html
+2025-03-16 19:48:19 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: /health-guide/managing-health.html
+2025-03-16 19:48:27 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:98 - Parsing resource page: https://www.aetna.com/health-guide/hmo-pos-ppo-hdhp-whats-the-difference.html
+2025-03-16 19:48:27 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: /individuals-families/buy-dental-coverage.html
+2025-03-16 19:48:27 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: /health-guide.html
+2025-03-16 19:48:27 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: /health-guide/living-healthy.html
+2025-03-16 19:48:27 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: /health-guide/understanding-healthcare.html
+2025-03-16 19:48:27 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: /health-guide/managing-health.html
+2025-03-16 19:48:27 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: /health-guide/explaining-premiums-deductibles-coinsurance-and-copays.html
+2025-03-16 19:48:27 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: /health-guide/dowhen-need-find-new-doctor.html
+2025-03-16 19:48:27 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: /health-guide/explaining-premiums-deductibles-coinsurance-and-copays.html
+2025-03-16 19:48:27 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: /health-guide/hsa-vs-fsa.html
+2025-03-16 19:48:38 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:98 - Parsing resource page: https://www.aetna.com/health-guide/health-insurance-ultimate-guide.html
+2025-03-16 19:48:38 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: /individuals-families/buy-dental-coverage.html
+2025-03-16 19:48:38 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: /health-guide.html
+2025-03-16 19:48:38 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: /health-guide/living-healthy.html
+2025-03-16 19:48:38 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: /health-guide/understanding-healthcare.html
+2025-03-16 19:48:38 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: /health-guide/managing-health.html
+2025-03-16 19:48:38 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: /health-guide/explaining-premiums-deductibles-coinsurance-and-copays.html
+2025-03-16 19:48:38 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: /health-guide/hmo-pos-ppo-hdhp-whats-the-difference.html
+2025-03-16 19:48:38 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: /health-guide/hsa-vs-fsa.html
+2025-03-16 19:48:38 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: /health-guide/can-pay-hsa.html
+2025-03-16 19:48:38 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: /health-guide/lesser-known-health-perks-plan-may-offer.html
+2025-03-16 19:48:38 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: /health-guide/2020-vision-still-need-eye-exam.html
+2025-03-16 19:48:38 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: /health-guide/secondary-health-insurance.html
+2025-03-16 19:48:38 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: /health-guide/5-health-care-questions-ask-youre-starting-family.html
+2025-03-16 19:48:38 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: /health-guide/change-health-plan.html
+2025-03-16 19:48:44 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:98 - Parsing resource page: https://www.aetna.com/health-guide/hsa-vs-fsa.html
+2025-03-16 19:48:44 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: /individuals-families/buy-dental-coverage.html
+2025-03-16 19:48:44 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: /health-guide.html
+2025-03-16 19:48:44 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: /health-guide/living-healthy.html
+2025-03-16 19:48:44 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: /health-guide/understanding-healthcare.html
+2025-03-16 19:48:44 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: /health-guide/managing-health.html
+2025-03-16 19:48:53 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:98 - Parsing resource page: https://www.aetna.com/health-guide/dowhen-need-find-new-doctor.html
+2025-03-16 19:48:53 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: /individuals-families/buy-dental-coverage.html
+2025-03-16 19:48:53 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: /health-guide.html
+2025-03-16 19:48:53 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: /health-guide/living-healthy.html
+2025-03-16 19:48:53 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: /health-guide/understanding-healthcare.html
+2025-03-16 19:48:53 | INFO     | dental_scraper.spiders.aetna_spider:parse_resource_page:116 - Following additional resource link: /health-guide/managing-health.html

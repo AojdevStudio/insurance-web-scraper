@@ -9,3 +9,4 @@
 2025-03-16 18:14:27 | ERROR    | dental_scraper.utils.download_handler:download_pdf:81 - Failed to download PDF: 404 - https://example.com/test.pdf
 2025-03-16 18:14:27 | ERROR    | dental_scraper.utils.download_handler:download_pdf:87 - Invalid content type: text/html - https://example.com/test.pdf
 2025-03-16 18:14:27 | ERROR    | dental_scraper.utils.download_handler:download_pdf:100 - Error writing PDF file: object bytes can't be used in 'await' expression
+2025-03-16 19:47:33 | ERROR    | dental_scraper.spiders.aetna_spider:parse_pdf:140 - No procedures extracted from aetna_guidelines_20250316.pdf
